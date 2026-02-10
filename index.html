@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Barakah eMart – Online Shopping</title>
+<title>Barakah eMART – Smart Online Shopping</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body{
   margin:0;
-  font-family:Arial, sans-serif;
+  font-family: Arial, sans-serif;
   background:#f4f6f8;
+  color:#333;
 }
 
 /* HEADER */
@@ -20,29 +21,11 @@ header{
   padding:15px;
 }
 header img{
-  height:50px;
+  max-width:140px;
+  margin-bottom:10px;
 }
-header h1{
-  margin:10px 0 5px;
-}
-header p{
-  margin:0;
-  font-size:14px;
-}
-
-/* NAV */
-nav{
-  background:#ffffff;
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  padding:10px;
-  font-weight:bold;
-}
-nav a{
-  text-decoration:none;
-  color:#0a5c36;
-}
+header h1{ margin:5px 0; }
+header p{ margin:0; font-size:14px; }
 
 /* PRODUCT CARD */
 .product{
@@ -50,39 +33,37 @@ nav a{
   max-width:900px;
   margin:30px auto;
   padding:20px;
-  display:flex;
-  gap:30px;
-  border-radius:12px;
+  border-radius:10px;
   box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  display:flex;
+  gap:25px;
 }
 
-/* LEFT IMAGE */
-.product-images{
-  width:300px;
+/* IMAGE SECTION */
+.images{
+  flex:1;
+  text-align:center;
 }
 .main-img{
   width:100%;
+  max-width:320px;
   border-radius:10px;
-  border:1px solid #ddd;
 }
 .thumbs{
-  display:flex;
-  gap:10px;
   margin-top:10px;
 }
 .thumbs img{
   width:60px;
-  height:60px;
-  object-fit:cover;
-  border:2px solid #ddd;
-  border-radius:6px;
+  margin:5px;
   cursor:pointer;
+  border-radius:6px;
+  border:2px solid #ddd;
 }
 .thumbs img:hover{
   border-color:#0a5c36;
 }
 
-/* RIGHT DETAILS */
+/* DETAILS */
 .details{
   flex:1;
 }
@@ -92,55 +73,56 @@ nav a{
 }
 .price{
   font-size:22px;
+  margin:10px 0;
+}
+.price .offer{
   color:#e53935;
   font-weight:bold;
 }
-.price span{
-  font-size:16px;
-  color:#777;
+.price .mrp{
   text-decoration:line-through;
-  margin-left:10px;
+  color:#888;
+  font-size:14px;
+  margin-left:8px;
 }
-.offer{
+.badge{
   background:#e53935;
   color:#fff;
   padding:4px 8px;
-  border-radius:6px;
+  border-radius:5px;
   font-size:12px;
   margin-left:10px;
 }
-.details p{
-  margin:15px 0;
-  line-height:1.5;
+.desc{
+  font-size:14px;
+  line-height:1.6;
 }
-
-/* BUTTON */
 .btn{
   display:inline-block;
-  padding:14px 28px;
+  margin-top:15px;
+  padding:14px 25px;
   background:#25D366;
   color:#fff;
   text-decoration:none;
   border-radius:50px;
-  font-size:18px;
+  font-size:16px;
   font-weight:bold;
-}
-.btn:hover{
-  background:#1ebe5d;
 }
 
 /* MOBILE */
 @media(max-width:768px){
   .product{
     flex-direction:column;
-    align-items:center;
-  }
-  .product-images{
-    width:220px;
-  }
-  .details{
     text-align:center;
   }
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  font-size:13px;
+  color:#777;
+  margin:30px 0;
 }
 </style>
 </head>
@@ -153,27 +135,16 @@ nav a{
   <p>Smart & Affordable Online Shopping</p>
 </header>
 
-<nav>
-  <a href="#">Home</a>
-  <a href="#">Products</a>
-  <a href="#">Order</a>
-  <a href="#">Contact</a>
-</nav>
-
-<!-- PRODUCT -->
 <div class="product">
 
   <!-- LEFT IMAGES -->
-  <div class="product-images">
+  <div class="images">
     <img id="mainImage" src="sealer1.jpg" class="main-img">
-
     <div class="thumbs">
-      <img src="sealer1.jpg" onclick="changeImage(this)">
-      <img src="sealer2.jpg" onclick="changeImage(this)">
-      <img src="sealer3.jpg" onclick="changeImage(this)">
-      <img src="sealer4.jpg" onclick="changeImage(this)">
-      <img src="sealer5.jpg" onclick="changeImage(this)">
-      
+      <img src="sealer2.jpg" onclick="changeImage('sealer1.jpg')">
+      <img src="sealer3.jpg" onclick="changeImage('sealer2.jpg')">
+      <img src="sealer4.jpg" onclick="changeImage('sealer3.jpg')">
+      <img src="sealer5.jpg" onclick="changeImage('sealer4.jpg')">
     </div>
   </div>
 
@@ -182,13 +153,14 @@ nav a{
     <h2>Portable Mini Sealing Machine</h2>
 
     <div class="price">
-      ₹149 <span>₹299</span>
-      <span class="offer">50% OFF</span>
+      <span class="offer">₹149</span>
+      <span class="mrp">₹299</span>
+      <span class="badge">50% OFF</span>
     </div>
 
-    <p>
-      2-in-1 heat sealer with cutter. Rechargeable Type-C.
-      Keeps food fresh & airtight. Portable & easy to use.
+    <p class="desc">
+      2-in-1 heat sealer with cutter. Rechargeable Type-C mini sealing
+      machine helps keep food fresh & airtight. Magnetic back for easy storage.
     </p>
 
     <a class="btn" href="https://wa.me/919124646598" target="_blank">
@@ -198,9 +170,13 @@ nav a{
 
 </div>
 
+<footer>
+© 2026 Barakah eMART. All rights reserved.
+</footer>
+
 <script>
-function changeImage(el){
-  document.getElementById("mainImage").src = el.src;
+function changeImage(img){
+  document.getElementById("mainImage").src = img;
 }
 </script>
 
