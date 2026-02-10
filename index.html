@@ -66,6 +66,70 @@
   height: auto;
   margin-bottom: 10px;
 }
+    .product-page {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.product-left img {
+  width: 200px;
+  border-radius: 10px;
+}
+
+.product-right {
+  text-align: left;
+}
+
+.product-title {
+  margin: 0;
+  font-size: 22px;
+  color: #0a5c36;
+}
+
+.price-line {
+  margin: 10px 0;
+}
+
+.offer-price {
+  font-size: 26px;
+  font-weight: bold;
+  color: #d32f2f;
+  margin-right: 10px;
+}
+
+.mrp {
+  text-decoration: line-through;
+  color: #777;
+  margin-right: 10px;
+}
+
+.discount {
+  background: #d32f2f;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.desc {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+/* MOBILE VIEW */
+@media (max-width: 700px) {
+  .product-page {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .product-right {
+    text-align: center;
+  }
+}
+
   </style>
 </head>
 
