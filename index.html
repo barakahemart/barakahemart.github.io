@@ -148,15 +148,36 @@ function changeImage(imgId,src){
 <!-- ================= PRODUCT 2 ================= -->
 <div class="product">
   <div class="images">
-    <img id="p2" src="lunchcamera1.jpg" class="main-img">
+    <img id="p2" src="lunchcamera1.jpg" class="main-img" alt="Lunch Camera Box">
+
     <div class="thumbs">
-      <img src="lunchcamera1.jpg" onclick="changeImage('p2','lunchcamera1.jpg')">
-      <img src="lunchcamera2.jpeg" onclick="changeImage('p2','lunchcamera2.jpg')">
-      <img src="lunchcamera3.jpeg" onclick="changeImage('p2','lunchcamera3.jpg')">
-      <img src="lunchcamera4.jpeg" onclick="changeImage('p2','lunchcamera4.jpg')">
-       <img src="lunchcamera5.jpeg" onclick="changeImage('p2','lunchcamera4.jpg')">
+      <img src="lunchcamera1.jpg" onclick="document.getElementById('p2').src='lunchcamera1.jpg'">
+      <img src="lunchcamera2.jpg" onclick="document.getElementById('p2').src='lunchcamera2.jpg'">
+      <img src="lunchcamera3.jpg" onclick="document.getElementById('p2').src='lunchcamera3.jpg'">
+      <img src="lunchcamera4.jpg" onclick="document.getElementById('p2').src='lunchcamera4.jpg'">
     </div>
   </div>
+
+  <div class="details">
+    <h2>Insta-Look Lunch Box Camera Style</h2>
+
+    <div>
+      <span class="price">₹489</span>
+      <span class="mrp">₹699</span>
+      <span class="offer">30% OFF</span>
+    </div>
+
+    <p>
+      Stylish camera-look lunch box. 1000ml capacity.
+      Leak-proof, durable & perfect for kids and office use.
+    </p>
+
+    <a class="btn" href="https://wa.me/919124646598" target="_blank">
+      Buy on WhatsApp
+    </a>
+  </div>
+</div>
+
 
   <div class="details">
     <h2>Insta-Look Lunch Box Camera Style</h2>
