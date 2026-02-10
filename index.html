@@ -1,240 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Barakah eMART – Smart Online Shopping</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barakah eMART</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      color: #333;
-      text-align: center;
-    }
-    header {
-      background: #0a5c36;
-      color: #fff;
-      padding: 30px 15px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 32px;
-    }
-    header p {
-      margin-top: 8px;
-      font-size: 16px;
-    }
-    .container {
-      padding: 30px 15px;
-    }
-    .card {
-      background: #fff;
-      max-width: 420px;
-      margin: auto;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .card h2 {
-      margin-top: 0;
-      color: #0a5c36;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 15px 25px;
-      background: #25D366;
-      color: #fff;
-      text-decoration: none;
-      font-size: 18px;
-      border-radius: 50px;
-      font-weight: bold;
-    }
-    .btn:hover {
-      background: #1ebe5d;
-    }
-    footer {
-      margin-top: 40px;
-      padding: 15px;
-      font-size: 14px;
-      color: #777;
-    }
-    {
-  width: 90px;
-  height: auto;
-  margin-bottom: 10px;
-}
-    .product-page {
-  display: flex;
-  gap: 25px;
-  align-items: center;
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family: Arial, sans-serif;
 }
 
-.product-left img {
-  width: 240px;   /* 👈 yahan size control hota hai */
-  max-width: 100%;
-  border-radius: 8px;
+/* HEADER */
+header{
+  background:#0a5c36;
+  padding:15px;
+  text-align:center;
+}
+header img{
+  width:120px;
+  margin-bottom:8px;
+}
+header h1{
+  color:#fff;
+}
+header p{
+  color:#d4f1e3;
+  font-size:14px;
 }
 
-
-.product-right {
-  text-align: left;
+/* MENU */
+nav{
+  background:#084a2b;
+  display:flex;
+  justify-content:center;
+}
+nav a{
+  color:#fff;
+  padding:12px 15px;
+  text-decoration:none;
+  font-size:14px;
+}
+nav a:hover{
+  background:#0a5c36;
 }
 
-.product-title {
-  margin: 0;
-  font-size: 22px;
-  color: #0a5c36;
+/* PRODUCT CARD */
+.container{
+  padding:20px;
+  max-width:1000px;
+  margin:auto;
 }
 
-.price-line {
-  margin: 10px 0;
+.product{
+  display:flex;
+  gap:20px;
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  margin-bottom:20px;
 }
 
-.offer-price {
-  font-size: 26px;
-  font-weight: bold;
-  color: #d32f2f;
-  margin-right: 10px;
+/* PRODUCT IMAGE */
+.product img{
+  width:220px;
+  max-width:100%;
+  border-radius:10px;
 }
 
-.mrp {
-  text-decoration: line-through;
-  color: #777;
-  margin-right: 10px;
+/* PRODUCT DETAILS */
+.details h2{
+  margin-bottom:10px;
+  color:#0a5c36;
 }
-
-.discount {
-  background: #d32f2f;
-  color: #fff;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 13px;
+.price{
+  font-size:22px;
+  color:#d32f2f;
+  font-weight:bold;
 }
-
-.desc {
-  font-size: 14px;
-  color: #444;
-  margin-bottom: 15px;
+.mrp{
+  text-decoration:line-through;
+  color:#777;
+  margin-left:10px;
+  font-size:14px;
+}
+.off{
+  background:red;
+  color:#fff;
+  font-size:12px;
+  padding:3px 6px;
+  border-radius:5px;
+  margin-left:10px;
+}
+.details p{
+  margin:10px 0;
+  font-size:14px;
+}
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  background:#25D366;
+  color:#fff;
+  padding:12px 20px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
 }
 
 /* MOBILE VIEW */
-@media (max-width: 700px) {
-  .product-page {
-    flex-direction: column;
-    text-align: center;
+@media(max-width:768px){
+  .product{
+    flex-direction:column;
+    text-align:center;
   }
-
-  .product-right {
-    text-align: center;
+  .product img{
+    margin:auto;
+    width:180px;
   }
 }
-.card {
-  max-width: 520px;   /* pehle 420 tha, ye better layout deta hai */
-}
-    .product-box {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  padding: 25px;
-}
 
-.product-left img {
-  width: 220px;        /* 👈 BEST SIZE */
-  max-width: 100%;
-  border-radius: 12px;
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:15px;
+  font-size:13px;
+  color:#777;
 }
-
-.product-right {
-  text-align: left;
-}
-
-.product-right h2 {
-  margin: 0 0 10px;
-  color: #0a5c36;
-  font-size: 22px;
-}
-
-.price {
-  font-size: 22px;
-  font-weight: bold;
-  color: #e53935;
-}
-
-.mrp {
-  text-decoration: line-through;
-  color: #888;
-  margin-left: 10px;
-  font-size: 16px;
-}
-
-.offer {
-  background: #e53935;
-  color: #fff;
-  font-size: 12px;
-  padding: 4px 8px;
-  border-radius: 6px;
-  margin-left: 10px;
-}
-  </style>
+</style>
 </head>
 
 <body>
 
- <header>
-  <img src="logo.jpeg" alt="Barakah eMART Logo" class="logo">
+<header>
+  <img src="logo.png" alt="Barakah eMART Logo">
   <h1>Barakah eMART</h1>
   <p>Smart & Affordable Online Shopping</p>
 </header>
 
+<nav>
+  <a href="#">Home</a>
+  <a href="#">Products</a>
+  <a href="#">Order</a>
+  <a href="#">Contact</a>
+</nav>
 
+<div class="container">
 
-  <div class="container">
-    <div class="card">
-
-  <div class="product-page">
-
-  <div class="product-box">
-
-  <!-- LEFT IMAGE -->
-  <div class="product-left">
+  <!-- PRODUCT 1 -->
+  <div class="product">
     <img src="sealer.jpg" alt="Portable Mini Sealing Machine">
-  </div>
 
-  <!-- RIGHT DETAILS -->
-  <div class="product-right">
-    <h2>Portable Mini Sealing Machine</h2>
+    <div class="details">
+      <h2>Portable Mini Sealing Machine</h2>
 
-    <div>
-      <span class="price">₹149</span>
-      <span class="mrp">₹299</span>
-      <span class="offer">50% OFF</span>
+      <div class="price">
+        ₹149
+        <span class="mrp">₹299</span>
+        <span class="off">50% OFF</span>
+      </div>
+
+      <p>
+        2-in-1 heat sealer with cutter. Rechargeable Type-C.
+        Keeps food fresh & airtight.
+      </p>
+
+      <a class="btn" href="https://wa.me/919124646598" target="_blank">
+        Buy on WhatsApp
+      </a>
     </div>
-
-    <p style="margin-top:10px;">
-      2-in-1 heat sealer with cutter. Rechargeable Type-C.
-      Keeps food fresh & airtight.
-    </p>
-
-    <a class="btn" href="https://wa.me/919124646598" target="_blank">
-      Buy on WhatsApp
-    </a>
-  </div>
-
-</div>
-    </div>
-
   </div>
 
 </div>
 
-  </div>
-
-  <footer>
-    © 2026 Barakah eMART. All rights reserved.
-  </footer>
+<footer>
+© 2026 Barakah eMART. All rights reserved.
+</footer>
 
 </body>
 </html>
