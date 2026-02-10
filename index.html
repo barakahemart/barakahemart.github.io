@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Barakah eMART – Smart Online Shopping</title>
+<title>Barakah eMart</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+*{
+  box-sizing:border-box;
+}
+
 body{
   margin:0;
-  font-family: Arial, sans-serif;
+  font-family:Arial, sans-serif;
   background:#f4f6f8;
-  color:#333;
 }
 
 /* HEADER */
@@ -21,44 +24,59 @@ header{
   padding:15px;
 }
 header img{
-  max-width:140px;
-  margin-bottom:10px;
+  height:50px;
 }
-header h1{ margin:5px 0; }
-header p{ margin:0; font-size:14px; }
+header h1{
+  margin:8px 0 4px;
+}
+header p{
+  margin:0;
+  font-size:14px;
+}
 
 /* PRODUCT CARD */
 .product{
   background:#fff;
   max-width:900px;
-  margin:30px auto;
+  margin:25px auto;
   padding:20px;
-  border-radius:10px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.12);
   display:flex;
-  gap:25px;
+  gap:30px;
+  position:relative;
+  z-index:1;
 }
 
 /* IMAGE SECTION */
 .images{
-  flex:1;
-  text-align:center;
+  width:320px;
 }
+
 .main-img{
   width:100%;
-  max-width:320px;
   border-radius:10px;
+  border:1px solid #ddd;
+  display:block;
 }
+
 .thumbs{
-  margin-top:10px;
+  display:flex;
+  gap:10px;
+  margin-top:12px;
 }
+
 .thumbs img{
-  width:60px;
-  margin:5px;
-  cursor:pointer;
+  width:65px;
+  height:65px;
+  object-fit:cover;
   border-radius:6px;
-  border:2px solid #ddd;
+  border:2px solid #ccc;
+  cursor:pointer;
+  pointer-events:auto;      /* 🔥 FIX */
+  z-index:5;                /* 🔥 FIX */
 }
+
 .thumbs img:hover{
   border-color:#0a5c36;
 }
@@ -72,17 +90,16 @@ header p{ margin:0; font-size:14px; }
   color:#0a5c36;
 }
 .price{
-  font-size:22px;
   margin:10px 0;
 }
-.price .offer{
+.offer{
+  font-size:24px;
   color:#e53935;
   font-weight:bold;
 }
-.price .mrp{
+.mrp{
   text-decoration:line-through;
-  color:#888;
-  font-size:14px;
+  color:#777;
   margin-left:8px;
 }
 .badge{
@@ -93,19 +110,18 @@ header p{ margin:0; font-size:14px; }
   font-size:12px;
   margin-left:10px;
 }
-.desc{
+.details p{
   font-size:14px;
   line-height:1.6;
 }
 .btn{
   display:inline-block;
   margin-top:15px;
-  padding:14px 25px;
+  padding:14px 28px;
   background:#25D366;
   color:#fff;
   text-decoration:none;
   border-radius:50px;
-  font-size:16px;
   font-weight:bold;
 }
 
@@ -113,16 +129,12 @@ header p{ margin:0; font-size:14px; }
 @media(max-width:768px){
   .product{
     flex-direction:column;
+    align-items:center;
     text-align:center;
   }
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  font-size:13px;
-  color:#777;
-  margin:30px 0;
+  .images{
+    width:240px;
+  }
 }
 </style>
 </head>
@@ -130,25 +142,26 @@ footer{
 <body>
 
 <header>
-  <img src="logo.png" alt="Barakah eMART Logo">
+  <img src="logo.png" alt="Barakah eMART">
   <h1>Barakah eMART</h1>
   <p>Smart & Affordable Online Shopping</p>
 </header>
 
 <div class="product">
 
-  <!-- LEFT IMAGES -->
+  <!-- IMAGE SECTION -->
   <div class="images">
     <img id="mainImage" src="sealer1.jpg" class="main-img">
+
     <div class="thumbs">
-      <img src="sealer2.jpg" onclick="changeImage('sealer1.jpg')">
-      <img src="sealer3.png" onclick="changeImage('sealer2.jpg')">
-      <img src="sealer4.jpg" onclick="changeImage('sealer3.jpg')">
-      <img src="sealer5.jpg" onclick="changeImage('sealer4.jpg')">
+      <img src="sealer1.jpg" onclick="changeImage(this)">
+      <img src="sealer2.jpg" onclick="changeImage(this)">
+      <img src="sealer3.png" onclick="changeImage(this)">
+      <img src="sealer4.jpg" onclick="changeImage(this)">
     </div>
   </div>
 
-  <!-- RIGHT DETAILS -->
+  <!-- DETAILS -->
   <div class="details">
     <h2>Portable Mini Sealing Machine</h2>
 
@@ -158,9 +171,9 @@ footer{
       <span class="badge">50% OFF</span>
     </div>
 
-    <p class="desc">
-      2-in-1 heat sealer with cutter. Rechargeable Type-C mini sealing
-      machine helps keep food fresh & airtight. Magnetic back for easy storage.
+    <p>
+      2-in-1 heat sealer with cutter. Rechargeable Type-C.
+      Keeps food fresh & airtight. Compact & portable design.
     </p>
 
     <a class="btn" href="https://wa.me/919124646598" target="_blank">
@@ -170,13 +183,9 @@ footer{
 
 </div>
 
-<footer>
-© 2026 Barakah eMART. All rights reserved.
-</footer>
-
 <script>
-function changeImage(img){
-  document.getElementById("mainImage").src = img;
+function changeImage(el){
+  document.getElementById("mainImage").src = el.src;
 }
 </script>
 
