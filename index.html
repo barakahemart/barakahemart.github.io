@@ -331,23 +331,46 @@ p.style.display=p.innerText.toLowerCase().includes(v)?"flex":"none";
 </div>
 
 <!-- PRODUCT 3 -->
+<!-- ================= PRODUCT 3 ================= -->
 <div id="p3" class="product">
+
 <div class="images">
-<img id="img3" src="LUNCH.jpeg" class="main-img" onclick="zoom(this.src)">
+<img id="img3" src="LUNCH1.jpeg" class="main-img" onclick="zoom(this.src)">
+
 <div class="thumbs">
-<img src="LUNCH.jpeg" onclick="changeImage('img3','LUNCH.jpeg')">
+<img src="LUNCH1.jpeg" onclick="changeImage('img3','LUNCH1.jpeg')">
+<img src="LUNCH2.jpeg" onclick="changeImage('img3','LUNCH2.jpeg')">
+<img src="LUNCH3.jpeg" onclick="changeImage('img3','LUNCH3.jpeg')">
+<img src="LUNCH4.jpeg" onclick="changeImage('img3','LUNCH4.jpeg')">
+<img src="LUNCH5.jpeg" onclick="changeImage('img3','LUNCH5.jpeg')">
 </div>
 </div>
+
 <div class="details">
 <h2>Premium Leakproof Lunch Box</h2>
-<div><span class="price">₹389</span><span class="mrp">₹699</span><span class="offer">45% OFF</span></div>
+
+<div>
+<span class="price">₹389</span>
+<span class="mrp">₹699</span>
+<span class="offer">45% OFF</span>
+</div>
+
 <div class="qty">
 <button onclick="qty('q3',-1)">-</button>
 <span id="q3">1</span>
 <button onclick="qty('q3',1)">+</button>
 </div>
-<a class="btn cartBtn" onclick="addCart('Premium Lunch Box',389,'q3')">Add to Cart</a>
-<a class="btn shareBtn" onclick="shareProduct('p3')">Share</a>
+
+<a class="btn cartBtn"
+onclick="addCart('Premium Lunch Box',389,'q3')">
+Add to Cart
+</a>
+
+<a class="btn shareBtn"
+onclick="shareProduct('p3')">
+Share
+</a>
+
 </div>
 </div>
 
