@@ -7,12 +7,10 @@
 
 <style>
 body{margin:0;font-family:Arial;background:#f3f5f7}
-
-/* ===== HEADER ===== */
 header{
 display:flex;
-justify-content:space-between;
 align-items:center;
+justify-content:space-between;
 background:#0a5c36;
 color:#fff;
 padding:10px 15px;
@@ -21,35 +19,15 @@ position:sticky;top:0;z-index:999;
 .logoBox{display:flex;align-items:center;gap:10px}
 header img{height:45px;border-radius:6px}
 header h1{margin:0;font-size:20px}
+.search{background:#fff;border-radius:20px;padding:6px 15px;border:none}
 .cartIcon{cursor:pointer;font-weight:bold}
 
-/* ===== AUTO SLIDER ===== */
-.slider{
-width:100%;
-overflow:hidden;
-}
-.slider img{
-width:100%;
-height:180px;
-object-fit:cover;
-animation:slide 12s infinite;
-}
-@keyframes slide{
-0%{content:url('sealer1.jpg')}
-33%{content:url('lunchcamera1.jpg')}
-66%{content:url('ICE1.jpeg')}
-100%{content:url('sealer1.jpg')}
-}
-
-/* ===== PRODUCT ===== */
 .container{max-width:1100px;margin:auto;padding:15px}
 .product{
 display:flex;gap:20px;background:#fff;margin-bottom:20px;
 padding:15px;border-radius:12px;
-box-shadow:0 3px 12px rgba(0,0,0,.1);
-transition:.3s;
+box-shadow:0 3px 12px rgba(0,0,0,.1)
 }
-.product:hover{transform:translateY(-3px)}
 .images{width:45%}
 .main-img{width:100%;border-radius:10px;cursor:pointer}
 .thumbs{display:flex;gap:6px;margin-top:8px}
@@ -58,69 +36,30 @@ transition:.3s;
 .price{color:#d32f2f;font-size:22px;font-weight:bold}
 .mrp{text-decoration:line-through;color:#888;margin-left:10px}
 .offer{background:red;color:#fff;padding:3px 8px;border-radius:5px;margin-left:8px;font-size:12px}
-
 .qty button{width:30px;height:30px}
-
 .btn{padding:10px 18px;border-radius:25px;text-decoration:none;color:#fff;margin-top:10px;display:inline-block}
 .cartBtn{background:#ff9800}
 .buyBtn{background:#25D366}
 .shareBtn{background:#3b5998}
 
-/* ===== CART ===== */
 #cartPanel{
 position:fixed;right:0;top:0;width:300px;height:100%;
 background:#fff;box-shadow:-3px 0 10px rgba(0,0,0,.2);
-transform:translateX(100%);
-transition:.3s;padding:15px;overflow:auto;
+transform:translateX(100%);transition:.3s;padding:15px;overflow:auto;
 z-index:9999
 }
 #cartPanel.open{transform:translateX(0)}
 
-/* ===== FLOAT WHATSAPP ===== */
-.floatWA{
-position:fixed;
-bottom:80px;
-right:15px;
-background:#25D366;
-color:#fff;
-padding:14px;
-border-radius:50%;
-font-size:22px;
-z-index:9999;
-cursor:pointer;
-}
-
-/* ===== MOBILE BUY BAR ===== */
-.buyBar{
-display:none;
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:#0a5c36;
-color:#fff;
-padding:12px;
-text-align:center;
-font-weight:bold;
-z-index:999;
-}
-
-/* ===== ZOOM ===== */
 .zoomBox{
-display:none;
-position:fixed;
-top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,.8);
-justify-content:center;
-align-items:center;
-z-index:99999
+display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,.8);justify-content:center;align-items:center;z-index:99999
 }
 .zoomBox img{max-width:90%;max-height:90%}
 
 @media(max-width:768px){
 .product{flex-direction:column}
 .images,.details{width:100%}
-.buyBar{display:block}
+header h1{font-size:16px}
 }
 </style>
 
@@ -193,16 +132,80 @@ window.open("https://wa.me/?text="+link);
 <img src="logos.jpeg">
 <h1>Barakah eMart</h1>
 </div>
+<input class="search" placeholder="Search product...">
 <div class="cartIcon" onclick="openCart()">🛒(<span id="cartCount">0</span>)</div>
 </header>
 
-<div class="slider">
-<img>
-</div>
-
 <div class="container">
 
-<!-- PRODUCT 4 NEW ICE TRAY -->
+<!-- PRODUCT 1 -->
+<div id="p1" class="product">
+<div class="images">
+<img id="img1" src="sealer1.jpg" class="main-img" onclick="zoom(this.src)">
+<div class="thumbs">
+<img src="sealer1.jpg" onclick="changeImage('img1','sealer1.jpg')">
+<img src="sealer2.jpg" onclick="changeImage('img1','sealer2.jpg')">
+<img src="sealer3.png" onclick="changeImage('img1','sealer3.png')">
+<img src="sealer4.jpg" onclick="changeImage('img1','sealer4.jpg')">
+</div>
+</div>
+
+<div class="details">
+<h2>Portable Mini Sealing Machine</h2>
+<div><span class="price">₹149</span><span class="mrp">₹299</span><span class="offer">50% OFF</span></div>
+<div class="qty"><button onclick="qty('q1',-1)">-</button><span id="q1">1</span><button onclick="qty('q1',1)">+</button></div>
+<a class="btn cartBtn" onclick="addCart('Sealer',149,'q1')">Add to Cart</a>
+<a class="btn buyBtn" onclick="buyNow('Sealer',149,'q1')">Buy Now</a>
+<a class="btn shareBtn" onclick="shareProduct('p1')">Share</a>
+</div>
+</div>
+
+<!-- PRODUCT 2 -->
+<div id="p2" class="product">
+<div class="images">
+<img id="img2" src="lunchcamera1.jpg" class="main-img" onclick="zoom(this.src)">
+<div class="thumbs">
+<img src="lunchcamera1.jpg" onclick="changeImage('img2','lunchcamera1.jpg')">
+<img src="lunchcamera2.jpeg" onclick="changeImage('img2','lunchcamera2.jpeg')">
+<img src="lunchcamera3.jpeg" onclick="changeImage('img2','lunchcamera3.jpeg')">
+<img src="lunchcamera4.jpeg" onclick="changeImage('img2','lunchcamera4.jpeg')">
+</div>
+</div>
+
+<div class="details">
+<h2>Insta Look Lunch Box Camera</h2>
+<div><span class="price">₹349</span><span class="mrp">₹699</span><span class="offer">50% OFF</span></div>
+<div class="qty"><button onclick="qty('q2',-1)">-</button><span id="q2">1</span><button onclick="qty('q2',1)">+</button></div>
+<a class="btn cartBtn" onclick="addCart('Camera LunchBox',349,'q2')">Add to Cart</a>
+<a class="btn buyBtn" onclick="buyNow('Camera LunchBox',349,'q2')">Buy Now</a>
+<a class="btn shareBtn" onclick="shareProduct('p2')">Share</a>
+</div>
+</div>
+
+<!-- PRODUCT 3 -->
+<div id="p3" class="product">
+<div class="images">
+<img id="img3" src="LUNCH1.jpeg" class="main-img" onclick="zoom(this.src)">
+<div class="thumbs">
+<img src="LUNCH1.jpeg" onclick="changeImage('img3','LUNCH1.jpeg')">
+<img src="LUNCH2.jpeg" onclick="changeImage('img3','LUNCH2.jpeg')">
+<img src="LUNCH3.jpeg" onclick="changeImage('img3','LUNCH3.jpeg')">
+<img src="LUNCH4.jpeg" onclick="changeImage('img3','LUNCH4.jpeg')">
+<img src="LUNCH5.jpeg" onclick="changeImage('img3','LUNCH5.jpeg')">
+</div>
+</div>
+
+<div class="details">
+<h2>Premium Leakproof Lunch Box</h2>
+<div><span class="price">₹389</span><span class="mrp">₹699</span><span class="offer">45% OFF</span></div>
+<div class="qty"><button onclick="qty('q3',-1)">-</button><span id="q3">1</span><button onclick="qty('q3',1)">+</button></div>
+<a class="btn cartBtn" onclick="addCart('Premium LunchBox',389,'q3')">Add to Cart</a>
+<a class="btn buyBtn" onclick="buyNow('Premium LunchBox',389,'q3')">Buy Now</a>
+<a class="btn shareBtn" onclick="shareProduct('p3')">Share</a>
+</div>
+</div>
+
+<!-- PRODUCT 4 -->
 <div id="p4" class="product">
 <div class="images">
 <img id="img4" src="ICE1.jpeg" class="main-img" onclick="zoom(this.src)">
@@ -216,24 +219,12 @@ window.open("https://wa.me/?text="+link);
 </div>
 
 <div class="details">
-<h2>Ice Cube Tray Silicone for Freezer Honeycomb 37 Cavity Ice Cube Mould Flexible Tray for Freezer, Chocolate Cake Maker, Ice Trays for Chilled Drinks, Reusable</h2>
-
-<div>
-<span class="price">₹199</span>
-<span class="mrp">₹399</span>
-<span class="offer">50% OFF</span>
-</div>
-
-<div class="qty">
-<button onclick="qty('q4',-1)">-</button>
-<span id="q4">1</span>
-<button onclick="qty('q4',1)">+</button>
-</div>
-
+<h2>Ice Cube Tray Silicone Honeycomb 37 Cavity</h2>
+<div><span class="price">₹199</span><span class="mrp">₹399</span><span class="offer">50% OFF</span></div>
+<div class="qty"><button onclick="qty('q4',-1)">-</button><span id="q4">1</span><button onclick="qty('q4',1)">+</button></div>
 <a class="btn cartBtn" onclick="addCart('Ice Cube Tray',199,'q4')">Add to Cart</a>
 <a class="btn buyBtn" onclick="buyNow('Ice Cube Tray',199,'q4')">Buy Now</a>
 <a class="btn shareBtn" onclick="shareProduct('p4')">Share</a>
-
 </div>
 </div>
 
@@ -245,10 +236,6 @@ window.open("https://wa.me/?text="+link);
 <button onclick="orderWhatsApp()">Order on WhatsApp</button>
 <button onclick="closeCart()">Close</button>
 </div>
-
-<div class="floatWA" onclick="window.open('https://wa.me/919124646598')">💬</div>
-
-<div class="buyBar">🔥 Best Deals Available – Scroll Products</div>
 
 <div id="zoomBox" class="zoomBox" onclick="closeZoom()">
 <img id="zoomImg">
