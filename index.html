@@ -2,296 +2,277 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>BARAKAH eMART – YOUR DAILY SOURCE OF BLESSING </title>
+<title>Barakah eMart – Smart Shopping</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{
-  margin:0;
-  font-family: Arial, sans-serif;
-  background:#f5f6f8;
-}
+body{margin:0;font-family:Arial;background:#f5f6f8;}
 
-/* ===== HEADER ===== */
 header{
-  background:#0a5c36;
-  padding:15px 25px;
-}
-.header-inner{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  gap:15px;
-}
-.header-inner img{
-  height:50px;
-  background:#fff;
-  padding:6px;
-  border-radius:8px;
-}
-.header-text h1{
-  margin:0;
-  font-size:30px;
-  font-weight:700;
-  color:#fff;
-}
-.header-text span{
-  color:#b7f7cf;
-}
-.header-text p{
-  margin:4px 0 0;
-  font-size:14px;
-  color:#e0f2e9;
+background:#0a5c36;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:12px 20px;
 }
 
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:20px;
+.logoBox{display:flex;align-items:center;gap:10px;}
+.logoBox img{height:45px;border-radius:6px;}
+.logoBox h1{margin:0;font-size:22px;}
+
+.searchBox input{
+padding:8px 12px;
+border-radius:20px;
+border:none;
+width:220px;
 }
 
-/* ===== PRODUCT CARD ===== */
+.container{max-width:1100px;margin:auto;padding:20px;}
+
 .product{
-  display:flex;
-  gap:25px;
-  background:#fff;
-  padding:20px;
-  border-radius:12px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
-  margin-bottom:30px;
+display:flex;
+gap:25px;
+background:#fff;
+padding:20px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+margin-bottom:30px;
 }
+
 .images{width:45%;}
-.main-img{
-  width:100%;
-  border-radius:10px;
-  cursor:zoom-in;
-}
-.thumbs{
-  display:flex;
-  gap:10px;
-  margin-top:10px;
-}
-.thumbs img{
-  width:70px;
-  height:70px;
-  object-fit:cover;
-  border-radius:6px;
-  cursor:pointer;
-  border:2px solid #ddd;
-}
-.thumbs img:hover{
-  border-color:#0a5c36;
-}
+.main-img{width:100%;border-radius:10px;cursor:pointer;}
+.thumbs{display:flex;gap:10px;margin-top:10px;}
+.thumbs img{width:70px;height:70px;object-fit:cover;border-radius:6px;cursor:pointer;border:2px solid #ddd;}
 
 .details{width:55%;}
-.details h2{
-  margin:0 0 10px;
+.price{font-size:22px;color:#d32f2f;font-weight:bold;}
+.mrp{text-decoration:line-through;color:#777;margin-left:10px;}
+.offer{background:red;color:#fff;padding:4px 8px;border-radius:5px;font-size:13px;margin-left:10px;}
+
+.qtyBox{
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:10px;
 }
-.price{
-  font-size:22px;
-  color:#d32f2f;
-  font-weight:bold;
+
+.qtyBox button{
+padding:6px 12px;
+font-size:18px;
+cursor:pointer;
 }
-.mrp{
-  text-decoration:line-through;
-  color:#777;
-  margin-left:10px;
-  font-size:16px;
-}
-.offer{
-  background:red;
-  color:#fff;
-  padding:4px 8px;
-  border-radius:5px;
-  font-size:13px;
-  margin-left:10px;
-}
+
 .btn{
-  display:inline-block;
-  margin-top:15px;
-  background:#25D366;
-  color:#fff;
-  padding:14px 30px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:bold;
+display:inline-block;
+margin-top:12px;
+background:#25D366;
+color:#fff;
+padding:12px 22px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+margin-right:10px;
 }
 
-/* ===== IMAGE ZOOM ===== */
+.cartBtn{background:#ff9800;}
+
 .zoom-overlay{
-  display:none;
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.85);
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+z-index:9999;
 }
-.zoom-overlay img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:10px;
-  cursor:zoom-out;
-}
+.zoom-overlay img{max-width:90%;max-height:90%;border-radius:10px;}
 
-/* ===== MOBILE ===== */
+footer{text-align:center;padding:15px;color:#777;}
+
 @media(max-width:768px){
-  .header-inner{
-    flex-direction:column;
-    text-align:center;
-  }
-  .product{
-    flex-direction:column;
-  }
-  .images,.details{
-    width:100%;
-  }
+.product{flex-direction:column;}
+.images,.details{width:100%;}
+.searchBox input{width:120px;}
 }
 </style>
 
 <script>
+
+let cartCount=0;
+
 function changeImage(id,src){
-  document.getElementById(id).src = src;
+document.getElementById(id).src=src;
 }
+
 function zoomImage(src){
-  document.getElementById("zoomImg").src = src;
-  document.getElementById("zoomBox").style.display = "flex";
+document.getElementById("zoomImg").src=src;
+document.getElementById("zoomBox").style.display="flex";
 }
 function closeZoom(){
-  document.getElementById("zoomBox").style.display = "none";
+document.getElementById("zoomBox").style.display="none";
+}
+
+function qtyChange(id,val){
+let el=document.getElementById(id);
+let num=parseInt(el.innerText);
+num+=val;
+if(num<1)num=1;
+el.innerText=num;
+}
+
+function addCart(){
+cartCount++;
+document.getElementById("cartCount").innerText=cartCount;
+alert("Added to Cart");
+}
+
+function searchProduct(){
+let input=document.getElementById("search").value.toLowerCase();
+let products=document.getElementsByClassName("product");
+
+for(let i=0;i<products.length;i++){
+let txt=products[i].innerText.toLowerCase();
+products[i].style.display=txt.includes(input)?"flex":"none";
+}
+}
+
+function shareProduct(){
+navigator.clipboard.writeText(window.location.href);
+alert("Product link copied!");
 }
 </script>
 </head>
 
 <body>
 
-<!-- ===== HEADER ===== -->
 <header>
-  <div class="header-inner">
-    <img src="logos.jpeg" alt="BARAKAH eMART">
-    <div class="header-text">
-      <h1>BARAKAH <span>eMART</span></h1>
-      <p>YOUR DAILY SOURCE OF BLESSING</p>
-    </div>
-  </div>
+<div class="logoBox">
+<img src="logos.jpeg">
+<h1>Barakah eMart</h1>
+</div>
+
+<div class="searchBox">
+<input id="search" onkeyup="searchProduct()" placeholder="Search product...">
+</div>
+
+<div>
+🛒 <span id="cartCount">0</span>
+</div>
 </header>
 
 <div class="container">
 
-<!-- ===== PRODUCT 1 ===== -->
+<!-- PRODUCT 1 -->
 <div class="product">
-  <div class="images">
-    <img id="p1" src="sealer1.jpg" class="main-img" onclick="zoomImage(this.src)">
-    <div class="thumbs">
-      <img src="sealer1.jpg" onclick="changeImage('p1','sealer1.jpg')">
-      <img src="sealer2.jpg" onclick="changeImage('p1','sealer2.jpg')">
-      <img src="sealer3.png" onclick="changeImage('p1','sealer3.png')">
-      <img src="sealer5.jpg" onclick="changeImage('p1','sealer5.jpg')">
-    </div>
-  </div>
-
-  <div class="details">
-    <h2>Portable Mini Sealing Machine</h2>
-    <div>
-      <span class="price">₹149</span>
-      <span class="mrp">₹299</span>
-      <span class="offer">50% OFF</span>
-    </div>
-    <p>
-      2-in-1 heat sealer with cutter. Rechargeable Type-C.
-      Keeps food fresh & airtight. Portable & easy to use.
-    </p>
-    <a class="btn" href="https://wa.me/919124646598" target="_blank">
-      Buy on WhatsApp
-    </a>
-  </div>
+<div class="images">
+<img id="p1" src="sealer1.jpg" class="main-img" onclick="zoomImage(this.src)">
+<div class="thumbs">
+<img src="sealer1.jpg" onclick="changeImage('p1','sealer1.jpg')">
+<img src="sealer2.jpg" onclick="changeImage('p1','sealer2.jpg')">
+<img src="sealer3.png" onclick="changeImage('p1','sealer3.png')">
+<img src="sealer5.jpg" onclick="changeImage('p1','sealer5.jpg')">
+</div>
 </div>
 
-<!-- ===== PRODUCT 2 ===== -->
+<div class="details">
+<h2>Portable Mini Sealing Machine</h2>
+<div>
+<span class="price">₹149</span>
+<span class="mrp">₹299</span>
+<span class="offer">50% OFF</span>
+</div>
+
+<div class="qtyBox">
+<button onclick="qtyChange('q1',-1)">-</button>
+<span id="q1">1</span>
+<button onclick="qtyChange('q1',1)">+</button>
+</div>
+
+<a class="btn cartBtn" onclick="addCart()">Add to Cart</a>
+<a class="btn" href="https://wa.me/919124646598">Order</a>
+<a class="btn" style="background:#3b5998" onclick="shareProduct()">Share</a>
+</div>
+</div>
+
+
+<!-- PRODUCT 2 -->
 <div class="product">
-  <div class="images">
-    <img id="p2" src="lunchcamera1.jpg" class="main-img" onclick="zoomImage(this.src)">
-    <div class="thumbs">
-      <img src="lunchcamera1.jpg" onclick="changeImage('p2','lunchcamera1.jpg')">
-      <img src="lunchcamera2.jpeg" onclick="changeImage('p2','lunchcamera2.jpeg')">
-      <img src="lunchcamera3.jpeg" onclick="changeImage('p2','lunchcamera3.jpeg')">
-      <img src="lunchcamera4.jpeg" onclick="changeImage('p2','lunchcamera4.jpeg')">
-    </div>
-  </div>
-
-  <div class="details">
-    <h2>Insta-Look Lunch Box Camera Style</h2>
-    <div>
-      <span class="price">₹349</span>
-      <span class="mrp">₹699</span>
-      <span class="offer">50% OFF</span>
-    </div>
-    <p>
-      Stylish camera-look lunch box. 1000ml capacity.
-      Leak-proof, durable & perfect for kids and office use.
-    </p>
-    <a class="btn" href="https://wa.me/919124646598" target="_blank">
-      Buy on WhatsApp
-    </a>
-  </div>
+<div class="images">
+<img id="p2" src="lunchcamera1.jpg" class="main-img" onclick="zoomImage(this.src)">
+<div class="thumbs">
+<img src="lunchcamera1.jpg" onclick="changeImage('p2','lunchcamera1.jpg')">
+<img src="lunchcamera2.jpeg" onclick="changeImage('p2','lunchcamera2.jpeg')">
+<img src="lunchcamera3.jpeg" onclick="changeImage('p2','lunchcamera3.jpeg')">
+<img src="lunchcamera4.jpeg" onclick="changeImage('p2','lunchcamera4.jpeg')">
 </div>
-  <!-- ===== PRODUCT 3 ===== -->
+</div>
+
+<div class="details">
+<h2>Insta-Look Lunch Box Camera Style</h2>
+<div>
+<span class="price">₹349</span>
+<span class="mrp">₹699</span>
+<span class="offer">50% OFF</span>
+</div>
+
+<div class="qtyBox">
+<button onclick="qtyChange('q2',-1)">-</button>
+<span id="q2">1</span>
+<button onclick="qtyChange('q2',1)">+</button>
+</div>
+
+<a class="btn cartBtn" onclick="addCart()">Add to Cart</a>
+<a class="btn" href="https://wa.me/919124646598">Order</a>
+<a class="btn" style="background:#3b5998" onclick="shareProduct()">Share</a>
+</div>
+</div>
+
+
+<!-- PRODUCT 3 -->
 <div class="product">
-  <div class="images">
-
-    <!-- Main Image -->
-    <img id="p3"
-         src="LUNCH1.jpeg"
-         class="main-img"
-         onclick="zoomImage(this.src)"
-         alt="Premium Lunch Box">
-
-    <!-- Thumbnails -->
-    <div class="thumbs">
-      <img src="LUNCH1.jpeg" onclick="changeImage('p3','LUNCH1.jpeg')">
-      <img src="LUNCH2.jpeg" onclick="changeImage('p3','LUNCH2.jpeg')">
-      <img src="LUNCH3.jpeg" onclick="changeImage('p3','LUNCH3.jpeg')">
-      <img src="LUNCH4.jpeg" onclick="changeImage('p3','LUNCH4.jpeg')">
-      <img src="LUNCH5.jpeg" onclick="changeImage('p3','LUNCH5.jpeg')">
-    </div>
-
-  </div>
-
-  <div class="details">
-    <h2>Premium Leakproof Lunch Box – 1000ml</h2>
-
-    <div>
-      <span class="price">₹389</span>
-      <span class="mrp">₹699</span>
-      <span class="offer">44% OFF</span>
-    </div>
-
-    <p>
-      BPA-free premium lunch box with airtight & leakproof design.
-      Ideal for office, school & travel. Stylish & durable.
-    </p>
-
-    <a class="btn" href="https://wa.me/919124646598" target="_blank">
-      Buy on WhatsApp
-    </a>
-  </div>
+<div class="images">
+<img id="p3" src="LUNCH1.jpeg" class="main-img" onclick="zoomImage(this.src)">
+<div class="thumbs">
+<img src="LUNCH1.jpeg" onclick="changeImage('p3','LUNCH1.jpeg')">
+<img src="LUNCH2.jpeg" onclick="changeImage('p3','LUNCH2.jpeg')">
+<img src="LUNCH3.jpeg" onclick="changeImage('p3','LUNCH3.jpeg')">
+<img src="LUNCH4.jpeg" onclick="changeImage('p3','LUNCH4.jpeg')">
+<img src="LUNCH5.jpeg" onclick="changeImage('p3','LUNCH5.jpeg')">
+</div>
 </div>
 
+<div class="details">
+<h2>Premium Leakproof Lunch Box – 1000ml</h2>
+<div>
+<span class="price">₹389</span>
+<span class="mrp">₹699</span>
+<span class="offer">44% OFF</span>
+</div>
+
+<div class="qtyBox">
+<button onclick="qtyChange('q3',-1)">-</button>
+<span id="q3">1</span>
+<button onclick="qtyChange('q3',1)">+</button>
+</div>
+
+<a class="btn cartBtn" onclick="addCart()">Add to Cart</a>
+<a class="btn" href="https://wa.me/919124646598">Order</a>
+<a class="btn" style="background:#3b5998" onclick="shareProduct()">Share</a>
+</div>
+</div>
 
 </div>
 
-<footer style="text-align:center;padding:15px;color:#777;">
+<div class="zoom-overlay" id="zoomBox" onclick="closeZoom()">
+<img id="zoomImg">
+</div>
+
+<footer>
 © 2026 Barakah eMART. All rights reserved.
 </footer>
-
-<!-- ZOOM BOX -->
-<div class="zoom-overlay" id="zoomBox" onclick="closeZoom()">
-  <img id="zoomImg">
-</div>
 
 </body>
 </html>
