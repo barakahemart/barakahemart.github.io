@@ -8,7 +8,11 @@
 <style>
 body{margin:0;font-family:Arial;background:#f5f6f8;}
 
+/* ===== STICKY HEADER ===== */
 header{
+position:sticky;
+top:0;
+z-index:999;
 background:#0a5c36;
 color:#fff;
 display:flex;
@@ -29,11 +33,7 @@ border:none;
 width:200px;
 }
 
-.cartIcon{
-cursor:pointer;
-font-weight:bold;
-margin-top:5px;
-}
+.cartIcon{cursor:pointer;font-weight:bold;}
 
 .container{max-width:1100px;margin:auto;padding:20px;}
 
@@ -78,24 +78,10 @@ text-decoration:none;
 font-weight:bold;
 margin-right:10px;
 }
-
 .cartBtn{background:#ff9800;}
 .shareBtn{background:#3b5998;}
 
-/* ZOOM */
-.zoom-overlay{
-display:none;
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.8);
-justify-content:center;
-align-items:center;
-z-index:9999;
-}
-.zoom-overlay img{max-width:90%;max-height:90%;border-radius:10px;}
-
-/* CART PANEL */
+/* ===== CART PANEL ===== */
 .cartBox{
 position:fixed;
 right:-350px;
@@ -114,6 +100,9 @@ overflow:auto;
 .cartItem{
 border-bottom:1px solid #eee;
 padding:10px 0;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
 .cartOrderBtn{
@@ -128,7 +117,35 @@ text-decoration:none;
 font-weight:bold;
 }
 
-/* SHARE POPUP */
+/* ===== MOBILE FLOAT CART BAR ===== */
+.floatCart{
+display:none;
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#0a5c36;
+color:#fff;
+padding:10px;
+text-align:center;
+font-weight:bold;
+z-index:999;
+}
+
+/* ZOOM */
+.zoom-overlay{
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+.zoom-overlay img{max-width:90%;max-height:90%;border-radius:10px;}
+
+/* SHARE */
 .shareOverlay{
 display:none;
 position:fixed;
@@ -164,19 +181,24 @@ footer{text-align:center;padding:15px;color:#777;}
 .product{flex-direction:column;}
 .images,.details{width:100%;}
 .searchBox input{width:120px;}
+.floatCart{display:block;}
+.cartBox{width:100%;right:-100%;}
+.cartBox.active{right:0;}
 }
 </style>
 
 <script>
 let cart=[];
-function changeImage(id,src){document.getElementById(id).src=src;}
 
+/* IMAGE */
+function changeImage(id,src){document.getElementById(id).src=src;}
 function zoomImage(src){
 document.getElementById("zoomImg").src=src;
 document.getElementById("zoomBox").style.display="flex";
 }
 function closeZoom(){document.getElementById("zoomBox").style.display="none";}
 
+/* QTY */
 function qtyChange(id,val){
 let el=document.getElementById(id);
 let num=parseInt(el.innerText);
@@ -184,8 +206,14 @@ num+=val;if(num<1)num=1;
 el.innerText=num;
 }
 
-function addCart(name,price){
-cart.push({name,price});
+/* CART */
+function addCart(name,price,qtyId){
+let qty=parseInt(document.getElementById(qtyId).innerText);
+cart.push({name,price,qty});
+updateCart();
+}
+
+function updateCart(){
 document.getElementById("cartCount").innerText=cart.length;
 renderCart();
 }
@@ -194,19 +222,50 @@ function toggleCart(){
 document.getElementById("cartPanel").classList.toggle("active");
 }
 
+function removeItem(i){
+cart.splice(i,1);
+updateCart();
+}
+
+function changeCartQty(i,val){
+cart[i].qty+=val;
+if(cart[i].qty<1)cart[i].qty=1;
+updateCart();
+}
+
 function renderCart(){
-let html="";let total=0;
-cart.forEach(item=>{
-html+=`<div class="cartItem">${item.name} - ₹${item.price}</div>`;
-total+=item.price;
+let html="";let total=0;let message="Hello I want to order:%0A";
+
+cart.forEach((item,i)=>{
+total+=item.price*item.qty;
+message+=item.name+" x"+item.qty+"%0A";
+
+html+=`
+<div class="cartItem">
+<div>
+<b>${item.name}</b><br>
+₹${item.price} x ${item.qty}
+</div>
+
+<div>
+<button onclick="changeCartQty(${i},-1)">-</button>
+<button onclick="changeCartQty(${i},1)">+</button>
+<button onclick="removeItem(${i})" style="background:red;color:#fff;">X</button>
+</div>
+</div>`;
 });
+
+message+="Total ₹"+total;
+
 html+=`<h3>Total: ₹${total}</h3>
 <a class="cartOrderBtn" target="_blank"
-href="https://wa.me/919124646598?text=Hello%20I%20want%20to%20order%20items%20worth%20₹${total}">
+href="https://wa.me/919124646598?text=${message}">
 Order on WhatsApp</a>`;
+
 document.getElementById("cartItems").innerHTML=html;
 }
 
+/* SEARCH */
 function searchProduct(){
 let input=document.getElementById("search").value.toLowerCase();
 let products=document.getElementsByClassName("product");
@@ -216,14 +275,26 @@ products[i].style.display=txt.includes(input)?"flex":"none";
 }
 }
 
-function shareProduct(){
+/* SHARE */
+function shareProduct(id){
+const link=window.location.origin+window.location.pathname+"#"+id;
 if(navigator.share){
-navigator.share({title:"Barakah eMART",url:window.location.href});
+navigator.share({title:"Barakah eMART",url:link});
 }else{
 document.getElementById("shareBox").style.display="flex";
+document.querySelector(".whatsapp").href="https://wa.me/?text="+link;
+document.querySelector(".facebook").href="https://www.facebook.com/sharer/sharer.php?u="+link;
 }
 }
 function closeShare(){document.getElementById("shareBox").style.display="none";}
+
+/* AUTO SCROLL PRODUCT LINK */
+window.onload=function(){
+if(window.location.hash){
+const el=document.getElementById(window.location.hash.substring(1));
+if(el)el.scrollIntoView({behavior:"smooth"});
+}
+}
 </script>
 </head>
 
@@ -240,21 +311,21 @@ function closeShare(){document.getElementById("shareBox").style.display="none";}
 </div>
 
 <div class="cartIcon" onclick="toggleCart()">
-🛒 Cart (<span id="cartCount">0</span>)
+🛒 (<span id="cartCount">0</span>)
 </div>
 </header>
 
 <div class="container">
 
 <!-- PRODUCT 1 -->
-<div class="product">
+<div id="p1" class="product">
 <div class="images">
-<img id="p1" src="sealer1.jpg" class="main-img" onclick="zoomImage(this.src)">
+<img id="img1" src="sealer1.jpg" class="main-img" onclick="zoomImage(this.src)">
 <div class="thumbs">
-<img src="sealer1.jpg" onclick="changeImage('p1','sealer1.jpg')">
-<img src="sealer2.jpg" onclick="changeImage('p1','sealer2.jpg')">
-<img src="sealer3.png" onclick="changeImage('p1','sealer3.png')">
-<img src="sealer5.jpg" onclick="changeImage('p1','sealer5.jpg')">
+<img src="sealer1.jpg" onclick="changeImage('img1','sealer1.jpg')">
+<img src="sealer2.jpg" onclick="changeImage('img1','sealer2.jpg')">
+<img src="sealer3.png" onclick="changeImage('img1','sealer3.png')">
+<img src="sealer5.jpg" onclick="changeImage('img1','sealer5.jpg')">
 </div>
 </div>
 <div class="details">
@@ -269,21 +340,20 @@ function closeShare(){document.getElementById("shareBox").style.display="none";}
 <span id="q1">1</span>
 <button onclick="qtyChange('q1',1)">+</button>
 </div>
-<a class="btn cartBtn" onclick="addCart('Portable Mini Sealing Machine',149)">Add to Cart</a>
-<a class="btn" href="https://wa.me/919124646598">Order</a>
-<a class="btn shareBtn" onclick="shareProduct()">Share</a>
+<a class="btn cartBtn" onclick="addCart('Portable Mini Sealing Machine',149,'q1')">Add to Cart</a>
+<a class="btn shareBtn" onclick="shareProduct('p1')">Share</a>
 </div>
 </div>
 
 <!-- PRODUCT 2 -->
-<div class="product">
+<div id="p2" class="product">
 <div class="images">
-<img id="p2" src="lunchcamera1.jpg" class="main-img" onclick="zoomImage(this.src)">
+<img id="img2" src="lunchcamera1.jpg" class="main-img" onclick="zoomImage(this.src)">
 <div class="thumbs">
-<img src="lunchcamera1.jpg" onclick="changeImage('p2','lunchcamera1.jpg')">
-<img src="lunchcamera2.jpeg" onclick="changeImage('p2','lunchcamera2.jpeg')">
-<img src="lunchcamera3.jpeg" onclick="changeImage('p2','lunchcamera3.jpeg')">
-<img src="lunchcamera4.jpeg" onclick="changeImage('p2','lunchcamera4.jpeg')">
+<img src="lunchcamera1.jpg" onclick="changeImage('img2','lunchcamera1.jpg')">
+<img src="lunchcamera2.jpeg" onclick="changeImage('img2','lunchcamera2.jpeg')">
+<img src="lunchcamera3.jpeg" onclick="changeImage('img2','lunchcamera3.jpeg')">
+<img src="lunchcamera4.jpeg" onclick="changeImage('img2','lunchcamera4.jpeg')">
 </div>
 </div>
 <div class="details">
@@ -298,22 +368,21 @@ function closeShare(){document.getElementById("shareBox").style.display="none";}
 <span id="q2">1</span>
 <button onclick="qtyChange('q2',1)">+</button>
 </div>
-<a class="btn cartBtn" onclick="addCart('Insta-Look Lunch Box Camera Style',349)">Add to Cart</a>
-<a class="btn" href="https://wa.me/919124646598">Order</a>
-<a class="btn shareBtn" onclick="shareProduct()">Share</a>
+<a class="btn cartBtn" onclick="addCart('Insta-Look Lunch Box Camera Style',349,'q2')">Add to Cart</a>
+<a class="btn shareBtn" onclick="shareProduct('p2')">Share</a>
 </div>
 </div>
 
 <!-- PRODUCT 3 -->
-<div class="product">
+<div id="p3" class="product">
 <div class="images">
-<img id="p3" src="LUNCH1.jpeg" class="main-img" onclick="zoomImage(this.src)">
+<img id="img3" src="LUNCH1.jpeg" class="main-img" onclick="zoomImage(this.src)">
 <div class="thumbs">
-<img src="LUNCH1.jpeg" onclick="changeImage('p3','LUNCH1.jpeg')">
-<img src="LUNCH2.jpeg" onclick="changeImage('p3','LUNCH2.jpeg')">
-<img src="LUNCH3.jpeg" onclick="changeImage('p3','LUNCH3.jpeg')">
-<img src="LUNCH4.jpeg" onclick="changeImage('p3','LUNCH4.jpeg')">
-<img src="LUNCH5.jpeg" onclick="changeImage('p3','LUNCH5.jpeg')">
+<img src="LUNCH1.jpeg" onclick="changeImage('img3','LUNCH1.jpeg')">
+<img src="LUNCH2.jpeg" onclick="changeImage('img3','LUNCH2.jpeg')">
+<img src="LUNCH3.jpeg" onclick="changeImage('img3','LUNCH3.jpeg')">
+<img src="LUNCH4.jpeg" onclick="changeImage('img3','LUNCH4.jpeg')">
+<img src="LUNCH5.jpeg" onclick="changeImage('img3','LUNCH5.jpeg')">
 </div>
 </div>
 <div class="details">
@@ -328,18 +397,22 @@ function closeShare(){document.getElementById("shareBox").style.display="none";}
 <span id="q3">1</span>
 <button onclick="qtyChange('q3',1)">+</button>
 </div>
-<a class="btn cartBtn" onclick="addCart('Premium Leakproof Lunch Box',389)">Add to Cart</a>
-<a class="btn" href="https://wa.me/919124646598">Order</a>
-<a class="btn shareBtn" onclick="shareProduct()">Share</a>
+<a class="btn cartBtn" onclick="addCart('Premium Leakproof Lunch Box',389,'q3')">Add to Cart</a>
+<a class="btn shareBtn" onclick="shareProduct('p3')">Share</a>
 </div>
 </div>
 
 </div>
 
 <div id="cartPanel" class="cartBox">
+<div style="display:flex;justify-content:space-between;">
 <h2>Your Cart</h2>
+<button onclick="toggleCart()" style="background:red;color:#fff;border:none;">X</button>
+</div>
 <div id="cartItems">Cart Empty</div>
 </div>
+
+<div class="floatCart" onclick="toggleCart()">🛒 View Cart</div>
 
 <div class="zoom-overlay" id="zoomBox" onclick="closeZoom()">
 <img id="zoomImg">
@@ -348,15 +421,9 @@ function closeShare(){document.getElementById("shareBox").style.display="none";}
 <div id="shareBox" class="shareOverlay" onclick="closeShare()">
 <div class="shareBox" onclick="event.stopPropagation()">
 <h3>Share Product</h3>
-<a class="whatsapp" target="_blank"
-href="https://wa.me/?text=Check%20this%20product%20👉%20https://barakahemart.github.io">
-WhatsApp</a>
-<a class="facebook" target="_blank"
-href="https://www.facebook.com/sharer/sharer.php?u=https://barakahemart.github.io">
-Facebook</a>
-<a class="instagram" target="_blank"
-href="https://www.instagram.com/">
-Instagram</a>
+<a class="whatsapp" target="_blank">WhatsApp</a>
+<a class="facebook" target="_blank">Facebook</a>
+<a class="instagram" target="_blank" href="https://instagram.com">Instagram</a>
 </div>
 </div>
 
