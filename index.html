@@ -5,28 +5,26 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Barakah eMart</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-
 <style>
 
 body{
 margin:0;
-font-family:'Poppins',sans-serif;
-background:#f3f5f7;
+font-family:Arial;
+background:#f2f3f5;
 }
 
-/* ===== ULTRA HEADER ===== */
+/* ===== HEADER ===== */
+
 header{
 display:flex;
 align-items:center;
 justify-content:space-between;
 background:#0a5c36;
 color:#fff;
-padding:10px 15px;
+padding:12px 15px;
 position:sticky;
 top:0;
 z-index:999;
-box-shadow:0 4px 15px rgba(0,0,0,.2);
 }
 
 .logoBox{
@@ -36,42 +34,34 @@ gap:10px;
 }
 
 header img{
-height:42px;
+height:40px;
 border-radius:8px;
 }
 
 header h1{
 margin:0;
-font-size:22px;
-font-weight:600;
-letter-spacing:.5px;
-}
-
-.search{
-border:none;
-padding:8px 15px;
-border-radius:20px;
-width:220px;
+font-size:18px;
 }
 
 .cartIcon{
-cursor:pointer;
 position:relative;
+cursor:pointer;
 }
 
 .cartIcon img{
-width:32px;
+height:40px;
+width:40px;
 }
 
-#cartCount{
+.cartCount{
 position:absolute;
-top:-5px;
-right:-8px;
+top:-6px;
+right:-6px;
 background:red;
 color:#fff;
 font-size:12px;
-padding:2px 6px;
 border-radius:50%;
+padding:2px 6px;
 }
 
 /* ===== GRID ===== */
@@ -81,33 +71,64 @@ max-width:1200px;
 margin:auto;
 padding:15px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:18px;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
 }
 
-/* ===== PRODUCT CARD ===== */
+/* ===== AMAZON CARD ===== */
 
 .product{
 background:#fff;
-border-radius:14px;
+border-radius:16px;
 padding:12px;
-box-shadow:0 4px 14px rgba(0,0,0,.08);
+box-shadow:0 4px 18px rgba(0,0,0,.08);
 display:flex;
 flex-direction:column;
+min-height:440px;
+transition:.3s;
+position:relative;
 }
+
+.product:hover{
+transform:translateY(-5px);
+box-shadow:0 6px 24px rgba(0,0,0,.14);
+}
+
+/* DISCOUNT BADGE */
+
+.badge{
+position:absolute;
+top:12px;
+left:12px;
+background:red;
+color:#fff;
+font-size:12px;
+padding:4px 8px;
+border-radius:6px;
+font-weight:bold;
+}
+
+/* IMAGE FRAME */
 
 .main-img{
 width:100%;
-height:230px;
-object-fit:contain;
-border-radius:10px;
-cursor:pointer;
+height:270px;
+object-fit:cover;   /* 🔥 image full size fix */
 background:#fff;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
 }
+
+.main-img:hover{
+transform:scale(1.04);
+}
+
+/* THUMBS */
 
 .thumbs{
 display:flex;
-gap:5px;
+gap:6px;
 margin-top:8px;
 overflow-x:auto;
 }
@@ -121,60 +142,65 @@ cursor:pointer;
 border:2px solid #eee;
 }
 
-.product h3{
-font-size:16px;
-margin:10px 0 5px;
+/* DETAILS */
+
+.details h3{
+margin:8px 0;
+font-size:15px;
+min-height:40px;
 }
 
 .price{
-color:#d32f2f;
+color:#e53935;
 font-size:18px;
-font-weight:600;
+font-weight:bold;
 }
 
 .mrp{
 text-decoration:line-through;
 color:#888;
-margin-left:8px;
-font-size:14px;
-}
-
-.offer{
-background:red;
-color:#fff;
-padding:3px 6px;
-border-radius:6px;
-font-size:12px;
+font-size:13px;
 margin-left:6px;
-}
-
-.qty{
-margin:8px 0;
 }
 
 .qty button{
 width:28px;
 height:28px;
+border:none;
+background:#eee;
+border-radius:5px;
 }
 
-.btnRow{
-display:flex;
-gap:6px;
-flex-wrap:wrap;
-}
+/* BUTTONS */
 
 .btn{
-border:none;
-border-radius:20px;
-padding:7px 14px;
+padding:8px 12px;
+border-radius:22px;
 color:#fff;
-cursor:pointer;
+text-decoration:none;
 font-size:13px;
+margin-top:6px;
+display:inline-block;
 }
 
-.cartBtn{background:#ff9800}
-.buyBtn{background:#25D366}
-.shareBtn{background:#3b5998}
+.add{background:#ff9800}
+.buy{background:#25D366}
+.share{background:#3b5998}
+
+/* ===== MOBILE PRO MAX ===== */
+
+@media(max-width:600px){
+
+.container{
+grid-template-columns:1fr;
+gap:14px;
+}
+
+.main-img{
+height:320px;
+}
+
+}
 
 /* ===== ZOOM ===== */
 
@@ -185,7 +211,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,.8);
+background:rgba(0,0,0,.85);
 justify-content:center;
 align-items:center;
 z-index:99999;
@@ -194,24 +220,7 @@ z-index:99999;
 .zoomBox img{
 max-width:90%;
 max-height:90%;
-}
-
-/* ===== MOBILE ===== */
-
-@media(max-width:768px){
-
-.container{
-grid-template-columns:1fr;
-}
-
-.search{
-width:130px;
-}
-
-.main-img{
-height:260px;
-}
-
+border-radius:12px;
 }
 
 </style>
@@ -225,7 +234,7 @@ document.getElementById(id).src=src;
 }
 
 function zoom(src){
-document.getElementById("zoomImg").src=src;
+document.getElementById("zoomImg").src = src;
 document.getElementById("zoomBox").style.display="flex";
 }
 
@@ -242,23 +251,18 @@ el.innerText=n;
 
 function addCart(name,price,qtyId){
 let q=document.getElementById(qtyId).innerText;
-cart.push(name+" x"+q+" = ₹"+(price*q));
+cart.push(name+" x"+q);
 document.getElementById("cartCount").innerText=cart.length;
-alert("Added to Cart");
 }
 
 function buyNow(name,price,qtyId){
 let q=document.getElementById(qtyId).innerText;
-window.open("https://wa.me/919124646598?text=I want "+name+" Qty:"+q+" Price:"+price);
+window.open("https://wa.me/919124646598?text=I want "+name+" Qty:"+q);
 }
 
 function shareProduct(id){
 let link=window.location.href+"#"+id;
-if(navigator.share){
-navigator.share({title:"Barakah eMart",url:link});
-}else{
 window.open("https://wa.me/?text="+link);
-}
 }
 
 </script>
@@ -269,14 +273,12 @@ window.open("https://wa.me/?text="+link);
 <header>
 <div class="logoBox">
 <img src="logos.jpeg">
-<h1>Barakah <span style="font-weight:700;">eMart</span></h1>
+<h1>Barakah eMart</h1>
 </div>
-
-<input class="search" placeholder="Search product...">
 
 <div class="cartIcon">
 <img src="cart.png">
-<span id="cartCount">0</span>
+<span class="cartCount" id="cartCount">0</span>
 </div>
 </header>
 
@@ -284,6 +286,7 @@ window.open("https://wa.me/?text="+link);
 
 <!-- PRODUCT 1 -->
 <div id="p1" class="product">
+<div class="badge">50% OFF</div>
 <img id="img1" src="sealer1.jpg" class="main-img" onclick="zoom(this.src)">
 <div class="thumbs">
 <img src="sealer1.jpg" onclick="changeImage('img1','sealer1.jpg')">
@@ -291,18 +294,26 @@ window.open("https://wa.me/?text="+link);
 <img src="sealer3.png" onclick="changeImage('img1','sealer3.png')">
 <img src="sealer4.jpg" onclick="changeImage('img1','sealer4.jpg')">
 </div>
+
+<div class="details">
 <h3>Portable Mini Sealing Machine</h3>
-<div><span class="price">₹149</span><span class="mrp">₹299</span><span class="offer">50% OFF</span></div>
-<div class="qty"><button onclick="qty('q1',-1)">-</button><span id="q1">1</span><button onclick="qty('q1',1)">+</button></div>
-<div class="btnRow">
-<button class="btn cartBtn" onclick="addCart('Sealer',149,'q1')">Add</button>
-<button class="btn buyBtn" onclick="buyNow('Sealer',149,'q1')">Buy Now</button>
-<button class="btn shareBtn" onclick="shareProduct('p1')">Share</button>
+<span class="price">₹149</span><span class="mrp">₹299</span>
+
+<div class="qty">
+<button onclick="qty('q1',-1)">-</button>
+<span id="q1">1</span>
+<button onclick="qty('q1',1)">+</button>
+</div>
+
+<a class="btn add" onclick="addCart('Sealer',149,'q1')">Add</a>
+<a class="btn buy" onclick="buyNow('Sealer',149,'q1')">Buy Now</a>
+<a class="btn share" onclick="shareProduct('p1')">Share</a>
 </div>
 </div>
 
 <!-- PRODUCT 2 -->
 <div id="p2" class="product">
+<div class="badge">50% OFF</div>
 <img id="img2" src="lunchcamera1.jpg" class="main-img" onclick="zoom(this.src)">
 <div class="thumbs">
 <img src="lunchcamera1.jpg" onclick="changeImage('img2','lunchcamera1.jpg')">
@@ -310,18 +321,26 @@ window.open("https://wa.me/?text="+link);
 <img src="lunchcamera3.jpeg" onclick="changeImage('img2','lunchcamera3.jpeg')">
 <img src="lunchcamera4.jpeg" onclick="changeImage('img2','lunchcamera4.jpeg')">
 </div>
+
+<div class="details">
 <h3>Insta Look Lunch Box Camera</h3>
-<div><span class="price">₹349</span><span class="mrp">₹699</span><span class="offer">50% OFF</span></div>
-<div class="qty"><button onclick="qty('q2',-1)">-</button><span id="q2">1</span><button onclick="qty('q2',1)">+</button></div>
-<div class="btnRow">
-<button class="btn cartBtn" onclick="addCart('Camera LunchBox',349,'q2')">Add</button>
-<button class="btn buyBtn" onclick="buyNow('Camera LunchBox',349,'q2')">Buy Now</button>
-<button class="btn shareBtn" onclick="shareProduct('p2')">Share</button>
+<span class="price">₹349</span><span class="mrp">₹699</span>
+
+<div class="qty">
+<button onclick="qty('q2',-1)">-</button>
+<span id="q2">1</span>
+<button onclick="qty('q2',1)">+</button>
+</div>
+
+<a class="btn add" onclick="addCart('Camera LunchBox',349,'q2')">Add</a>
+<a class="btn buy" onclick="buyNow('Camera LunchBox',349,'q2')">Buy Now</a>
+<a class="btn share" onclick="shareProduct('p2')">Share</a>
 </div>
 </div>
 
 <!-- PRODUCT 3 -->
 <div id="p3" class="product">
+<div class="badge">45% OFF</div>
 <img id="img3" src="LUNCH1.jpeg" class="main-img" onclick="zoom(this.src)">
 <div class="thumbs">
 <img src="LUNCH1.jpeg" onclick="changeImage('img3','LUNCH1.jpeg')">
@@ -330,33 +349,48 @@ window.open("https://wa.me/?text="+link);
 <img src="LUNCH4.jpeg" onclick="changeImage('img3','LUNCH4.jpeg')">
 <img src="LUNCH5.jpeg" onclick="changeImage('img3','LUNCH5.jpeg')">
 </div>
+
+<div class="details">
 <h3>Premium Leakproof Lunch Box</h3>
-<div><span class="price">₹389</span><span class="mrp">₹699</span><span class="offer">45% OFF</span></div>
-<div class="qty"><button onclick="qty('q3',-1)">-</button><span id="q3">1</span><button onclick="qty('q3',1)">+</button></div>
-<div class="btnRow">
-<button class="btn cartBtn">Add</button>
-<button class="btn buyBtn">Buy Now</button>
-<button class="btn shareBtn">Share</button>
+<span class="price">₹389</span><span class="mrp">₹699</span>
+
+<div class="qty">
+<button onclick="qty('q3',-1)">-</button>
+<span id="q3">1</span>
+<button onclick="qty('q3',1)">+</button>
+</div>
+
+<a class="btn add" onclick="addCart('Premium LunchBox',389,'q3')">Add</a>
+<a class="btn buy" onclick="buyNow('Premium LunchBox',389,'q3')">Buy Now</a>
+<a class="btn share" onclick="shareProduct('p3')">Share</a>
 </div>
 </div>
 
 <!-- PRODUCT 4 -->
 <div id="p4" class="product">
-<img id="img4" src="ICE1.jpg" class="main-img" onclick="zoom(this.src)">
+<div class="badge">50% OFF</div>
+<img id="img4" src="ICE1.jpeg" class="main-img" onclick="zoom(this.src)">
 <div class="thumbs">
-<img src="ICE1.jpg" onclick="changeImage('img4','ICE1.jpg')">
-<img src="ICE2.jpg" onclick="changeImage('img4','ICE2.jpg')">
-<img src="ICE3.jpg" onclick="changeImage('img4','ICE3.jpg')">
-<img src="ICE4.jpg" onclick="changeImage('img4','ICE4.jpg')">
-<img src="ICE5.jpg" onclick="changeImage('img4','ICE5.jpg')">
+<img src="ICE1.jpeg" onclick="changeImage('img4','ICE1.jpeg')">
+<img src="ICE2.jpeg" onclick="changeImage('img4','ICE2.jpeg')">
+<img src="ICE3.jpeg" onclick="changeImage('img4','ICE3.jpeg')">
+<img src="ICE4.jpeg" onclick="changeImage('img4','ICE4.jpeg')">
+<img src="ICE5.jpeg" onclick="changeImage('img4','ICE5.jpeg')">
 </div>
-<h3>Ice Cube Tray Silicone Honeycomb</h3>
-<div><span class="price">₹199</span><span class="mrp">₹399</span><span class="offer">50% OFF</span></div>
-<div class="qty"><button onclick="qty('q4',-1)">-</button><span id="q4">1</span><button onclick="qty('q4',1)">+</button></div>
-<div class="btnRow">
-<button class="btn cartBtn">Add</button>
-<button class="btn buyBtn">Buy Now</button>
-<button class="btn shareBtn">Share</button>
+
+<div class="details">
+<h3>Ice Cube Tray Silicone Honeycomb 37 Cavity</h3>
+<span class="price">₹199</span><span class="mrp">₹399</span>
+
+<div class="qty">
+<button onclick="qty('q4',-1)">-</button>
+<span id="q4">1</span>
+<button onclick="qty('q4',1)">+</button>
+</div>
+
+<a class="btn add" onclick="addCart('Ice Tray',199,'q4')">Add</a>
+<a class="btn buy" onclick="buyNow('Ice Tray',199,'q4')">Buy Now</a>
+<a class="btn share" onclick="shareProduct('p4')">Share</a>
 </div>
 </div>
 
