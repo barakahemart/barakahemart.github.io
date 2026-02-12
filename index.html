@@ -23,11 +23,13 @@ header img{height:40px;border-radius:6px}
 header h1{margin:0;font-size:18px}
 
 .cartIcon img{
-height:28px;
+height:45px;
 cursor:pointer;
+transition:.2s;
 }
+.cartIcon img:hover{transform:scale(1.1)}
 
-/* ===== GRID LAYOUT ===== */
+/* ===== GRID ===== */
 .container{
 max-width:1100px;
 margin:auto;
@@ -41,7 +43,7 @@ gap:15px;
 .product{
 background:#fff;
 border-radius:12px;
-box-shadow:0 3px 10px rgba(0,0,0,.08);
+box-shadow:0 3px 12px rgba(0,0,0,.1);
 padding:10px;
 display:flex;
 flex-direction:column;
@@ -53,22 +55,27 @@ border-radius:10px;
 cursor:pointer;
 }
 
-.details h3{
-margin:8px 0;
-font-size:15px;
-min-height:40px;
+.thumbs{
+display:flex;
+gap:5px;
+margin-top:6px;
+overflow-x:auto;
 }
+.thumbs img{
+width:50px;height:50px;
+object-fit:cover;
+border-radius:6px;
+cursor:pointer;
+border:2px solid #eee;
+}
+
+.details h3{margin:8px 0;font-size:15px}
 
 .price{color:#d32f2f;font-size:18px;font-weight:bold}
 .mrp{text-decoration:line-through;color:#777;margin-left:6px;font-size:13px}
 .offer{background:red;color:#fff;padding:2px 6px;border-radius:4px;margin-left:6px;font-size:11px}
 
-.qty{
-display:flex;
-align-items:center;
-gap:6px;
-margin-top:6px;
-}
+.qty{display:flex;align-items:center;gap:6px;margin-top:6px}
 .qty button{width:28px;height:28px;border:none;background:#eee;border-radius:6px}
 
 .btn{
@@ -99,6 +106,20 @@ z-index:9999
 }
 #cartPanel.open{transform:translateX(0)}
 
+/* ===== FLOAT WHATSAPP ===== */
+.floatWA{
+position:fixed;
+bottom:20px;
+right:15px;
+background:#25D366;
+color:#fff;
+padding:14px;
+border-radius:50%;
+font-size:20px;
+cursor:pointer;
+z-index:9999;
+}
+
 /* ===== ZOOM ===== */
 .zoomBox{
 display:none;
@@ -116,11 +137,14 @@ z-index:99999
 <script>
 let cart=[];
 
+function changeImage(id,src){
+document.getElementById(id).src=src;
+}
+
 function zoom(src){
 document.getElementById("zoomImg").src=src;
 document.getElementById("zoomBox").style.display="flex";
 }
-
 function closeZoom(){
 document.getElementById("zoomBox").style.display="none";
 }
@@ -179,61 +203,86 @@ window.open("https://wa.me/?text="+link);
 </div>
 
 <div class="cartIcon" onclick="openCart()">
-<img src="cart.png">
-(<span id="cartCount">0</span>)
+<img src="cart.png"> (<span id="cartCount">0</span>)
 </div>
 </header>
 
 <div class="container">
 
 <!-- PRODUCT 1 -->
-<div class="product" id="p1">
-<img src="sealer1.jpg" class="main-img" onclick="zoom(this.src)">
+<div class="product">
+<img id="img1" src="sealer1.jpg" class="main-img" onclick="zoom(this.src)">
+<div class="thumbs">
+<img src="sealer1.jpg" onclick="changeImage('img1','sealer1.jpg')">
+<img src="sealer2.jpg" onclick="changeImage('img1','sealer2.jpg')">
+<img src="sealer3.png" onclick="changeImage('img1','sealer3.png')">
+<img src="sealer4.jpg" onclick="changeImage('img1','sealer4.jpg')">
+</div>
 <div class="details">
 <h3>Portable Mini Sealing Machine</h3>
 <div><span class="price">₹149</span><span class="mrp">₹299</span><span class="offer">50% OFF</span></div>
 <div class="qty"><button onclick="qty('q1',-1)">-</button><span id="q1">1</span><button onclick="qty('q1',1)">+</button></div>
 <a class="btn cartBtn" onclick="addCart('Sealer',149,'q1')">Add</a>
-<a class="btn buyBtn" onclick="buyNow('Sealer',149,'q1')">Buy</a>
+<a class="btn buyBtn" onclick="buyNow('Sealer',149,'q1')">Buy Now</a>
 <a class="btn shareBtn" onclick="shareProduct('p1')">Share</a>
 </div>
 </div>
 
 <!-- PRODUCT 2 -->
-<div class="product" id="p2">
-<img src="lunchcamera1.jpg" class="main-img" onclick="zoom(this.src)">
+<div class="product">
+<img id="img2" src="lunchcamera1.jpg" class="main-img" onclick="zoom(this.src)">
+<div class="thumbs">
+<img src="lunchcamera1.jpg" onclick="changeImage('img2','lunchcamera1.jpg')">
+<img src="lunchcamera2.jpeg" onclick="changeImage('img2','lunchcamera2.jpeg')">
+<img src="lunchcamera3.jpeg" onclick="changeImage('img2','lunchcamera3.jpeg')">
+<img src="lunchcamera4.jpeg" onclick="changeImage('img2','lunchcamera4.jpeg')">
+</div>
 <div class="details">
 <h3>Insta Look Lunch Box Camera</h3>
 <div><span class="price">₹349</span><span class="mrp">₹699</span><span class="offer">50% OFF</span></div>
 <div class="qty"><button onclick="qty('q2',-1)">-</button><span id="q2">1</span><button onclick="qty('q2',1)">+</button></div>
 <a class="btn cartBtn" onclick="addCart('Camera LunchBox',349,'q2')">Add</a>
-<a class="btn buyBtn" onclick="buyNow('Camera LunchBox',349,'q2')">Buy</a>
+<a class="btn buyBtn" onclick="buyNow('Camera LunchBox',349,'q2')">Buy Now</a>
 <a class="btn shareBtn" onclick="shareProduct('p2')">Share</a>
 </div>
 </div>
 
 <!-- PRODUCT 3 -->
-<div class="product" id="p3">
-<img src="LUNCH1.jpeg" class="main-img" onclick="zoom(this.src)">
+<div class="product">
+<img id="img3" src="LUNCH1.jpeg" class="main-img" onclick="zoom(this.src)">
+<div class="thumbs">
+<img src="LUNCH1.jpeg" onclick="changeImage('img3','LUNCH1.jpeg')">
+<img src="LUNCH2.jpeg" onclick="changeImage('img3','LUNCH2.jpeg')">
+<img src="LUNCH3.jpeg" onclick="changeImage('img3','LUNCH3.jpeg')">
+<img src="LUNCH4.jpeg" onclick="changeImage('img3','LUNCH4.jpeg')">
+<img src="LUNCH5.jpeg" onclick="changeImage('img3','LUNCH5.jpeg')">
+</div>
 <div class="details">
 <h3>Premium Leakproof Lunch Box</h3>
 <div><span class="price">₹389</span><span class="mrp">₹699</span><span class="offer">45% OFF</span></div>
 <div class="qty"><button onclick="qty('q3',-1)">-</button><span id="q3">1</span><button onclick="qty('q3',1)">+</button></div>
 <a class="btn cartBtn" onclick="addCart('Premium LunchBox',389,'q3')">Add</a>
-<a class="btn buyBtn" onclick="buyNow('Premium LunchBox',389,'q3')">Buy</a>
+<a class="btn buyBtn" onclick="buyNow('Premium LunchBox',389,'q3')">Buy Now</a>
 <a class="btn shareBtn" onclick="shareProduct('p3')">Share</a>
 </div>
 </div>
 
 <!-- PRODUCT 4 -->
-<div class="product" id="p4">
-<img src="ICE1.jpeg" class="main-img" onclick="zoom(this.src)">
+<div class="product">
+<img id="img4" src="ICE1.jpeg" class="main-img" onclick="zoom(this.src)">
+<div class="thumbs">
+<img src="ICE1.jpeg" onclick="changeImage('img4','ICE1.jpeg')">
+<img src="ICE2.jpeg" onclick="changeImage('img4','ICE2.jpeg')">
+<img src="ICE3.jpeg" onclick="changeImage('img4','ICE3.jpeg')">
+<img src="ICE4.jpeg" onclick="changeImage('img4','ICE4.jpeg')">
+<img src="ICE5.jpeg" onclick="changeImage('img4','ICE5.jpeg')">
+</div>
 <div class="details">
 <h3>Ice Cube Tray Silicone Honeycomb 37 Cavity</h3>
 <div><span class="price">₹199</span><span class="mrp">₹399</span><span class="offer">50% OFF</span></div>
 <div class="qty"><button onclick="qty('q4',-1)">-</button><span id="q4">1</span><button onclick="qty('q4',1)">+</button></div>
 <a class="btn cartBtn" onclick="addCart('Ice Cube Tray',199,'q4')">Add</a>
-<a class="btn buyBtn" onclick="buyNow('Ice Cube Tray',199,'q4')">Buy</a>
+<a class="btn buyBtn" onclick="buyNow('Ice Cube Tray',199,'q4')">Buy Now</a>
 <a class="btn shareBtn" onclick="shareProduct('p4')">Share</a>
 </div>
 </div>
@@ -246,6 +295,8 @@ window.open("https://wa.me/?text="+link);
 <button onclick="orderWhatsApp()">Order on WhatsApp</button>
 <button onclick="closeCart()">Close</button>
 </div>
+
+<div class="floatWA" onclick="window.open('https://wa.me/919124646598')">💬</div>
 
 <div id="zoomBox" class="zoomBox" onclick="closeZoom()">
 <img id="zoomImg">
