@@ -5,210 +5,86 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Barakah eMart</title>
 
-<!-- GOOGLE FONT (ULTRA PRO HEADER LOOK) -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
+body{margin:0;font-family:'Poppins',sans-serif;background:#f3f5f7}
 
-body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:#f3f5f7
-}
-
-/* ================= HEADER ================= */
+/* ===== HEADER ===== */
 header{
-display:flex;
-align-items:center;
-justify-content:space-between;
-background:#0a5c36;
-padding:12px 18px;
-position:sticky;
-top:0;
-z-index:999;
+display:flex;align-items:center;justify-content:space-between;
+background:#0a5c36;padding:12px 18px;color:#fff;
+position:sticky;top:0;z-index:999;
 }
+.logoBox{display:flex;align-items:center;gap:12px}
+header img{height:42px;border-radius:8px}
+header h1{margin:0;font-weight:700;font-size:22px}
 
-.logoBox{
-display:flex;
-align-items:center;
-gap:12px;
-}
+.cartIcon{cursor:pointer;display:flex;align-items:center;gap:5px}
+.cartIcon img{height:30px}
 
-header img{
-height:42px;
-border-radius:8px;
-}
-
-header h1{
-margin:0;
-font-weight:700;
-font-size:22px;
-letter-spacing:.5px;
-color:#fff;
-}
-
-.cartIcon{
-cursor:pointer;
-display:flex;
-align-items:center;
-gap:5px;
-color:#fff;
-font-weight:700;
-}
-
-.cartIcon img{
-height:32px;
-}
-
-/* ================= GRID ================= */
+/* ===== GRID ===== */
 .container{
-max-width:1200px;
-margin:auto;
-padding:15px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:18px;
+max-width:1200px;margin:auto;padding:15px;
+display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;
 }
 
-/* ================= CARD ================= */
+/* ===== CARD ===== */
 .product{
-background:#fff;
-border-radius:14px;
-padding:14px;
-box-shadow:0 4px 14px rgba(0,0,0,.1);
-position:relative;
+background:#fff;border-radius:14px;padding:14px;
+box-shadow:0 4px 14px rgba(0,0,0,.1);position:relative;
 }
 
 .offerBadge{
-position:absolute;
-top:10px;
-left:10px;
-background:red;
-color:#fff;
-font-size:12px;
-padding:4px 8px;
-border-radius:6px;
+position:absolute;top:10px;left:10px;background:red;color:#fff;
+font-size:12px;padding:4px 8px;border-radius:6px;
 }
 
-.main-img{
-width:100%;
-height:260px;
-object-fit:contain;
-border-radius:10px;
-cursor:pointer;
-}
+.main-img{width:100%;height:260px;object-fit:contain;border-radius:10px;cursor:pointer}
+.thumbs{display:flex;gap:6px;margin-top:8px;overflow:auto}
+.thumbs img{width:55px;height:55px;object-fit:cover;border-radius:6px;border:2px solid #eee;cursor:pointer}
 
-.thumbs{
-display:flex;
-gap:6px;
-margin-top:8px;
-overflow:auto;
-}
+.details h3{margin:10px 0 6px;font-size:16px}
+.price{color:#d32f2f;font-size:18px;font-weight:700}
+.mrp{text-decoration:line-through;color:#888;margin-left:8px}
 
-.thumbs img{
-width:55px;
-height:55px;
-object-fit:cover;
-border-radius:6px;
-cursor:pointer;
-border:2px solid #eee;
-}
+.qty button{width:28px;height:28px;border:none;background:#eee;border-radius:6px}
 
-.details h3{
-margin:10px 0 6px;
-font-size:16px;
-}
-
-.price{
-color:#d32f2f;
-font-size:18px;
-font-weight:700;
-}
-
-.mrp{
-text-decoration:line-through;
-color:#888;
-margin-left:8px;
-}
-
-.qty{
-margin-top:6px;
-}
-
-.qty button{
-width:28px;
-height:28px;
-border:none;
-background:#eee;
-border-radius:6px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.btn{
-padding:8px 14px;
-border-radius:20px;
-border:none;
-color:#fff;
-cursor:pointer;
-margin-top:8px;
-margin-right:6px;
-font-size:13px;
-}
-
+.btn{padding:8px 14px;border-radius:20px;border:none;color:#fff;cursor:pointer;margin-top:8px;margin-right:6px;font-size:13px}
 .cartBtn{background:#ff9800}
 .buyBtn{background:#25D366}
 .shareBtn{background:#3b5998}
 
-/* ================= CART PANEL ================= */
+/* ===== CART PANEL ===== */
 #cartPanel{
-position:fixed;
-right:0;
-top:0;
-width:300px;
-height:100%;
-background:#fff;
-box-shadow:-4px 0 12px rgba(0,0,0,.2);
-transform:translateX(100%);
-transition:.3s;
-padding:15px;
-z-index:99999;
-overflow:auto;
+position:fixed;right:0;top:0;width:320px;height:100%;
+background:#fff;box-shadow:-4px 0 12px rgba(0,0,0,.2);
+transform:translateX(100%);transition:.3s;
+padding:15px;z-index:99999;overflow:auto;
+}
+#cartPanel.open{transform:translateX(0)}
+
+.totalBox{font-weight:bold;margin-top:10px}
+
+/* ===== FOOTER ===== */
+footer{
+background:#0a5c36;color:#fff;padding:25px;margin-top:30px;
+text-align:center;font-size:14px;line-height:1.8
 }
 
-#cartPanel.open{
-transform:translateX(0);
-}
-
-/* ================= ZOOM ================= */
+/* ===== ZOOM ===== */
 .zoomBox{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.8);
-justify-content:center;
-align-items:center;
-z-index:999999;
+display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,.8);justify-content:center;align-items:center;z-index:999999
 }
-
-.zoomBox img{
-max-width:90%;
-max-height:90%;
-}
+.zoomBox img{max-width:90%;max-height:90%}
 
 @media(max-width:768px){
-.container{
-grid-template-columns:1fr;
+.container{grid-template-columns:1fr}
 }
-}
-
 </style>
 
 <script>
-
 let cart=[];
 
 function changeImage(id,src){
@@ -227,31 +103,44 @@ document.getElementById("zoomBox").style.display="none";
 function qty(id,val){
 let el=document.getElementById(id);
 let n=parseInt(el.innerText);
-n+=val;
-if(n<1)n=1;
+n+=val;if(n<1)n=1;
 el.innerText=n;
 }
 
 function addCart(name,price,qtyId){
 let q=parseInt(document.getElementById(qtyId).innerText);
-cart.push(name+" x"+q+" = ₹"+(price*q));
+cart.push({name:name,qty:q,price:price});
+updateCart();
+}
+
+function updateCart(){
+let list="";
+let total=0;
+cart.forEach(i=>{
+list+=`<p>${i.name} x${i.qty} = ₹${i.price*i.qty}</p>`;
+total+=i.price*i.qty;
+});
+document.getElementById("cartItems").innerHTML=list;
+document.getElementById("totalPrice").innerText="Total: ₹"+total;
 document.getElementById("cartCount").innerText=cart.length;
-alert("Added to Cart");
 }
 
 function openCart(){
 document.getElementById("cartPanel").classList.add("open");
-let list="";
-cart.forEach(i=>{list+="<p>"+i+"</p>"});
-document.getElementById("cartItems").innerHTML=list;
 }
 
 function closeCart(){
 document.getElementById("cartPanel").classList.remove("open");
 }
 
+function orderWhatsApp(){
+let txt="";
+cart.forEach(i=>{
+txt+=`${i.name} x${i.qty} = ₹${i.price*i.qty}%0A`;
+});
+window.open("https://wa.me/919124646598?text=My Order:%0A"+txt);
+}
 </script>
-
 </head>
 
 <body>
@@ -263,8 +152,7 @@ document.getElementById("cartPanel").classList.remove("open");
 </div>
 
 <div class="cartIcon" onclick="openCart()">
-<img src="cart.png">
-(<span id="cartCount">0</span>)
+<img src="cart.png"> (<span id="cartCount">0</span>)
 </div>
 </header>
 
@@ -274,110 +162,38 @@ document.getElementById("cartPanel").classList.remove("open");
 <div class="product">
 <div class="offerBadge">50% OFF</div>
 <img id="img1" src="sealer1.jpg" class="main-img" onclick="zoom(this.src)">
-<div class="thumbs">
-<img src="sealer1.jpg" onclick="changeImage('img1','sealer1.jpg')">
-<img src="sealer2.jpg" onclick="changeImage('img1','sealer2.jpg')">
-<img src="sealer3.png" onclick="changeImage('img1','sealer3.png')">
-<img src="sealer4.jpg" onclick="changeImage('img1','sealer4.jpg')">
-</div>
 <div class="details">
 <h3>Portable Mini Sealing Machine</h3>
 <span class="price">₹149</span><span class="mrp">₹299</span>
-<div class="qty">
-<button onclick="qty('q1',-1)">-</button>
-<span id="q1">1</span>
-<button onclick="qty('q1',1)">+</button>
-</div>
+<div class="qty"><button onclick="qty('q1',-1)">-</button><span id="q1">1</span><button onclick="qty('q1',1)">+</button></div>
 <button class="btn cartBtn" onclick="addCart('Sealer',149,'q1')">Add</button>
-<button class="btn buyBtn">Buy Now</button>
-<button class="btn shareBtn">Share</button>
-</div>
-</div>
-
-<!-- PRODUCT 2 -->
-<div class="product">
-<div class="offerBadge">50% OFF</div>
-<img id="img2" src="lunchcamera1.jpg" class="main-img" onclick="zoom(this.src)">
-<div class="thumbs">
-<img src="lunchcamera1.jpg" onclick="changeImage('img2','lunchcamera1.jpg')">
-<img src="lunchcamera2.jpeg" onclick="changeImage('img2','lunchcamera2.jpeg')">
-<img src="lunchcamera3.jpeg" onclick="changeImage('img2','lunchcamera3.jpeg')">
-<img src="lunchcamera4.jpeg" onclick="changeImage('img2','lunchcamera4.jpeg')">
-</div>
-<div class="details">
-<h3>Insta Look Lunch Box Camera</h3>
-<span class="price">₹349</span><span class="mrp">₹699</span>
-<div class="qty">
-<button onclick="qty('q2',-1)">-</button>
-<span id="q2">1</span>
-<button onclick="qty('q2',1)">+</button>
-</div>
-<button class="btn cartBtn" onclick="addCart('Camera LunchBox',349,'q2')">Add</button>
-<button class="btn buyBtn">Buy Now</button>
-<button class="btn shareBtn">Share</button>
-</div>
-</div>
-
-<!-- PRODUCT 3 -->
-<div class="product">
-<div class="offerBadge">45% OFF</div>
-<img id="img3" src="LUNCH1.jpeg" class="main-img" onclick="zoom(this.src)">
-<div class="thumbs">
-<img src="LUNCH1.jpeg" onclick="changeImage('img3','LUNCH1.jpeg')">
-<img src="LUNCH2.jpeg" onclick="changeImage('img3','LUNCH2.jpeg')">
-<img src="LUNCH3.jpeg" onclick="changeImage('img3','LUNCH3.jpeg')">
-<img src="LUNCH4.jpeg" onclick="changeImage('img3','LUNCH4.jpeg')">
-<img src="LUNCH5.jpeg" onclick="changeImage('img3','LUNCH5.jpeg')">
-</div>
-<div class="details">
-<h3>Premium Leakproof Lunch Box</h3>
-<span class="price">₹389</span><span class="mrp">₹699</span>
-<div class="qty">
-<button onclick="qty('q3',-1)">-</button>
-<span id="q3">1</span>
-<button onclick="qty('q3',1)">+</button>
-</div>
-<button class="btn cartBtn" onclick="addCart('Premium LunchBox',389,'q3')">Add</button>
-<button class="btn buyBtn">Buy Now</button>
-<button class="btn shareBtn">Share</button>
-</div>
-</div>
-
-<!-- PRODUCT 4 -->
-<div class="product">
-<div class="offerBadge">50% OFF</div>
-<img id="img4" src="ICE1.jpg" class="main-img" onclick="zoom(this.src)">
-<div class="thumbs">
-<img src="ICE1.jpg" onclick="changeImage('img4','ICE1.jpg')">
-<img src="ICE2.jpg" onclick="changeImage('img4','ICE2.jpg')">
-<img src="ICE3.jpg" onclick="changeImage('img4','ICE3.jpg')">
-<img src="ICE4.jpg" onclick="changeImage('img4','ICE4.jpg')">
-<img src="ICE5.jpg" onclick="changeImage('img4','ICE5.jpg')">
-</div>
-<div class="details">
-<h3>Ice Cube Tray Silicone Honeycomb</h3>
-<span class="price">₹199</span><span class="mrp">₹399</span>
-<div class="qty">
-<button onclick="qty('q4',-1)">-</button>
-<span id="q4">1</span>
-<button onclick="qty('q4',1)">+</button>
-</div>
-<button class="btn cartBtn" onclick="addCart('Ice Tray',199,'q4')">Add</button>
-<button class="btn buyBtn">Buy Now</button>
-<button class="btn shareBtn">Share</button>
 </div>
 </div>
 
 </div>
 
-<!-- CART PANEL -->
+<!-- ===== CART PANEL ===== -->
 <div id="cartPanel">
 <h3>Your Cart</h3>
 <div id="cartItems"></div>
-<button onclick="closeCart()">Close</button>
+<div id="totalPrice" class="totalBox"></div>
+
+<button onclick="orderWhatsApp()" style="background:#25D366;color:#fff;border:none;padding:12px;width:100%;margin-top:12px;border-radius:8px;font-weight:bold;">
+Order on WhatsApp
+</button>
+
+<button onclick="closeCart()" style="margin-top:8px;width:100%;">Close</button>
 </div>
 
-<!-- ZOOM -->
+<!-- ===== FOOTER ===== -->
+<footer>
+<b>Barakah eMart</b><br>
+Call us / WhatsApp on : 9124646598<br>
+Customer Service : Mon to Sat – 9am to 06pm IST<br>
+Address : Ahmad Nagar, Byasanagar, Jajpur Road, ORRISA 755019<br>
+Get in Touch : Barakahemart786@gmail.com
+</footer>
+
 <div id="zoomBox" class="zoomBox" onclick="closeZoom()">
 <img id="zoomImg">
 </div>
