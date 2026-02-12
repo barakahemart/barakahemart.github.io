@@ -10,7 +10,7 @@
 body{
 margin:0;
 font-family:Arial;
-background:#f3f4f6;
+background:#f2f3f5;
 }
 
 /* ===== HEADER ===== */
@@ -44,13 +44,13 @@ font-size:18px;
 }
 
 .cartIcon{
-cursor:pointer;
 position:relative;
+cursor:pointer;
 }
 
 .cartIcon img{
-height:36px;
-width:36px;
+height:40px;
+width:40px;
 }
 
 .cartCount{
@@ -75,43 +75,56 @@ grid-template-columns:repeat(4,1fr);
 gap:20px;
 }
 
-/* ===== AMAZON STYLE CARD ===== */
+/* ===== AMAZON CARD ===== */
 
 .product{
 background:#fff;
-border-radius:14px;
+border-radius:16px;
 padding:12px;
-box-shadow:0 3px 12px rgba(0,0,0,.08);
+box-shadow:0 4px 18px rgba(0,0,0,.08);
 display:flex;
 flex-direction:column;
-min-height:420px;
-transition:.25s;
+min-height:440px;
+transition:.3s;
+position:relative;
 }
 
 .product:hover{
-transform:translateY(-4px);
-box-shadow:0 6px 20px rgba(0,0,0,.12);
+transform:translateY(-5px);
+box-shadow:0 6px 24px rgba(0,0,0,.14);
 }
 
-/* ===== AMAZON IMAGE FRAME ===== */
+/* DISCOUNT BADGE */
+
+.badge{
+position:absolute;
+top:12px;
+left:12px;
+background:red;
+color:#fff;
+font-size:12px;
+padding:4px 8px;
+border-radius:6px;
+font-weight:bold;
+}
+
+/* IMAGE FRAME */
 
 .main-img{
 width:100%;
-height:260px;
-object-fit:contain;
+height:270px;
+object-fit:cover;   /* 🔥 image full size fix */
 background:#fff;
-border-radius:10px;
-padding:15px;
-box-sizing:border-box;
+border-radius:12px;
 cursor:pointer;
-transition:.25s;
+transition:.3s;
 }
 
 .main-img:hover{
-transform:scale(1.05);
+transform:scale(1.04);
 }
 
-/* THUMBNAILS */
+/* THUMBS */
 
 .thumbs{
 display:flex;
@@ -123,9 +136,9 @@ overflow-x:auto;
 .thumbs img{
 width:55px;
 height:55px;
+object-fit:cover;
 border-radius:6px;
 cursor:pointer;
-object-fit:cover;
 border:2px solid #eee;
 }
 
@@ -150,15 +163,6 @@ font-size:13px;
 margin-left:6px;
 }
 
-.offer{
-background:red;
-color:#fff;
-font-size:11px;
-padding:2px 6px;
-border-radius:4px;
-margin-left:6px;
-}
-
 .qty button{
 width:28px;
 height:28px;
@@ -170,8 +174,8 @@ border-radius:5px;
 /* BUTTONS */
 
 .btn{
-padding:7px 12px;
-border-radius:20px;
+padding:8px 12px;
+border-radius:22px;
 color:#fff;
 text-decoration:none;
 font-size:13px;
@@ -190,16 +194,15 @@ display:inline-block;
 .container{
 grid-template-columns:1fr;
 gap:14px;
-padding:12px;
 }
 
 .main-img{
-height:300px;
+height:320px;
 }
 
 }
 
-/* ===== ZOOM BOX ===== */
+/* ===== ZOOM ===== */
 
 .zoomBox{
 display:none;
@@ -268,7 +271,6 @@ window.open("https://wa.me/?text="+link);
 <body>
 
 <header>
-
 <div class="logoBox">
 <img src="logos.jpeg">
 <h1>Barakah eMart</h1>
@@ -278,13 +280,13 @@ window.open("https://wa.me/?text="+link);
 <img src="cart.png">
 <span class="cartCount" id="cartCount">0</span>
 </div>
-
 </header>
 
 <div class="container">
 
 <!-- PRODUCT 1 -->
 <div id="p1" class="product">
+<div class="badge">50% OFF</div>
 <img id="img1" src="sealer1.jpg" class="main-img" onclick="zoom(this.src)">
 <div class="thumbs">
 <img src="sealer1.jpg" onclick="changeImage('img1','sealer1.jpg')">
@@ -295,9 +297,7 @@ window.open("https://wa.me/?text="+link);
 
 <div class="details">
 <h3>Portable Mini Sealing Machine</h3>
-<span class="price">₹149</span>
-<span class="mrp">₹299</span>
-<span class="offer">50% OFF</span>
+<span class="price">₹149</span><span class="mrp">₹299</span>
 
 <div class="qty">
 <button onclick="qty('q1',-1)">-</button>
@@ -313,6 +313,7 @@ window.open("https://wa.me/?text="+link);
 
 <!-- PRODUCT 2 -->
 <div id="p2" class="product">
+<div class="badge">50% OFF</div>
 <img id="img2" src="lunchcamera1.jpg" class="main-img" onclick="zoom(this.src)">
 <div class="thumbs">
 <img src="lunchcamera1.jpg" onclick="changeImage('img2','lunchcamera1.jpg')">
@@ -323,9 +324,7 @@ window.open("https://wa.me/?text="+link);
 
 <div class="details">
 <h3>Insta Look Lunch Box Camera</h3>
-<span class="price">₹349</span>
-<span class="mrp">₹699</span>
-<span class="offer">50% OFF</span>
+<span class="price">₹349</span><span class="mrp">₹699</span>
 
 <div class="qty">
 <button onclick="qty('q2',-1)">-</button>
@@ -341,6 +340,7 @@ window.open("https://wa.me/?text="+link);
 
 <!-- PRODUCT 3 -->
 <div id="p3" class="product">
+<div class="badge">45% OFF</div>
 <img id="img3" src="LUNCH1.jpeg" class="main-img" onclick="zoom(this.src)">
 <div class="thumbs">
 <img src="LUNCH1.jpeg" onclick="changeImage('img3','LUNCH1.jpeg')">
@@ -352,9 +352,7 @@ window.open("https://wa.me/?text="+link);
 
 <div class="details">
 <h3>Premium Leakproof Lunch Box</h3>
-<span class="price">₹389</span>
-<span class="mrp">₹699</span>
-<span class="offer">45% OFF</span>
+<span class="price">₹389</span><span class="mrp">₹699</span>
 
 <div class="qty">
 <button onclick="qty('q3',-1)">-</button>
@@ -370,6 +368,7 @@ window.open("https://wa.me/?text="+link);
 
 <!-- PRODUCT 4 -->
 <div id="p4" class="product">
+<div class="badge">50% OFF</div>
 <img id="img4" src="ICE1.jpeg" class="main-img" onclick="zoom(this.src)">
 <div class="thumbs">
 <img src="ICE1.jpeg" onclick="changeImage('img4','ICE1.jpeg')">
@@ -381,9 +380,7 @@ window.open("https://wa.me/?text="+link);
 
 <div class="details">
 <h3>Ice Cube Tray Silicone Honeycomb 37 Cavity</h3>
-<span class="price">₹199</span>
-<span class="mrp">₹399</span>
-<span class="offer">50% OFF</span>
+<span class="price">₹199</span><span class="mrp">₹399</span>
 
 <div class="qty">
 <button onclick="qty('q4',-1)">-</button>
