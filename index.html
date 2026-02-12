@@ -242,9 +242,31 @@ grid-template-columns:repeat(3,1fr);
 @media(max-width:600px){
 
 .container{
-grid-template-columns:repeat(2,1fr);
-gap:10px;
+grid-template-columns:1fr;   /* 👉 Mobile me 1 product per row */
+gap:14px;
+padding:10px;
 }
+
+.product{
+border-radius:16px;
+padding:12px;
+}
+
+.main-img{
+height:220px;
+}
+
+.details h3{
+font-size:15px;
+}
+
+.btn{
+font-size:13px;
+padding:8px;
+}
+
+}
+
 
 .main-img{
 height:150px;
