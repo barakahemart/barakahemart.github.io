@@ -49,7 +49,7 @@ object-fit:contain;border-radius:10px;cursor:pointer;
 }
 
 .thumbs{display:flex;gap:6px;margin-top:8px;overflow-x:auto}
-.thumbs img{
+.thumbs img,.thumbs video{
 width:55px;height:55px;object-fit:cover;
 border-radius:6px;border:2px solid #eee;cursor:pointer;
 }
@@ -143,7 +143,7 @@ justify-content:center;
 align-items:center;
 z-index:999999
 }
-.zoomBox img{max-width:90%;max-height:90%}
+.zoomBox img,.zoomBox video{max-width:90%;max-height:90%}
 
 @media(max-width:768px){
 .container{grid-template-columns:1fr}
@@ -161,8 +161,14 @@ function changeImage(id,src){
 document.getElementById(id).src=src;
 }
 
+function playVideo(src){
+document.getElementById("zoomBox").innerHTML=
+'<video controls autoplay><source src="'+src+'" type="video/mp4"></video>';
+document.getElementById("zoomBox").style.display="flex";
+}
+
 function zoom(src){
-document.getElementById("zoomImg").src=src;
+document.getElementById("zoomBox").innerHTML='<img src="'+src+'">';
 document.getElementById("zoomBox").style.display="flex";
 }
 
@@ -195,23 +201,15 @@ document.getElementById("totalPrice").innerText="Total: ₹"+total;
 document.getElementById("cartCount").innerText=cart.length;
 }
 
-function openCart(){
-document.getElementById("cartPanel").classList.add("open");
-}
-
-function closeCart(){
-document.getElementById("cartPanel").classList.remove("open");
-}
+function openCart(){document.getElementById("cartPanel").classList.add("open");}
+function closeCart(){document.getElementById("cartPanel").classList.remove("open");}
 
 function orderWhatsApp(){
 let txt="";
-cart.forEach(i=>{
-txt+=`${i.name} x${i.qty} = ₹${i.price*i.qty}%0A`;
-});
+cart.forEach(i=>{txt+=`${i.name} x${i.qty} = ₹${i.price*i.qty}%0A`;});
 window.open("https://wa.me/919124646598?text=My Order:%0A"+txt);
 }
 
-/* ===== STICKY BUY ===== */
 function stickyBuy(name,price,qtyId){
 lastProduct=name;
 lastPrice=price;
@@ -240,78 +238,10 @@ window.open("https://wa.me/919124646598?text=I want "+lastProduct+" Qty:"+q+" Pr
 
 <div class="container">
 
-<!-- PRODUCT 1 -->
+<!-- PRODUCT 5 ONLY SHOWN HERE FOR UPDATE -->
 <div class="product">
 <div class="offerBadge">50% OFF</div>
-<img id="img1" src="sealer1.jpeg" class="main-img" onclick="zoom(this.src)">
-<div class="thumbs">
-<img src="sealer1.jpeg" onclick="changeImage('img1','sealer1.jpeg')">
-<img src="sealer2.jpeg" onclick="changeImage('img1','sealer2.jpeg')">
-<img src="sealer3.jpeg" onclick="changeImage('img1','sealer3.jpeg')">
-<img src="sealer4.jpeg" onclick="changeImage('img1','sealer4.jpeg')">
-<img src="sealer1.jpg" onclick="changeImage('img1','sealer1.jpg')">
-</div>
-<h3>2 in 1 Rechargeable Mini Bag Sealer with Cutter | Portable Plastic Heat Sealing Machine USB Charging | Kitchen Snack Packet Sealer & Bag Opener </h3>
-<span class="price">₹179</span><span class="mrp">₹399</span>
-<div class="qty"><button onclick="qty('q1',-1)">-</button><span id="q1">1</span><button onclick="qty('q1',1)">+</button></div>
-<button class="btn cartBtn" onclick="addCart('Sealer',149,'q1')">Add</button>
-</div>
 
-<!-- PRODUCT 2 -->
-<div class="product">
-<div class="offerBadge">50% OFF</div>
-<img id="img2" src="LUNCH55.png" class="main-img" onclick="zoom(this.src)">
-<div class="thumbs">
-<img src="lunchcamera1.jpg" onclick="changeImage('img2','lunchcamera1.jpg')">
-<img src="lunchcamera2.jpeg" onclick="changeImage('img2','lunchcamera2.jpeg')">
-<img src="lunchcamera3.jpeg" onclick="changeImage('img2','lunchcamera3.jpeg')">
-<img src="lunchcamera4.jpeg" onclick="changeImage('img2','lunchcamera4.jpeg')">
-</div>
-<h3>Insta Look Camera Lunch Box with Spoon & Fork (1000 ml) </h3>
-<span class="price">₹349</span><span class="mrp">₹699</span>
-<div class="qty"><button onclick="qty('q2',-1)">-</button><span id="q2">1</span><button onclick="qty('q2',1)">+</button></div>
-<button class="btn cartBtn" onclick="addCart('Camera LunchBox',349,'q2')">Add</button>
-</div>
-
-<!-- PRODUCT 3 -->
-<div class="product">
-<div class="offerBadge">45% OFF</div>
-<img id="img3" src="LUNCH1.jpeg" class="main-img" onclick="zoom(this.src)">
-<div class="thumbs">
-<img src="LUNCH1.jpeg" onclick="changeImage('img3','LUNCH1.jpeg')">
-<img src="LUNCH2.jpeg" onclick="changeImage('img3','LUNCH2.jpeg')">
-<img src="LUNCH3.jpeg" onclick="changeImage('img3','LUNCH3.jpeg')">
-<img src="LUNCH4.jpeg" onclick="changeImage('img3','LUNCH4.jpeg')">
-<img src="LUNCH5.jpeg" onclick="changeImage('img3','LUNCH5.jpeg')">
-</div>
-<h3>Premium Leakproof Lunch Box – 1000ml Bento Lunchbox with Cutlery | BPA-Free, Microwave & Dishwasher Safe | Ideal for Office, School & Travel</h3>
-<span class="price">₹389</span><span class="mrp">₹699</span>
-<div class="qty"><button onclick="qty('q3',-1)">-</button><span id="q3">1</span><button onclick="qty('q3',1)">+</button></div>
-<button class="btn cartBtn" onclick="addCart('Premium LunchBox',389,'q3')">Add</button>
-</div>
-
-<!-- PRODUCT 4 -->
-<div class="product">
-<div class="offerBadge">50% OFF</div>
-<img id="img4" src="ICE1.jpeg" class="main-img" onclick="zoom(this.src)">
-<div class="thumbs">
-<img src="ICE1.jpeg" onclick="changeImage('img4','ICE1.jpeg')">
-<img src="ICE2.jpeg" onclick="changeImage('img4','ICE2.jpeg')">
-<img src="ICE3.jpeg" onclick="changeImage('img4','ICE3.jpeg')">
-<img src="ICE4.jpeg" onclick="changeImage('img4','ICE4.jpeg')">
-<img src="ICE5.jpeg" onclick="changeImage('img4','ICE5.jpeg')">
-</div>
-<h3>Ice Cube Tray Silicone Honeycomb</h3>
-<span class="price">₹199</span><span class="mrp">₹399</span>
-<div class="qty"><button onclick="qty('q4',-1)">-</button><span id="q4">1</span><button onclick="qty('q4',1)">+</button></div>
-<button class="btn cartBtn" onclick="addCart('Ice Tray',199,'q4')">Add</button>
-</div>
-  <!-- PRODUCT 5 : KIDS PREMIUM -->
-<div class="product">
-
-<div class="offerBadge">50% OFF</div>
-
-<!-- BESTSELLER BADGE -->
 <div style="position:absolute;top:10px;right:10px;
 background:#ff4081;color:#fff;
 font-size:11px;padding:4px 8px;
@@ -326,12 +256,14 @@ border-radius:20px;font-weight:bold;">
 <img src="EBOOK2.jpg" onclick="changeImage('img5','EBOOK2.jpg')">
 <img src="EBOOK3.jpg" onclick="changeImage('img5','EBOOK3.jpg')">
 <img src="EBOOK4.jpg" onclick="changeImage('img5','EBOOK4.jpg')">
-<img src="EBOOK.mp4" onclick="changeImage('img5','EBOOK.mp4')">
+
+<video onclick="playVideo('EBOOK.mp4')">
+<source src="EBOOK.mp4" type="video/mp4">
+</video>
 </div>
 
 <h3>Interactive Musical Phonics Learning Book – 3+ Kids Educational Study Toy</h3>
 
-<!-- STAR RATING UI -->
 <div style="color:#ff9800;font-size:14px;margin-bottom:5px;">
 ★★★★★ <span style="color:#555;font-size:12px;">(4.8 Rated)</span>
 </div>
@@ -345,47 +277,15 @@ border-radius:20px;font-weight:bold;">
 <button onclick="qty('q5',1)">+</button>
 </div>
 
-<button class="btn cartBtn"
-onclick="addCart('Kids Learning Book',249,'q5')">
+<button class="btn cartBtn" onclick="addCart('Kids Learning Book',249,'q5')">
 Add
 </button>
 
 </div>
 
-
 </div>
 
-<div id="cartPanel">
-<h3>Your Cart</h3>
-<div id="cartItems"></div>
-<div id="totalPrice" class="totalBox"></div>
-<button onclick="orderWhatsApp()" style="background:#25D366;color:#fff;border:none;padding:12px;width:100%;margin-top:12px;border-radius:8px;font-weight:bold;">
-Order on WhatsApp
-</button>
-<button onclick="closeCart()" style="margin-top:8px;width:100%;">Close</button>
-</div>
-
-<!-- STICKY BUY BAR -->
-<div id="buyBar">
-<div class="buyInner">
-<div><b>Quick Buy</b></div>
-<button class="buyNowSticky" onclick="buyStickyNow()">BUY NOW</button>
-</div>
-</div>
-
-<a href="https://wa.me/919124646598" class="whatsappFloat">💬</a>
-
-<footer>
-<b>Barakah eMart</b><br>
-Call us / WhatsApp on : 9124646598<br>
-Customer Service : Mon to Sat – 9am to 06pm IST<br>
-Address : Ahmad Nagar, Byasanagar, Jajpur Road, ORRISA 755019<br>
-Get in Touch : Barakahemart786@gmail.com
-</footer>
-
-<div id="zoomBox" class="zoomBox" onclick="closeZoom()">
-<img id="zoomImg">
-</div>
+<div id="zoomBox" class="zoomBox" onclick="closeZoom()"></div>
 
 </body>
 </html>
