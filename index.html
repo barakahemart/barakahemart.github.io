@@ -13,14 +13,21 @@ body{margin:0;font-family:'Poppins',sans-serif;background:#f3f5f7}
 /* HEADER */
 header{
 display:flex;align-items:center;justify-content:space-between;
-background:#0a5c36;padding:12px 18px;color:#fff;
+background:#0a5c36;padding:12px;color:#fff;
 position:sticky;top:0;z-index:999;
+gap:10px;
 }
-.logoBox{display:flex;align-items:center;gap:12px}
-header img{height:42px;border-radius:8px}
-header h1{margin:0;font-weight:700;font-size:22px}
-.cartIcon{cursor:pointer;color:#fff;font-weight:700}
-.cartIcon img{height:30px}
+.logoBox{display:flex;align-items:center;gap:10px}
+header img{height:40px;border-radius:6px}
+header h1{margin:0;font-size:20px}
+.searchBox{
+flex:1;
+padding:8px 12px;
+border-radius:20px;
+border:none;
+outline:none;
+}
+.cartIcon img{height:28px}
 
 /* GRID */
 .container{
@@ -48,56 +55,50 @@ object-fit:contain;border-radius:10px;cursor:pointer;
 width:55px;height:55px;object-fit:cover;
 border-radius:6px;border:2px solid #eee;cursor:pointer;
 }
+
 .price{color:#d32f2f;font-size:18px;font-weight:700}
 .mrp{text-decoration:line-through;color:#888;margin-left:8px}
 
-.qty button{
-width:28px;height:28px;border:none;
-background:#eee;border-radius:6px
-}
+.qty button{width:28px;height:28px;border:none;background:#eee;border-radius:6px}
 
 .btn{
-padding:8px 14px;border-radius:20px;border:none;
-color:#fff;cursor:pointer;margin-top:8px;
-margin-right:6px;font-size:13px
+padding:8px 12px;border-radius:20px;border:none;
+color:#fff;cursor:pointer;margin-top:8px;margin-right:6px;font-size:12px
 }
 .cartBtn{background:#ff9800}
+.wishBtn{background:#ff4081}
 
-/* CART PANEL */
+/* CART */
 #cartPanel{
 position:fixed;right:0;top:0;width:320px;height:100%;
 background:#fff;box-shadow:-4px 0 12px rgba(0,0,0,.2);
 transform:translateX(100%);
-transition:.3s;
-padding:15px;
-z-index:99999;
-overflow:auto;
+transition:.3s;padding:15px;z-index:99999;overflow:auto;
 }
 #cartPanel.open{transform:translateX(0)}
 
 .zoomBox{
-display:none;position:fixed;
-top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,.8);
-justify-content:center;
-align-items:center;
-z-index:999999
+display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,.8);justify-content:center;align-items:center;z-index:999999
 }
 .zoomBox img,.zoomBox video{max-width:90%;max-height:90%}
 
 footer{
 background:#0a5c36;color:#fff;padding:25px;
-margin-top:30px;text-align:center;
-font-size:14px;line-height:1.8
+margin-top:30px;text-align:center;font-size:14px;line-height:1.8
+}
+
+@media(max-width:768px){
+.container{grid-template-columns:1fr}
+.main-img{height:300px}
 }
 </style>
 
 <script>
 let cart=[];
+let wishlist=[];
 
-function changeImage(id,src){
-document.getElementById(id).src=src;
-}
+function changeImage(id,src){document.getElementById(id).src=src;}
 
 function zoom(src){
 document.getElementById("zoomBox").innerHTML='<img src="'+src+'">';
@@ -105,20 +106,37 @@ document.getElementById("zoomBox").style.display="flex";
 }
 
 function playVideo(src){
-document.getElementById("zoomBox").innerHTML=
-'<video controls autoplay><source src="'+src+'" type="video/mp4"></video>';
+document.getElementById("zoomBox").innerHTML='<video controls autoplay><source src="'+src+'" type="video/mp4"></video>';
 document.getElementById("zoomBox").style.display="flex";
 }
 
-function closeZoom(){
-document.getElementById("zoomBox").style.display="none";
-}
+function closeZoom(){document.getElementById("zoomBox").style.display="none";}
 
 function qty(id,val){
 let el=document.getElementById(id);
 let n=parseInt(el.innerText);
 n+=val;if(n<1)n=1;
 el.innerText=n;
+}
+
+function addCart(name){
+cart.push(name);
+alert("Added to Cart");
+}
+
+function addWish(name){
+wishlist.push(name);
+alert("Added to Wishlist ❤️");
+}
+
+/* SEARCH FILTER */
+function searchProduct(){
+let input=document.getElementById("search").value.toLowerCase();
+let cards=document.querySelectorAll(".product");
+cards.forEach(card=>{
+let text=card.innerText.toLowerCase();
+card.style.display=text.includes(input)?"block":"none";
+});
 }
 </script>
 </head>
@@ -129,6 +147,12 @@ el.innerText=n;
 <div class="logoBox">
 <img src="logos.jpeg">
 <h1>Barakah eMart</h1>
+</div>
+
+<input id="search" class="searchBox" onkeyup="searchProduct()" placeholder="Search products...">
+
+<div class="cartIcon" onclick="document.getElementById('cartPanel').classList.toggle('open')">
+<img src="cart.png">
 </div>
 </header>
 
@@ -147,7 +171,8 @@ el.innerText=n;
 <h3>Mini Bag Sealer</h3>
 <span class="price">₹179</span><span class="mrp">₹399</span>
 <div class="qty"><button onclick="qty('q1',-1)">-</button><span id="q1">1</span><button onclick="qty('q1',1)">+</button></div>
-<button class="btn cartBtn">Add</button>
+<button class="btn cartBtn" onclick="addCart('Sealer')">Add</button>
+<button class="btn wishBtn" onclick="addWish('Sealer')">❤</button>
 </div>
 
 <!-- PRODUCT 2 -->
@@ -162,6 +187,8 @@ el.innerText=n;
 </div>
 <h3>Camera Lunch Box</h3>
 <span class="price">₹349</span><span class="mrp">₹699</span>
+<button class="btn cartBtn" onclick="addCart('Camera LunchBox')">Add</button>
+<button class="btn wishBtn" onclick="addWish('Camera LunchBox')">❤</button>
 </div>
 
 <!-- PRODUCT 3 -->
@@ -177,6 +204,8 @@ el.innerText=n;
 </div>
 <h3>Premium Lunch Box</h3>
 <span class="price">₹389</span><span class="mrp">₹699</span>
+<button class="btn cartBtn" onclick="addCart('Premium LunchBox')">Add</button>
+<button class="btn wishBtn" onclick="addWish('Premium LunchBox')">❤</button>
 </div>
 
 <!-- PRODUCT 4 -->
@@ -192,28 +221,32 @@ el.innerText=n;
 </div>
 <h3>Ice Cube Tray Silicone</h3>
 <span class="price">₹199</span><span class="mrp">₹399</span>
+<button class="btn cartBtn" onclick="addCart('Ice Tray')">Add</button>
+<button class="btn wishBtn" onclick="addWish('Ice Tray')">❤</button>
 </div>
 
-<!-- PRODUCT 5 VIDEO -->
+<!-- PRODUCT 5 WITH VIDEO -->
 <div class="product">
 <div class="offerBadge">50% OFF</div>
-
 <img id="img5" src="EBOOK1.jpg" class="main-img" onclick="zoom(this.src)">
-
 <div class="thumbs">
 <img src="EBOOK1.jpg" onclick="changeImage('img5','EBOOK1.jpg')">
 <img src="EBOOK2.jpg" onclick="changeImage('img5','EBOOK2.jpg')">
 <img src="EBOOK3.jpg" onclick="changeImage('img5','EBOOK3.jpg')">
 <img src="EBOOK4.jpg" onclick="changeImage('img5','EBOOK4.jpg')">
-<video onclick="playVideo('EBOOK.mp4')">
-<source src="EBOOK.mp4" type="video/mp4">
-</video>
+<video onclick="playVideo('EBOOK.mp4')"><source src="EBOOK.mp4" type="video/mp4"></video>
 </div>
-
 <h3>Interactive Musical Phonics Learning Book</h3>
 <span class="price">₹249</span><span class="mrp">₹499</span>
+<button class="btn cartBtn" onclick="addCart('Kids Learning Book')">Add</button>
+<button class="btn wishBtn" onclick="addWish('Kids Learning Book')">❤</button>
 </div>
 
+</div>
+
+<div id="cartPanel">
+<h3>Your Cart</h3>
+<p>Items added will appear here.</p>
 </div>
 
 <div id="zoomBox" class="zoomBox" onclick="closeZoom()"></div>
