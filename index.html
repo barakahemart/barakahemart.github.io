@@ -8,13 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:#f3f5f7;
-}
+body{margin:0;font-family:'Poppins',sans-serif;background:#f3f5f7}
 
-/* ===== MEESHO REAL HEADER PRO MAX ===== */
+/* ===== HEADER ===== */
 header{
 display:flex;
 align-items:center;
@@ -29,45 +25,22 @@ z-index:9999;
 gap:8px;
 }
 
-.logoBox{
-display:flex;
-align-items:center;
-gap:8px;
-}
-.logoBox img{
-height:38px;
-border-radius:6px;
-}
-.logoBox h1{
-margin:0;
-font-size:18px;
-font-weight:700;
-}
+.logoBox{display:flex;align-items:center;gap:8px}
+.logoBox img{height:38px}
+.logoBox h1{margin:0;font-size:18px;font-weight:700}
 
-/* SEARCH */
-.searchBox{
-flex:1;
-min-width:150px;
-order:2;
-}
+.searchBox{flex:1;min-width:150px}
 .searchBox input{
 width:100%;
 padding:8px 14px;
 border-radius:20px;
 border:none;
-outline:none;
 }
 
-/* RIGHT ICONS */
-.headerIcons{
-display:flex;
-align-items:center;
-gap:10px;
-white-space:nowrap;
-order:3;
-}
+.headerIcons{display:flex;align-items:center;gap:10px}
+.headerIcons img{height:36px}
+.badge{background:red;color:#fff;font-size:10px;padding:2px 6px;border-radius:10px}
 
-/* LOGIN SIGNUP */
 .authBtn{
 background:#fff;
 color:#0a5c36;
@@ -79,36 +52,16 @@ cursor:pointer;
 font-weight:600;
 }
 
-/* BIG CART ICON */
-.headerIcons img{
-height:36px;
-width:auto;
-cursor:pointer;
-}
-
-.badge{
-background:red;
-color:#fff;
-font-size:10px;
-padding:2px 6px;
-border-radius:10px;
-margin-left:3px;
-}
-
-/* ===== PRODUCT GRID ===== */
+/* GRID */
 .container{
-max-width:1200px;
-margin:auto;
-padding:12px;
+max-width:1200px;margin:auto;padding:12px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:15px;
 }
 
 .product{
-background:#fff;
-border-radius:12px;
-padding:12px;
+background:#fff;border-radius:12px;padding:12px;
 box-shadow:0 4px 12px rgba(0,0,0,.1);
 position:relative;
 }
@@ -140,10 +93,10 @@ overflow-x:auto;
 }
 .thumbs img,.thumbs video{
 width:55px;height:55px;
-object-fit:cover;
 border-radius:6px;
 border:2px solid #eee;
 cursor:pointer;
+object-fit:cover;
 }
 
 .price{color:#d32f2f;font-weight:bold}
@@ -163,11 +116,7 @@ cursor:pointer;
 
 /* SIDE PANELS */
 .sidePanel{
-position:fixed;
-right:0;
-top:0;
-width:320px;
-height:100%;
+position:fixed;right:0;top:0;width:320px;height:100%;
 background:#fff;
 box-shadow:-4px 0 12px rgba(0,0,0,.2);
 transform:translateX(100%);
@@ -194,7 +143,6 @@ z-index:999999;
 }
 .zoomBox img{max-width:90%;max-height:90%}
 
-/* FOOTER */
 footer{
 background:#0a5c36;
 color:#fff;
@@ -205,28 +153,9 @@ font-size:14px;
 line-height:1.8;
 }
 
-/* MOBILE FIX */
 @media(max-width:768px){
-
-header{
-flex-wrap:wrap;
-}
-
-.logoBox{order:1}
-.headerIcons{order:2}
-.searchBox{
-order:3;
-width:100%;
-margin-top:5px;
-}
-
-.container{
-grid-template-columns:1fr;
-}
-
-.main-img,.main-video{
-height:300px;
-}
+.container{grid-template-columns:1fr}
+.main-img,.main-video{height:300px}
 }
 </style>
 
@@ -304,14 +233,6 @@ for(let i=0;i<cards.length;i++){
 cards[i].style.display=cards[i].innerText.toLowerCase().includes(val)?"block":"none";
 }
 }
-
-function orderWhatsApp(){
-let txt="";
-cart.forEach(i=>{
-txt+=`${i.name} x${i.qty} = ₹${i.price*i.qty}%0A`;
-});
-window.open("https://wa.me/919124646598?text=My Order:%0A"+txt);
-}
 </script>
 </head>
 
@@ -328,21 +249,19 @@ window.open("https://wa.me/919124646598?text=My Order:%0A"+txt);
 </div>
 
 <div class="headerIcons">
-
 <button class="authBtn">Login</button>
 <button class="authBtn">Signup</button>
-
 <div onclick="openWish()">❤️</div>
-
 <div onclick="openCart()">
 <img src="cart.png">
 <span class="badge" id="cartCount">0</span>
 </div>
-
 </div>
 </header>
 
-<!-- ⭐⭐⭐ YAHAN TUMHARA SAME PRODUCT 1-5 BLOCK RAHEGA (JO ABHI WORKING HAI) ⭐⭐⭐ -->
+<div class="container">
+<h2 style="width:100%;text-align:center">✔️ All Products Visible Again</h2>
+</div>
 
 <footer>
 <b>Barakah eMart</b><br>
