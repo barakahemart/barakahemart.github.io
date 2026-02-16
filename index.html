@@ -8,44 +8,120 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
-body{margin:0;font-family:'Poppins',sans-serif;background:#f3f5f7}
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#f3f5f7;
+}
 
-/* ===== ULTRA HEADER ===== */
+/* ===== MEESHO REAL HEADER PRO MAX ===== */
 header{
-display:flex;align-items:center;justify-content:space-between;
-flex-wrap:wrap;background:#0a5c36;padding:10px;color:#fff;
-position:sticky;top:0;z-index:9999;
+display:flex;
+align-items:center;
+justify-content:space-between;
+flex-wrap:wrap;
+background:#0a5c36;
+padding:10px 12px;
+color:#fff;
+position:sticky;
+top:0;
+z-index:9999;
+gap:8px;
 }
-.logoBox{display:flex;align-items:center;gap:8px}
-.logoBox img{height:34px}
-.logoBox h1{margin:0;font-size:18px;font-weight:700}
 
-.searchBox{flex:1;margin:5px}
+.logoBox{
+display:flex;
+align-items:center;
+gap:8px;
+}
+.logoBox img{
+height:38px;
+border-radius:6px;
+}
+.logoBox h1{
+margin:0;
+font-size:18px;
+font-weight:700;
+}
+
+/* SEARCH */
+.searchBox{
+flex:1;
+min-width:150px;
+order:2;
+}
 .searchBox input{
-width:100%;padding:6px 10px;border-radius:20px;border:none;
+width:100%;
+padding:8px 14px;
+border-radius:20px;
+border:none;
+outline:none;
 }
 
-.headerIcons{display:flex;gap:10px;align-items:center}
-.headerIcons img{height:28px}
+/* RIGHT ICONS */
+.headerIcons{
+display:flex;
+align-items:center;
+gap:10px;
+white-space:nowrap;
+order:3;
+}
+
+/* LOGIN SIGNUP */
+.authBtn{
+background:#fff;
+color:#0a5c36;
+border:none;
+padding:6px 12px;
+border-radius:18px;
+font-size:12px;
+cursor:pointer;
+font-weight:600;
+}
+
+/* BIG CART ICON */
+.headerIcons img{
+height:36px;
+width:auto;
+cursor:pointer;
+}
+
 .badge{
-background:red;color:#fff;font-size:10px;padding:2px 6px;border-radius:10px;
+background:red;
+color:#fff;
+font-size:10px;
+padding:2px 6px;
+border-radius:10px;
+margin-left:3px;
 }
 
-/* ===== GRID ===== */
+/* ===== PRODUCT GRID ===== */
 .container{
-max-width:1200px;margin:auto;padding:12px;
-display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px;
+max-width:1200px;
+margin:auto;
+padding:12px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:15px;
 }
 
-/* ===== PRODUCT CARD ===== */
 .product{
-background:#fff;border-radius:12px;padding:12px;
+background:#fff;
+border-radius:12px;
+padding:12px;
 box-shadow:0 4px 12px rgba(0,0,0,.1);
 position:relative;
 }
+
 .offerBadge{
-position:absolute;top:8px;left:8px;
-background:red;color:#fff;font-size:11px;padding:3px 7px;border-radius:5px;
+position:absolute;
+top:8px;
+left:8px;
+background:red;
+color:#fff;
+font-size:11px;
+padding:3px 7px;
+border-radius:5px;
 }
 
 .main-img,.main-video{
@@ -64,10 +140,10 @@ overflow-x:auto;
 }
 .thumbs img,.thumbs video{
 width:55px;height:55px;
+object-fit:cover;
 border-radius:6px;
 border:2px solid #eee;
 cursor:pointer;
-object-fit:cover;
 }
 
 .price{color:#d32f2f;font-weight:bold}
@@ -85,9 +161,13 @@ cursor:pointer;
 .buyBtn{background:#25D366}
 .wishBtn{background:#e91e63}
 
-/* ===== SIDE PANELS ===== */
+/* SIDE PANELS */
 .sidePanel{
-position:fixed;right:0;top:0;width:320px;height:100%;
+position:fixed;
+right:0;
+top:0;
+width:320px;
+height:100%;
 background:#fff;
 box-shadow:-4px 0 12px rgba(0,0,0,.2);
 transform:translateX(100%);
@@ -102,7 +182,7 @@ overflow:auto;
 background:#eee;border:none;padding:8px;border-radius:6px;margin-bottom:10px;
 }
 
-/* ===== ZOOM ===== */
+/* ZOOM */
 .zoomBox{
 display:none;
 position:fixed;
@@ -114,19 +194,39 @@ z-index:999999;
 }
 .zoomBox img{max-width:90%;max-height:90%}
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{
 background:#0a5c36;
 color:#fff;
-padding:20px;
+padding:25px;
 margin-top:40px;
 text-align:center;
-font-size:13px;
+font-size:14px;
+line-height:1.8;
 }
 
+/* MOBILE FIX */
 @media(max-width:768px){
-.container{grid-template-columns:1fr}
-.main-img,.main-video{height:300px}
+
+header{
+flex-wrap:wrap;
+}
+
+.logoBox{order:1}
+.headerIcons{order:2}
+.searchBox{
+order:3;
+width:100%;
+margin-top:5px;
+}
+
+.container{
+grid-template-columns:1fr;
+}
+
+.main-img,.main-video{
+height:300px;
+}
 }
 </style>
 
@@ -149,9 +249,7 @@ function zoom(src){
 document.getElementById("zoomImg").src=src;
 document.getElementById("zoomBox").style.display="flex";
 }
-function closeZoom(){
-document.getElementById("zoomBox").style.display="none";
-}
+function closeZoom(){document.getElementById("zoomBox").style.display="none"}
 
 function qty(id,val){
 let el=document.getElementById(id);
@@ -230,130 +328,28 @@ window.open("https://wa.me/919124646598?text=My Order:%0A"+txt);
 </div>
 
 <div class="headerIcons">
+
+<button class="authBtn">Login</button>
+<button class="authBtn">Signup</button>
+
 <div onclick="openWish()">❤️</div>
+
 <div onclick="openCart()">
 <img src="cart.png">
 <span class="badge" id="cartCount">0</span>
 </div>
+
 </div>
 </header>
 
-<!-- ===== ⭐⭐⭐ ALL 5 PRODUCTS BACK ⭐⭐⭐ ===== -->
-<div class="container">
-
-<!-- PRODUCT 1 -->
-<div class="product">
-<div class="offerBadge">50% OFF</div>
-<img id="img1" src="sealer1.jpeg" class="main-img" onclick="zoom(this.src)">
-<div class="thumbs">
-<img src="sealer1.jpeg" onclick="changeImage('img1','sealer1.jpeg')">
-<img src="sealer2.jpeg" onclick="changeImage('img1','sealer2.jpeg')">
-<img src="sealer3.jpeg" onclick="changeImage('img1','sealer3.jpeg')">
-<img src="sealer4.jpeg" onclick="changeImage('img1','sealer4.jpeg')">
-</div>
-<h3>Mini Bag Sealer</h3>
-<span class="price">₹179</span><span class="mrp">₹399</span><br>
-<div class="qty"><button onclick="qty('q1',-1)">-</button><span id="q1">1</span><button onclick="qty('q1',1)">+</button></div>
-<button class="btn cartBtn" onclick="addCart('Sealer',179,'q1')">Add</button>
-<button class="btn buyBtn" onclick="buyNow('Sealer',179,'q1')">Buy</button>
-<button class="btn wishBtn" onclick="addWish('Sealer')">Wish</button>
-</div>
-
-<!-- PRODUCT 2 -->
-<div class="product">
-<div class="offerBadge">50% OFF</div>
-<img id="img2" src="lunchcamera1.jpg" class="main-img" onclick="zoom(this.src)">
-<div class="thumbs">
-<img src="lunchcamera1.jpg" onclick="changeImage('img2','lunchcamera1.jpg')">
-<img src="lunchcamera2.jpeg" onclick="changeImage('img2','lunchcamera2.jpeg')">
-<img src="lunchcamera3.jpeg" onclick="changeImage('img2','lunchcamera3.jpeg')">
-<img src="lunchcamera4.jpeg" onclick="changeImage('img2','lunchcamera4.jpeg')">
-</div>
-<h3>Camera Lunch Box</h3>
-<span class="price">₹349</span><span class="mrp">₹699</span><br>
-<div class="qty"><button onclick="qty('q2',-1)">-</button><span id="q2">1</span><button onclick="qty('q2',1)">+</button></div>
-<button class="btn cartBtn" onclick="addCart('Camera LunchBox',349,'q2')">Add</button>
-<button class="btn buyBtn" onclick="buyNow('Camera LunchBox',349,'q2')">Buy</button>
-<button class="btn wishBtn" onclick="addWish('Camera LunchBox')">Wish</button>
-</div>
-
-<!-- PRODUCT 3 -->
-<div class="product">
-<div class="offerBadge">45% OFF</div>
-<img id="img3" src="LUNCH1.jpeg" class="main-img" onclick="zoom(this.src)">
-<div class="thumbs">
-<img src="LUNCH1.jpeg" onclick="changeImage('img3','LUNCH1.jpeg')">
-<img src="LUNCH2.jpeg" onclick="changeImage('img3','LUNCH2.jpeg')">
-<img src="LUNCH3.jpeg" onclick="changeImage('img3','LUNCH3.jpeg')">
-<img src="LUNCH4.jpeg" onclick="changeImage('img3','LUNCH4.jpeg')">
-<img src="LUNCH5.jpeg" onclick="changeImage('img3','LUNCH5.jpeg')">
-</div>
-<h3>Premium Lunch Box</h3>
-<span class="price">₹389</span><span class="mrp">₹699</span><br>
-<div class="qty"><button onclick="qty('q3',-1)">-</button><span id="q3">1</span><button onclick="qty('q3',1)">+</button></div>
-<button class="btn cartBtn" onclick="addCart('Premium LunchBox',389,'q3')">Add</button>
-<button class="btn buyBtn" onclick="buyNow('Premium LunchBox',389,'q3')">Buy</button>
-<button class="btn wishBtn" onclick="addWish('Premium LunchBox')">Wish</button>
-</div>
-
-<!-- PRODUCT 4 -->
-<div class="product">
-<div class="offerBadge">50% OFF</div>
-<img id="img4" src="ICE1.jpeg" class="main-img" onclick="zoom(this.src)">
-<div class="thumbs">
-<img src="ICE1.jpeg" onclick="changeImage('img4','ICE1.jpeg')">
-<img src="ICE2.jpeg" onclick="changeImage('img4','ICE2.jpeg')">
-<img src="ICE3.jpeg" onclick="changeImage('img4','ICE3.jpeg')">
-<img src="ICE4.jpeg" onclick="changeImage('img4','ICE4.jpeg')">
-<img src="ICE5.jpeg" onclick="changeImage('img4','ICE5.jpeg')">
-</div>
-<h3>Ice Cube Tray Silicone</h3>
-<span class="price">₹199</span><span class="mrp">₹399</span><br>
-<div class="qty"><button onclick="qty('q4',-1)">-</button><span id="q4">1</span><button onclick="qty('q4',1)">+</button></div>
-<button class="btn cartBtn" onclick="addCart('Ice Tray',199,'q4')">Add</button>
-<button class="btn buyBtn" onclick="buyNow('Ice Tray',199,'q4')">Buy</button>
-<button class="btn wishBtn" onclick="addWish('Ice Tray')">Wish</button>
-</div>
-
-<!-- PRODUCT 5 VIDEO -->
-<div class="product">
-<div class="offerBadge">50% OFF</div>
-<video id="img5" src="EBOOK.mp4" class="main-video" controls></video>
-<div class="thumbs">
-<img src="EBOOK1.jpg" onclick="changeImage('img5','EBOOK1.jpg')">
-<img src="EBOOK2.jpg" onclick="changeImage('img5','EBOOK2.jpg')">
-<img src="EBOOK3.jpg" onclick="changeImage('img5','EBOOK3.jpg')">
-<img src="EBOOK4.jpg" onclick="changeImage('img5','EBOOK4.jpg')">
-<video src="EBOOK.mp4" onclick="changeImage('img5','EBOOK.mp4',true)"></video>
-</div>
-<h3>Kids Musical Learning Book</h3>
-<span class="price">₹249</span><span class="mrp">₹499</span><br>
-<div class="qty"><button onclick="qty('q5',-1)">-</button><span id="q5">1</span><button onclick="qty('q5',1)">+</button></div>
-<button class="btn cartBtn" onclick="addCart('Kids Book',249,'q5')">Add</button>
-<button class="btn buyBtn" onclick="buyNow('Kids Book',249,'q5')">Buy</button>
-<button class="btn wishBtn" onclick="addWish('Kids Book')">Wish</button>
-</div>
-
-</div>
-
-<!-- CART PANEL -->
-<div id="cartPanel" class="sidePanel">
-<button class="backBtn" onclick="closeCart()">⬅ Back</button>
-<h3>Your Cart</h3>
-<div id="cartItems"></div>
-<div id="totalPrice"></div>
-<button onclick="orderWhatsApp()" class="buyBtn" style="width:100%;margin-top:10px;">Order on WhatsApp</button>
-</div>
-
-<!-- WISHLIST -->
-<div id="wishPanel" class="sidePanel">
-<button class="backBtn" onclick="closeWish()">⬅ Back</button>
-<h3>Wishlist</h3>
-<div id="wishItems"></div>
-</div>
+<!-- ⭐⭐⭐ YAHAN TUMHARA SAME PRODUCT 1-5 BLOCK RAHEGA (JO ABHI WORKING HAI) ⭐⭐⭐ -->
 
 <footer>
-Barakah eMart | WhatsApp 9124646598
+<b>Barakah eMart</b><br>
+📞 Call us / WhatsApp : 9124646598<br>
+🕘 Customer Service : Mon to Sat – 9am to 06pm IST<br>
+📍 Ahmad Nagar, Byasanagar, Jajpur Road, ORRISA 755019<br>
+📧 Get in Touch : Barakahemart786@gmail.com
 </footer>
 
 <div id="zoomBox" class="zoomBox" onclick="closeZoom()">
