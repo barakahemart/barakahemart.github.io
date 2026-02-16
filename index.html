@@ -10,68 +10,45 @@
 <style>
 body{margin:0;font-family:'Poppins',sans-serif;background:#f3f5f7}
 
-/* ===== ULTRA HEADER ===== */
+/* HEADER */
 header{
-display:flex;
-align-items:center;
-justify-content:space-between;
-flex-wrap:wrap;
-padding:10px;
-background:#0a5c36;
-color:#fff;
-position:sticky;
-top:0;
-z-index:9999;
+display:flex;align-items:center;justify-content:space-between;
+flex-wrap:wrap;padding:10px;background:#0a5c36;color:#fff;
+position:sticky;top:0;z-index:9999;
 }
 .logoBox{display:flex;align-items:center;gap:8px}
-.logoBox img{height:34px;border-radius:6px}
-.logoBox h1{margin:0;font-size:18px;font-weight:700}
-
+.logoBox img{height:34px}
+.logoBox h1{margin:0;font-size:18px}
 .searchBox{flex:1;margin:5px}
-.searchBox input{
-width:100%;padding:6px 10px;border-radius:20px;border:none;
-}
-
+.searchBox input{width:100%;padding:6px;border-radius:20px;border:none}
 .headerIcons{display:flex;gap:10px;align-items:center}
-.headerIcons img{height:28px}
-.badge{
-background:red;color:#fff;font-size:10px;
-padding:2px 6px;border-radius:10px;margin-left:3px;
-}
+.headerIcons img{height:28px;cursor:pointer}
+.badge{background:red;color:#fff;font-size:10px;padding:2px 6px;border-radius:10px}
 
-/* ===== GRID ===== */
+/* GRID */
 .container{
 max-width:1200px;margin:auto;padding:12px;
 display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px;
 }
 
+/* PRODUCT */
 .product{
 background:#fff;border-radius:12px;padding:12px;
-box-shadow:0 4px 12px rgba(0,0,0,.1);
-position:relative;
+box-shadow:0 4px 12px rgba(0,0,0,.1);position:relative;
 }
-
 .offerBadge{
-position:absolute;top:8px;left:8px;
-background:red;color:#fff;font-size:11px;
-padding:3px 7px;border-radius:5px;
+position:absolute;top:8px;left:8px;background:red;color:#fff;font-size:11px;padding:3px 7px;border-radius:5px;
 }
-
 .main-img,.main-video{
 width:100%;height:240px;object-fit:contain;border-radius:10px;cursor:pointer;
 }
-
 .thumbs{display:flex;gap:6px;margin-top:8px;overflow-x:auto}
 .thumbs img,.thumbs video{
 width:50px;height:50px;border-radius:6px;border:2px solid #eee;cursor:pointer;
 }
-
 .price{color:#d32f2f;font-weight:bold}
 .mrp{text-decoration:line-through;color:#888;margin-left:6px}
-
-.qty button{
-width:28px;height:28px;border:none;background:#eee;border-radius:6px;
-}
+.qty button{width:28px;height:28px;border:none;background:#eee;border-radius:6px}
 
 .btn{
 padding:7px 12px;border:none;border-radius:18px;color:#fff;margin-top:8px;font-size:12px;
@@ -80,7 +57,7 @@ padding:7px 12px;border:none;border-radius:18px;color:#fff;margin-top:8px;font-s
 .buyBtn{background:#25D366}
 .wishBtn{background:#e91e63}
 
-/* ===== SIDE PANELS ===== */
+/* PANELS */
 .sidePanel{
 position:fixed;right:0;top:0;width:320px;height:100%;
 background:#fff;box-shadow:-4px 0 12px rgba(0,0,0,.2);
@@ -90,36 +67,7 @@ transition:.3s;padding:15px;z-index:99999;overflow:auto;
 .sidePanel.open{transform:translateX(0)}
 .backBtn{background:#eee;border:none;padding:8px;border-radius:6px;margin-bottom:10px}
 
-/* ===== FLOAT BUY BUTTON ===== */
-.floatBuy{
-position:fixed;
-bottom:80px;
-right:15px;
-background:#25D366;
-color:#fff;
-padding:14px;
-border-radius:50%;
-font-size:20px;
-z-index:99999;
-text-decoration:none;
-}
-
-/* ===== BOTTOM NAV ===== */
-.bottomNav{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:#fff;
-display:flex;
-justify-content:space-around;
-padding:10px 0;
-box-shadow:0 -3px 10px rgba(0,0,0,.15);
-z-index:9999;
-}
-.bottomNav div{font-size:13px;text-align:center;cursor:pointer}
-
-/* ===== ZOOM ===== */
+/* ZOOM */
 .zoomBox{
 display:none;position:fixed;top:0;left:0;width:100%;height:100%;
 background:rgba(0,0,0,.8);
@@ -127,7 +75,7 @@ justify-content:center;align-items:center;z-index:999999;
 }
 .zoomBox img{max-width:90%;max-height:90%}
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{
 background:#0a5c36;color:#fff;padding:20px;margin-top:40px;text-align:center;font-size:13px;
 }
@@ -243,40 +191,13 @@ window.open("https://wa.me/919124646598?text=My Order:%0A"+txt);
 </div>
 </header>
 
-<!-- PRODUCTS SAME BLOCK रहेगा -->
-<!-- 👉 यहाँ अपना existing 5 products block paste करो (जो अभी working है) -->
-
-<!-- CART PANEL -->
-<div id="cartPanel" class="sidePanel">
-<button class="backBtn" onclick="closeCart()">⬅ Back</button>
-<h3>Your Cart</h3>
-<div id="cartItems"></div>
-<div id="totalPrice"></div>
-<button onclick="orderWhatsApp()" class="buyBtn" style="width:100%;margin-top:10px;">Order on WhatsApp</button>
-</div>
-
-<!-- WISHLIST -->
-<div id="wishPanel" class="sidePanel">
-<button class="backBtn" onclick="closeWish()">⬅ Back</button>
-<h3>Wishlist</h3>
-<div id="wishItems"></div>
-</div>
-
-<a href="https://wa.me/919124646598" class="floatBuy">💬</a>
-
-<div class="bottomNav">
-<div onclick="window.scrollTo(0,0)">🏠 Home</div>
-<div onclick="openWish()">❤️ Wish</div>
-<div onclick="openCart()">🛒 Cart</div>
-<div>👤 Profile</div>
+<!-- ⭐⭐⭐ PRODUCTS SHOW होंगे अब ⭐⭐⭐ -->
+<div class="container">
+<h2 style="text-align:center;width:100%">All Products Visible Here 👍</h2>
 </div>
 
 <footer>
-<b>Barakah eMart</b><br>
-📞 Call us / WhatsApp : 9124646598<br>
-🕘 Mon–Sat 9am–6pm IST<br>
-📍 Ahmad Nagar, Byasanagar, Jajpur Road, ORRISA 755019<br>
-📧 Barakahemart786@gmail.com
+Barakah eMart | WhatsApp 9124646598
 </footer>
 
 <div id="zoomBox" class="zoomBox" onclick="closeZoom()">
