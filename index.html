@@ -12,45 +12,16 @@ body{margin:0;font-family:'Poppins',sans-serif;background:#f3f5f7}
 
 /* ===== HEADER ===== */
 header{
-display:flex;
-align-items:center;
-justify-content:space-between;
-flex-wrap:wrap;
-background:#0a5c36;
-padding:10px 12px;
-color:#fff;
-position:sticky;
-top:0;
-z-index:9999;
-gap:8px;
+display:flex;align-items:center;justify-content:space-between;
+flex-wrap:wrap;background:#0a5c36;padding:10px;color:#fff
 }
-
 .logoBox{display:flex;align-items:center;gap:8px}
-.logoBox img{height:38px}
-.logoBox h1{margin:0;font-size:18px;font-weight:700}
-
-.searchBox{flex:1;min-width:150px}
-.searchBox input{
-width:100%;
-padding:8px 14px;
-border-radius:20px;
-border:none;
-}
-
-.headerIcons{display:flex;align-items:center;gap:10px}
+.logoBox img{height:36px}
+.searchBox{flex:1;margin:5px}
+.searchBox input{width:100%;padding:8px;border-radius:20px;border:none}
+.headerIcons{display:flex;gap:10px;align-items:center}
 .headerIcons img{height:36px}
 .badge{background:red;color:#fff;font-size:10px;padding:2px 6px;border-radius:10px}
-
-.authBtn{
-background:#fff;
-color:#0a5c36;
-border:none;
-padding:6px 12px;
-border-radius:18px;
-font-size:12px;
-cursor:pointer;
-font-weight:600;
-}
 
 /* GRID */
 .container{
@@ -62,97 +33,33 @@ gap:15px;
 
 .product{
 background:#fff;border-radius:12px;padding:12px;
-box-shadow:0 4px 12px rgba(0,0,0,.1);
-position:relative;
+box-shadow:0 4px 12px rgba(0,0,0,.1);position:relative
 }
 
 .offerBadge{
-position:absolute;
-top:8px;
-left:8px;
-background:red;
-color:#fff;
-font-size:11px;
-padding:3px 7px;
-border-radius:5px;
+position:absolute;top:8px;left:8px;
+background:red;color:#fff;font-size:11px;padding:3px 7px;border-radius:5px
 }
 
 .main-img,.main-video{
-width:100%;
-height:260px;
-object-fit:contain;
-border-radius:10px;
-cursor:pointer;
+width:100%;height:260px;object-fit:contain;border-radius:10px
 }
 
-.thumbs{
-display:flex;
-gap:6px;
-margin-top:8px;
-overflow-x:auto;
-}
+.thumbs{display:flex;gap:6px;margin-top:8px;overflow-x:auto}
 .thumbs img,.thumbs video{
-width:55px;height:55px;
-border-radius:6px;
-border:2px solid #eee;
-cursor:pointer;
-object-fit:cover;
+width:55px;height:55px;border-radius:6px;border:2px solid #eee;object-fit:cover
 }
 
 .price{color:#d32f2f;font-weight:bold}
 .mrp{text-decoration:line-through;color:#888;margin-left:6px}
 
-.qty button{
-width:28px;height:28px;border:none;background:#eee;border-radius:6px;
-}
+.qty button{width:28px;height:28px;border:none;background:#eee;border-radius:6px}
 
-.btn{
-padding:7px 12px;border:none;border-radius:18px;color:#fff;margin-top:8px;font-size:12px;
-cursor:pointer;
-}
+.btn{padding:7px 12px;border:none;border-radius:18px;color:#fff;margin-top:8px;font-size:12px}
 .cartBtn{background:#ff9800}
 .buyBtn{background:#25D366}
-.wishBtn{background:#e91e63}
 
-/* SIDE PANELS */
-.sidePanel{
-position:fixed;right:0;top:0;width:320px;height:100%;
-background:#fff;
-box-shadow:-4px 0 12px rgba(0,0,0,.2);
-transform:translateX(100%);
-transition:.3s;
-padding:15px;
-z-index:99999;
-overflow:auto;
-}
-.sidePanel.open{transform:translateX(0)}
-
-.backBtn{
-background:#eee;border:none;padding:8px;border-radius:6px;margin-bottom:10px;
-}
-
-/* ZOOM */
-.zoomBox{
-display:none;
-position:fixed;
-top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,.8);
-justify-content:center;
-align-items:center;
-z-index:999999;
-}
-.zoomBox img{max-width:90%;max-height:90%}
-
-footer{
-background:#0a5c36;
-color:#fff;
-padding:25px;
-margin-top:40px;
-text-align:center;
-font-size:14px;
-line-height:1.8;
-}
-
+/* MOBILE */
 @media(max-width:768px){
 .container{grid-template-columns:1fr}
 .main-img,.main-video{height:300px}
@@ -160,77 +67,14 @@ line-height:1.8;
 </style>
 
 <script>
-let cart=[];
-let wishlist=[];
-
 function changeImage(id,src,isVideo=false){
 let el=document.getElementById(id);
 if(isVideo){
 el.outerHTML=`<video id="${id}" src="${src}" class="main-video" controls></video>`;
 }else{
 if(el.tagName==="VIDEO"){
-el.outerHTML=`<img id="${id}" src="${src}" class="main-img" onclick="zoom(this.src)">`;
+el.outerHTML=`<img id="${id}" src="${src}" class="main-img">`;
 }else{el.src=src;}
-}
-}
-
-function zoom(src){
-document.getElementById("zoomImg").src=src;
-document.getElementById("zoomBox").style.display="flex";
-}
-function closeZoom(){document.getElementById("zoomBox").style.display="none"}
-
-function qty(id,val){
-let el=document.getElementById(id);
-let n=parseInt(el.innerText);
-n+=val;if(n<1)n=1;
-el.innerText=n;
-}
-
-function addCart(name,price,qtyId){
-let q=parseInt(document.getElementById(qtyId).innerText);
-cart.push({name,price,qty:q});
-updateCart();
-openCart();
-}
-
-function updateCart(){
-let html="";let total=0;
-cart.forEach(i=>{
-html+=`<p>${i.name} x${i.qty} = ₹${i.price*i.qty}</p>`;
-total+=i.price*i.qty;
-});
-document.getElementById("cartItems").innerHTML=html;
-document.getElementById("totalPrice").innerText="Total ₹"+total;
-document.getElementById("cartCount").innerText=cart.length;
-}
-
-function openCart(){document.getElementById("cartPanel").classList.add("open")}
-function closeCart(){document.getElementById("cartPanel").classList.remove("open")}
-
-function addWish(name){
-wishlist.push(name);
-updateWish();
-openWish();
-}
-function updateWish(){
-let html="";
-wishlist.forEach(i=>{html+=`<p>${i}</p>`});
-document.getElementById("wishItems").innerHTML=html;
-}
-function openWish(){document.getElementById("wishPanel").classList.add("open")}
-function closeWish(){document.getElementById("wishPanel").classList.remove("open")}
-
-function buyNow(name,price,qtyId){
-let q=document.getElementById(qtyId).innerText;
-window.open("https://wa.me/919124646598?text=I want "+name+" Qty:"+q+" Price:"+price);
-}
-
-function searchProduct(){
-let val=document.getElementById("search").value.toLowerCase();
-let cards=document.getElementsByClassName("product");
-for(let i=0;i<cards.length;i++){
-cards[i].style.display=cards[i].innerText.toLowerCase().includes(val)?"block":"none";
 }
 }
 </script>
@@ -241,39 +85,99 @@ cards[i].style.display=cards[i].innerText.toLowerCase().includes(val)?"block":"n
 <header>
 <div class="logoBox">
 <img src="logos.jpeg">
-<h1>Barakah eMart</h1>
+<h3>Barakah eMart</h3>
 </div>
 
 <div class="searchBox">
-<input id="search" onkeyup="searchProduct()" placeholder="Search products...">
+<input placeholder="Search products...">
 </div>
 
 <div class="headerIcons">
-<button class="authBtn">Login</button>
-<button class="authBtn">Signup</button>
-<div onclick="openWish()">❤️</div>
-<div onclick="openCart()">
-<img src="cart.png">
-<span class="badge" id="cartCount">0</span>
-</div>
+<div>❤️</div>
+<div><img src="cart.png"></div>
 </div>
 </header>
 
 <div class="container">
-<h2 style="width:100%;text-align:center">✔️ All Products Visible Again</h2>
+
+<!-- PRODUCT 1 -->
+<div class="product">
+<div class="offerBadge">50% OFF</div>
+<img id="img1" src="sealer1.jpeg" class="main-img">
+<div class="thumbs">
+<img src="sealer1.jpeg" onclick="changeImage('img1','sealer1.jpeg')">
+<img src="sealer2.jpeg" onclick="changeImage('img1','sealer2.jpeg')">
+<img src="sealer3.jpeg" onclick="changeImage('img1','sealer3.jpeg')">
+<img src="sealer4.jpeg" onclick="changeImage('img1','sealer4.jpeg')">
+</div>
+<h3>Mini Bag Sealer</h3>
+<span class="price">₹179</span><span class="mrp">₹399</span>
 </div>
 
-<footer>
-<b>Barakah eMart</b><br>
-📞 Call us / WhatsApp : 9124646598<br>
-🕘 Customer Service : Mon to Sat – 9am to 06pm IST<br>
-📍 Ahmad Nagar, Byasanagar, Jajpur Road, ORRISA 755019<br>
-📧 Get in Touch : Barakahemart786@gmail.com
+<!-- PRODUCT 2 -->
+<div class="product">
+<div class="offerBadge">50% OFF</div>
+<img id="img2" src="lunchcamera1.jpg" class="main-img">
+<div class="thumbs">
+<img src="lunchcamera1.jpg" onclick="changeImage('img2','lunchcamera1.jpg')">
+<img src="lunchcamera2.jpeg" onclick="changeImage('img2','lunchcamera2.jpeg')">
+<img src="lunchcamera3.jpeg" onclick="changeImage('img2','lunchcamera3.jpeg')">
+<img src="lunchcamera4.jpeg" onclick="changeImage('img2','lunchcamera4.jpeg')">
+</div>
+<h3>Camera Lunch Box</h3>
+<span class="price">₹349</span><span class="mrp">₹699</span>
+</div>
+
+<!-- PRODUCT 3 -->
+<div class="product">
+<div class="offerBadge">45% OFF</div>
+<img id="img3" src="LUNCH1.jpeg" class="main-img">
+<div class="thumbs">
+<img src="LUNCH1.jpeg" onclick="changeImage('img3','LUNCH1.jpeg')">
+<img src="LUNCH2.jpeg" onclick="changeImage('img3','LUNCH2.jpeg')">
+<img src="LUNCH3.jpeg" onclick="changeImage('img3','LUNCH3.jpeg')">
+<img src="LUNCH4.jpeg" onclick="changeImage('img3','LUNCH4.jpeg')">
+<img src="LUNCH5.jpeg" onclick="changeImage('img3','LUNCH5.jpeg')">
+</div>
+<h3>Premium Lunch Box</h3>
+<span class="price">₹389</span><span class="mrp">₹699</span>
+</div>
+
+<!-- PRODUCT 4 -->
+<div class="product">
+<div class="offerBadge">50% OFF</div>
+<img id="img4" src="ICE1.jpeg" class="main-img">
+<div class="thumbs">
+<img src="ICE1.jpeg" onclick="changeImage('img4','ICE1.jpeg')">
+<img src="ICE2.jpeg" onclick="changeImage('img4','ICE2.jpeg')">
+<img src="ICE3.jpeg" onclick="changeImage('img4','ICE3.jpeg')">
+<img src="ICE4.jpeg" onclick="changeImage('img4','ICE4.jpeg')">
+<img src="ICE5.jpeg" onclick="changeImage('img4','ICE5.jpeg')">
+</div>
+<h3>Ice Cube Tray Silicone</h3>
+<span class="price">₹199</span><span class="mrp">₹399</span>
+</div>
+
+<!-- PRODUCT 5 -->
+<div class="product">
+<div class="offerBadge">50% OFF</div>
+<img id="img5" src="EBOOK1.jpg" class="main-img">
+<div class="thumbs">
+<img src="EBOOK1.jpg" onclick="changeImage('img5','EBOOK1.jpg')">
+<img src="EBOOK2.jpg" onclick="changeImage('img5','EBOOK2.jpg')">
+<img src="EBOOK3.jpg" onclick="changeImage('img5','EBOOK3.jpg')">
+<img src="EBOOK4.jpg" onclick="changeImage('img5','EBOOK4.jpg')">
+<video src="EBOOK.mp4" onclick="changeImage('img5','EBOOK.mp4',true)"></video>
+</div>
+<h3>Kids Musical Learning Book</h3>
+<span class="price">₹249</span><span class="mrp">₹499</span>
+</div>
+
+</div>
+
+<footer style="background:#0a5c36;color:#fff;padding:20px;text-align:center">
+Barakah eMart | WhatsApp 9124646598
 </footer>
-
-<div id="zoomBox" class="zoomBox" onclick="closeZoom()">
-<img id="zoomImg">
-</div>
 
 </body>
 </html>
