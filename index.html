@@ -19,11 +19,16 @@ header{display:flex;align-items:center;justify-content:space-between;flex-wrap:w
 .headerIcons img{height:36px;cursor:pointer}
 .container{max-width:1200px;margin:auto;padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px}
 .product{background:#fff;border-radius:14px;padding:12px;box-shadow:0 4px 14px rgba(0,0,0,.12);position:relative;transition:.25s;
-display:flex;flex-direction:column;justify-content:space-between;height:500px;} /* Equal height */
+display:flex;flex-direction:column;justify-content:space-between;height:500px;}
 .product:hover{transform:translateY(-4px)}
 .offerBadge{position:absolute;top:8px;left:8px;background:#ff0055;color:#fff;font-size:11px;padding:3px 8px;border-radius:6px}
-.main-img,.main-video{width:100%;height:220px;object-fit:contain;border-radius:10px;transition:.3s}
-.main-img:hover{transform:scale(1.1)} /* Zoom effect */
+
+/* ===== ONLY HOVER ZOOM ADDED ===== */
+.imgBox{width:100%;height:220px;overflow:hidden;border-radius:10px}
+.main-img,.main-video{width:100%;height:220px;object-fit:contain;border-radius:10px;transition:.4s}
+.imgBox:hover .main-img{transform:scale(1.25)}
+/* ===== END ZOOM ===== */
+
 .thumbs{display:flex;gap:6px;margin-top:8px;overflow-x:auto}
 .thumbs img,.thumbs video{width:55px;height:55px;border-radius:6px;border:2px solid #eee;cursor:pointer;object-fit:cover}
 .price{color:#d32f2f;font-weight:700}
@@ -82,10 +87,10 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 
 <div class="container">
 
-<!-- PRODUCT 1: Mini Bag Sealer -->
+<!-- PRODUCT 1 -->
 <div class="product">
 <div class="offerBadge">50% OFF</div>
-<img id="img1" src="sealer1.jpeg" class="main-img" alt="Mini Bag Sealer">
+<div class="imgBox"><img id="img1" src="sealer1.jpeg" class="main-img" alt="Mini Bag Sealer"></div>
 <div class="thumbs">
 <img src="sealer1.jpeg" onclick="changeImage('img1','sealer1.jpeg')">
 <img src="sealer2.jpeg" onclick="changeImage('img1','sealer2.jpeg')">
@@ -99,10 +104,10 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <button class="btn buyBtn" onclick="buyNow('Mini Bag Sealer',179,'q1')">Buy</button>
 </div>
 
-<!-- PRODUCT 2: Camera Lunch Box -->
+<!-- PRODUCT 2 -->
 <div class="product">
 <div class="offerBadge">50% OFF</div>
-<img id="img2" src="lunchcamera1.jpg" class="main-img" alt="Camera Lunch Box">
+<div class="imgBox"><img id="img2" src="lunchcamera1.jpg" class="main-img" alt="Camera Lunch Box"></div>
 <div class="thumbs">
 <img src="lunchcamera1.jpg" onclick="changeImage('img2','lunchcamera1.jpg')">
 <img src="lunchcamera2.jpeg" onclick="changeImage('img2','lunchcamera2.jpeg')">
@@ -116,10 +121,10 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <button class="btn buyBtn" onclick="buyNow('Camera Lunch Box',349,'q2')">Buy</button>
 </div>
 
-<!-- PRODUCT 3: Premium Lunch Box -->
+<!-- PRODUCT 3 -->
 <div class="product">
 <div class="offerBadge">45% OFF</div>
-<img id="img3" src="LUNCH1.jpeg" class="main-img" alt="Premium Lunch Box">
+<div class="imgBox"><img id="img3" src="LUNCH1.jpeg" class="main-img" alt="Premium Lunch Box"></div>
 <div class="thumbs">
 <img src="LUNCH1.jpeg" onclick="changeImage('img3','LUNCH1.jpeg')">
 <img src="LUNCH2.jpeg" onclick="changeImage('img3','LUNCH2.jpeg')">
@@ -127,7 +132,6 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <img src="LUNCH4.jpeg" onclick="changeImage('img3','LUNCH4.jpeg')">
 <img src="LUNCH5.jpeg" onclick="changeImage('img3','LUNCH5.jpeg')">
 </div>
-
 <h4>Premium Lunch Box</h4>
 <span class="price">₹389</span><span class="mrp">₹699</span>
 <div class="qty"><button onclick="qty('q3',-1)">-</button><span id="q3">1</span><button onclick="qty('q3',1)">+</button></div>
@@ -135,10 +139,10 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <button class="btn buyBtn" onclick="buyNow('Premium Lunch Box',389,'q3')">Buy</button>
 </div>
 
-<!-- PRODUCT 4: Ice Cube Tray Silicone -->
+<!-- PRODUCT 4 -->
 <div class="product">
 <div class="offerBadge">50% OFF</div>
-<img id="img4" src="ICE1.jpeg" class="main-img" alt="Ice Cube Tray Silicone">
+<div class="imgBox"><img id="img4" src="ICE1.jpeg" class="main-img" alt="Ice Cube Tray Silicone"></div>
 <div class="thumbs">
 <img src="ICE1.jpeg" onclick="changeImage('img4','ICE1.jpeg')">
 <img src="ICE2.jpeg" onclick="changeImage('img4','ICE2.jpeg')">
@@ -153,10 +157,10 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <button class="btn buyBtn" onclick="buyNow('Ice Cube Tray Silicone',199,'q4')">Buy</button>
 </div>
 
-<!-- PRODUCT 5: Kids Musical Learning Book -->
+<!-- PRODUCT 5 -->
 <div class="product">
 <div class="offerBadge">50% OFF</div>
-<video id="img5" src="EBOOK.mp4" class="main-video" controls></video>
+<div class="imgBox"><video id="img5" src="EBOOK.mp4" class="main-video" controls></video></div>
 <div class="thumbs">
 <img src="EBOOK1.jpg" onclick="changeImage('img5','EBOOK1.jpg')">
 <img src="EBOOK2.jpg" onclick="changeImage('img5','EBOOK2.jpg')">
@@ -171,7 +175,7 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <button class="btn buyBtn" onclick="buyNow('Kids Musical Learning Book',249,'q5')">Buy</button>
 </div>
 
-</div> <!-- container end -->
+</div>
 
 <footer>
 <b>Barakah eMart</b><br>
@@ -182,5 +186,3 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 </footer>
 </body>
 </html>
-
-
