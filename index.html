@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Barakah eMart - Affordable Gadgets & Lifestyle Products</title>
+<title>Premium Lunch Box | Barakah eMart - Affordable Kitchen Gadgets</title>
 <meta name="description" content="Affordable kitchen gadgets, lunch boxes, silicone ice trays, and kids learning books at Barakah eMart. Best deals with up to 50% OFF.">
 <meta name="keywords" content="Barakah eMart, kitchen gadgets, lunch box, ice tray, kids learning book, online shopping, affordable products, best deals, discount store">
 
@@ -19,11 +19,11 @@ header{display:flex;align-items:center;justify-content:space-between;flex-wrap:w
 .headerIcons img{height:36px;cursor:pointer}
 .container{max-width:1200px;margin:auto;padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px}
 .product{background:#fff;border-radius:14px;padding:12px;box-shadow:0 4px 14px rgba(0,0,0,.12);position:relative;transition:.25s;
-display:flex;flex-direction:column;justify-content:space-between;height:500px;} /* Equal height */
+display:flex;flex-direction:column;justify-content:space-between;height:500px;}
 .product:hover{transform:translateY(-4px)}
 .offerBadge{position:absolute;top:8px;left:8px;background:#ff0055;color:#fff;font-size:11px;padding:3px 8px;border-radius:6px}
-.main-img,.main-video{width:100%;height:220px;object-fit:contain;border-radius:10px;transition:.3s}
-.main-img:hover{transform:scale(1.1)} /* Zoom effect */
+.main-img,.main-video{width:100%;height:220px;object-fit:contain;border-radius:10px;transition:transform .3s ease}
+.main-img:hover,.main-video:hover{transform:scale(1.15)} /* Hover zoom fix */
 .thumbs{display:flex;gap:6px;margin-top:8px;overflow-x:auto}
 .thumbs img,.thumbs video{width:55px;height:55px;border-radius:6px;border:2px solid #eee;cursor:pointer;object-fit:cover}
 .price{color:#d32f2f;font-weight:700}
@@ -128,7 +128,7 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <img src="LUNCH5.jpeg" onclick="changeImage('img3','LUNCH5.jpeg')">
 </div>
 <h4>Premium Lunch Box</h4>
-<span class="price">₹389</span><span class="mrp">₹699</span>
+<span class="price">₹389</span><span class="mrp
 <div class="qty"><button onclick="qty('q3',-1)">-</button><span id="q3">1</span><button onclick="qty('q3',1)">+</button></div>
 <button class="btn cartBtn" onclick="addCart('Premium Lunch Box',389,'q3')">Add</button>
 <button class="btn buyBtn" onclick="buyNow('Premium Lunch Box',389,'q3')">Buy</button>
