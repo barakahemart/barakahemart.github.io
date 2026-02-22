@@ -40,6 +40,25 @@ header{display:flex;align-items:center;justify-content:space-between;flex-wrap:w
 
 footer{background:#0a5c36;color:#fff;padding:20px;text-align:center;margin-top:60px}
 @media(max-width:768px){.container{grid-template-columns:1fr}}
+  /* ===== MOBILE IMAGE FIX ===== */
+@media(max-width:768px){
+
+.imgBox{
+height:auto;
+}
+
+.main-img,
+.main-video{
+height:auto;
+width:100%;
+object-fit:cover;
+}
+
+.product{
+height:auto;
+}
+
+}
 </style>
 
 <script>
