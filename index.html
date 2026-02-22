@@ -3,18 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Barakah eMart - Affordable Kitchen Gadgets & Smart Home Products</title>
-<meta name="description" content="Affordable kitchen gadgets, lunch boxes, silicone ice trays at Barakah eMart India. Cash on Delivery Available. Up to 50% OFF.">
+<title>Barakah eMart - Affordable Kitchen Gadgets</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 body{margin:0;font-family:'Poppins',sans-serif;background:#f3f5f7}
 
-/* ===== TRUST BAR ===== */
+/* TRUST BAR */
 .topbar{background:#ff9800;color:#fff;text-align:center;font-size:13px;padding:6px;font-weight:600}
 
-/* ===== HEADER ===== */
+/* HEADER */
 header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#0a5c36;padding:10px;color:#fff}
 .logoBox{display:flex;align-items:center;gap:8px}
 .logoBox img{height:36px}
@@ -22,17 +21,17 @@ header{display:flex;align-items:center;justify-content:space-between;flex-wrap:w
 .searchBox input{width:100%;padding:8px;border-radius:20px;border:none}
 .headerIcons img{height:36px;cursor:pointer}
 
-/* ===== HERO ===== */
+/* HERO */
 .hero{background:#fff;padding:14px;text-align:center;font-weight:700;color:#0a5c36;font-size:16px}
 
-/* ===== PRODUCTS ===== */
+/* PRODUCTS */
 .container{max-width:1200px;margin:auto;padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px}
 .product{background:#fff;border-radius:14px;padding:12px;box-shadow:0 4px 14px rgba(0,0,0,.12);position:relative;transition:.25s;
 display:flex;flex-direction:column;justify-content:space-between;height:500px;}
 .product:hover{transform:translateY(-4px)}
 .offerBadge{position:absolute;top:8px;left:8px;background:#ff0055;color:#fff;font-size:11px;padding:3px 8px;border-radius:6px}
 
-/* ===== ONLY HOVER ZOOM SAME ===== */
+/* IMAGE ZOOM SAME */
 .imgBox{width:100%;height:220px;overflow:hidden;border-radius:10px}
 .main-img,.main-video{width:100%;height:220px;object-fit:contain;border-radius:10px;transition:.4s}
 .imgBox:hover .main-img{transform:scale(1.25)}
@@ -49,43 +48,63 @@ display:flex;flex-direction:column;justify-content:space-between;height:500px;}
 .cartBtn{background:#ff9800}
 .buyBtn{background:#25D366}
 
-footer{background:#0a5c36;color:#fff;padding:20px;text-align:center;margin-top:40px}
+/* STICKY BUY BAR */
+.stickyBuy{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#fff;
+box-shadow:0 -3px 12px rgba(0,0,0,.2);
+padding:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:9999;
+}
+.stickyBuy button{
+background:#25D366;
+color:#fff;
+border:none;
+padding:12px 18px;
+border-radius:30px;
+font-weight:700;
+cursor:pointer;
+}
 
-@media(max-width:768px){.container{grid-template-columns:1fr}.main-img,.main-video{height:220px}}
+footer{background:#0a5c36;color:#fff;padding:20px;text-align:center;margin-top:60px}
+
+@media(max-width:768px){.container{grid-template-columns:1fr}}
 </style>
 
 <script>
+let selectedProduct={name:"Mini Bag Sealer",price:179,qtyId:"q1"};
+
 function changeImage(id,src,isVideo=false){
 let el=document.getElementById(id);
 if(isVideo){
 el.outerHTML=`<video id="${id}" src="${src}" class="main-video" controls></video>`;
 }else{
 if(el.tagName==="VIDEO"){
-el.outerHTML=`<img id="${id}" src="${src}" class="main-img" alt="Product Image">`;
+el.outerHTML=`<img id="${id}" src="${src}" class="main-img">`;
 }else{el.src=src;}
 }}
+
 function qty(id,val){
 let el=document.getElementById(id);
 let n=parseInt(el.innerText);
 n+=val;if(n<1)n=1;
 el.innerText=n;
 }
-let cart=[];
-function buyNow(name,price,qtyId){
-let q=document.getElementById(qtyId).innerText;
-let msg="🛒 Barakah eMart Order%0A%0A"+"Product : "+name+"%0A"+"Price : ₹"+price+"%0A"+"Qty : "+q;
-window.open("https://wa.me/919124646598?text="+msg,"_blank");
+
+function setProduct(name,price,qtyId){
+selectedProduct={name,price,qtyId};
+document.getElementById("stickyName").innerText=name+" ₹"+price;
 }
-function addCart(name,price,qtyId){
-let q=document.getElementById(qtyId).innerText;
-cart.push({name,price,qty:q});
-alert("Added to Cart");
-}
-function orderCart(){
-if(cart.length==0){alert("Cart empty");return;}
-let msg="🛒 Barakah eMart Cart Order%0A%0A";let total=0;
-cart.forEach(p=>{msg+=p.name+" x"+p.qty+" = ₹"+(p.price*p.qty)+"%0A";total+=p.price*p.qty;});
-msg+="%0ATotal = ₹"+total;
+
+function stickyBuy(){
+let q=document.getElementById(selectedProduct.qtyId).innerText;
+let msg="🛒 Barakah eMart Order%0A%0A"+"Product : "+selectedProduct.name+"%0A"+"Price : ₹"+selectedProduct.price+"%0A"+"Qty : "+q;
 window.open("https://wa.me/919124646598?text="+msg,"_blank");
 }
 </script>
@@ -98,122 +117,58 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <header>
 <div class="logoBox"><img src="logos.jpeg"><h3>Barakah eMart</h3></div>
 <div class="searchBox"><input placeholder="Search kitchen gadgets..."></div>
-<div class="headerIcons"><img src="cart.png" onclick="orderCart()"></div>
+<div class="headerIcons"><img src="cart.png"></div>
 </header>
 
 <div class="hero">
 Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF
 </div>
 
-<!-- 🔥 PRODUCTS SECTION SAME AS YOUR ORIGINAL (NO PRODUCT REMOVED) -->
-<!-- ⭐⭐⭐⭐⭐ IMPORTANT: YAHAN SE TUMHARA PRODUCT CODE EXACT SAME RAKHA HAI ⭐⭐⭐⭐⭐ -->
-</head>
-
-<body>
-<header>
-<div class="logoBox"><img src="logos.jpeg" alt="Barakah eMart Logo"><h3>Barakah eMart</h3></div>
-<div class="searchBox"><input placeholder="Search products..." aria-label="Search products"></div>
-<div class="headerIcons"><img src="cart.png" alt="Cart Icon" onclick="orderCart()"></div>
-</header>
-
 <div class="container">
 
 <!-- PRODUCT 1 -->
-<div class="product">
+<div class="product" onclick="setProduct('Mini Bag Sealer',179,'q1')">
 <div class="offerBadge">50% OFF</div>
-<div class="imgBox"><img id="img1" src="sealer1.jpeg" class="main-img" alt="Mini Bag Sealer"></div>
-<div class="thumbs">
-<img src="sealer1.jpeg" onclick="changeImage('img1','sealer1.jpeg')">
-<img src="sealer2.jpeg" onclick="changeImage('img1','sealer2.jpeg')">
-<img src="sealer3.jpeg" onclick="changeImage('img1','sealer3.jpeg')">
-<img src="sealer4.jpeg" onclick="changeImage('img1','sealer4.jpeg')">
-</div>
+<div class="imgBox"><img id="img1" src="sealer1.jpeg" class="main-img"></div>
 <h4>Mini Bag Sealer</h4>
 <span class="price">₹179</span><span class="mrp">₹399</span>
 <div class="qty"><button onclick="qty('q1',-1)">-</button><span id="q1">1</span><button onclick="qty('q1',1)">+</button></div>
-<button class="btn cartBtn" onclick="addCart('Mini Bag Sealer',179,'q1')">Add</button>
-<button class="btn buyBtn" onclick="buyNow('Mini Bag Sealer',179,'q1')">Buy</button>
+<button class="btn buyBtn" onclick="stickyBuy()">Order on WhatsApp</button>
 </div>
 
 <!-- PRODUCT 2 -->
-<div class="product">
+<div class="product" onclick="setProduct('Camera Lunch Box',349,'q2')">
 <div class="offerBadge">50% OFF</div>
-<div class="imgBox"><img id="img2" src="lunchcamera1.jpg" class="main-img" alt="Camera Lunch Box"></div>
-<div class="thumbs">
-<img src="lunchcamera1.jpg" onclick="changeImage('img2','lunchcamera1.jpg')">
-<img src="lunchcamera2.jpeg" onclick="changeImage('img2','lunchcamera2.jpeg')">
-<img src="lunchcamera3.jpeg" onclick="changeImage('img2','lunchcamera3.jpeg')">
-<img src="lunchcamera4.jpeg" onclick="changeImage('img2','lunchcamera4.jpeg')">
-</div>
+<div class="imgBox"><img id="img2" src="lunchcamera1.jpg" class="main-img"></div>
 <h4>Camera Lunch Box</h4>
 <span class="price">₹349</span><span class="mrp">₹699</span>
 <div class="qty"><button onclick="qty('q2',-1)">-</button><span id="q2">1</span><button onclick="qty('q2',1)">+</button></div>
-<button class="btn cartBtn" onclick="addCart('Camera Lunch Box',349,'q2')">Add</button>
-<button class="btn buyBtn" onclick="buyNow('Camera Lunch Box',349,'q2')">Buy</button>
+<button class="btn buyBtn" onclick="stickyBuy()">Order on WhatsApp</button>
 </div>
 
 <!-- PRODUCT 3 -->
-<div class="product">
+<div class="product" onclick="setProduct('Premium Lunch Box',389,'q3')">
 <div class="offerBadge">45% OFF</div>
-<div class="imgBox"><img id="img3" src="LUNCH1.jpeg" class="main-img" alt="Premium Lunch Box"></div>
-<div class="thumbs">
-<img src="LUNCH1.jpeg" onclick="changeImage('img3','LUNCH1.jpeg')">
-<img src="LUNCH2.jpeg" onclick="changeImage('img3','LUNCH2.jpeg')">
-<img src="LUNCH3.jpeg" onclick="changeImage('img3','LUNCH3.jpeg')">
-<img src="LUNCH4.jpeg" onclick="changeImage('img3','LUNCH4.jpeg')">
-<img src="LUNCH5.jpeg" onclick="changeImage('img3','LUNCH5.jpeg')">
-</div>
+<div class="imgBox"><img id="img3" src="LUNCH1.jpeg" class="main-img"></div>
 <h4>Premium Lunch Box</h4>
 <span class="price">₹389</span><span class="mrp">₹699</span>
 <div class="qty"><button onclick="qty('q3',-1)">-</button><span id="q3">1</span><button onclick="qty('q3',1)">+</button></div>
-<button class="btn cartBtn" onclick="addCart('Premium Lunch Box',389,'q3')">Add</button>
-<button class="btn buyBtn" onclick="buyNow('Premium Lunch Box',389,'q3')">Buy</button>
+<button class="btn buyBtn" onclick="stickyBuy()">Order on WhatsApp</button>
 </div>
 
-<!-- PRODUCT 4 -->
-<div class="product">
-<div class="offerBadge">50% OFF</div>
-<div class="imgBox"><img id="img4" src="ICE1.jpeg" class="main-img" alt="Ice Cube Tray Silicone"></div>
-<div class="thumbs">
-<img src="ICE1.jpeg" onclick="changeImage('img4','ICE1.jpeg')">
-<img src="ICE2.jpeg" onclick="changeImage('img4','ICE2.jpeg')">
-<img src="ICE3.jpeg" onclick="changeImage('img4','ICE3.jpeg')">
-<img src="ICE4.jpeg" onclick="changeImage('img4','ICE4.jpeg')">
-<img src="ICE5.jpeg" onclick="changeImage('img4','ICE5.jpeg')">
-</div>
-<h4>Ice Cube Tray Silicone</h4>
-<span class="price">₹199</span><span class="mrp">₹399</span>
-<div class="qty"><button onclick="qty('q4',-1)">-</button><span id="q4">1</span><button onclick="qty('q4',1)">+</button></div>
-<button class="btn cartBtn" onclick="addCart('Ice Cube Tray Silicone',199,'q4')">Add</button>
-<button class="btn buyBtn" onclick="buyNow('Ice Cube Tray Silicone',199,'q4')">Buy</button>
 </div>
 
-<!-- PRODUCT 5 -->
-<div class="product">
-<div class="offerBadge">50% OFF</div>
-<div class="imgBox"><video id="img5" src="EBOOK.mp4" class="main-video" controls></video></div>
-<div class="thumbs">
-<img src="EBOOK1.jpg" onclick="changeImage('img5','EBOOK1.jpg')">
-<img src="EBOOK2.jpg" onclick="changeImage('img5','EBOOK2.jpg')">
-<img src="EBOOK3.jpg" onclick="changeImage('img5','EBOOK3.jpg')">
-<img src="EBOOK4.jpg" onclick="changeImage('img5','EBOOK4.jpg')">
-<video src="EBOOK.mp4" onclick="changeImage('img5','EBOOK.mp4',true)"></video>
-</div>
-<h4>Kids Musical Learning Book</h4>
-<span class="price">₹249</span><span class="mrp">₹499</span>
-<div class="qty"><button onclick="qty('q5',-1)">-</button><span id="q5">1</span><button onclick="qty('q5',1)">+</button></div>
-<button class="btn cartBtn" onclick="addCart('Kids Musical Learning Book',249,'q5')">Add</button>
-<button class="btn buyBtn" onclick="buyNow('Kids Musical Learning Book',249,'q5')">Buy</button>
-</div>
-
+<!-- STICKY BUY BAR -->
+<div class="stickyBuy">
+<div id="stickyName">Mini Bag Sealer ₹179</div>
+<button onclick="stickyBuy()">Order Now</button>
 </div>
 
 <footer>
 <b>Barakah eMart</b><br>
 📞 Call / WhatsApp : 9638426185<br>
 📍 Ahmad Nagar, Jajpur Road, Odisha 755019<br>
-📧 Email: barakahemart786@gmail.com<br>
-<p>Affordable kitchen gadgets, lunch boxes, silicone ice trays at Barakah eMart India. Best deals with up to 50% OFF.</p>
+📧 Email: barakahemart786@gmail.com
 </footer>
 
 </body>
