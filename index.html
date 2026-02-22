@@ -9,29 +9,20 @@
 
 <style>
 body{margin:0;font-family:'Poppins',sans-serif;background:#f3f5f7}
-
-/* TRUST BAR */
 .topbar{background:#ff9800;color:#fff;text-align:center;font-size:13px;padding:6px;font-weight:600}
-
-/* HEADER */
 header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#0a5c36;padding:10px;color:#fff}
 .logoBox{display:flex;align-items:center;gap:8px}
 .logoBox img{height:36px}
 .searchBox{flex:1;margin:5px}
 .searchBox input{width:100%;padding:8px;border-radius:20px;border:none}
 .headerIcons img{height:36px;cursor:pointer}
+.hero{background:#fff;padding:14px;text-align:center;font-weight:700;color:#0a5c36}
 
-/* HERO */
-.hero{background:#fff;padding:14px;text-align:center;font-weight:700;color:#0a5c36;font-size:16px}
-
-/* PRODUCTS */
 .container{max-width:1200px;margin:auto;padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px}
-.product{background:#fff;border-radius:14px;padding:12px;box-shadow:0 4px 14px rgba(0,0,0,.12);position:relative;transition:.25s;
-display:flex;flex-direction:column;justify-content:space-between;height:500px;}
+.product{background:#fff;border-radius:14px;padding:12px;box-shadow:0 4px 14px rgba(0,0,0,.12);position:relative;transition:.25s;display:flex;flex-direction:column;justify-content:space-between;height:500px;}
 .product:hover{transform:translateY(-4px)}
 .offerBadge{position:absolute;top:8px;left:8px;background:#ff0055;color:#fff;font-size:11px;padding:3px 8px;border-radius:6px}
 
-/* IMAGE ZOOM SAME */
 .imgBox{width:100%;height:220px;overflow:hidden;border-radius:10px}
 .main-img,.main-video{width:100%;height:220px;object-fit:contain;border-radius:10px;transition:.4s}
 .imgBox:hover .main-img{transform:scale(1.25)}
@@ -44,36 +35,14 @@ display:flex;flex-direction:column;justify-content:space-between;height:500px;}
 
 .qty button{width:28px;height:28px;border:none;background:#eee;border-radius:6px;cursor:pointer}
 
-.btn{padding:9px 12px;border:none;border-radius:20px;color:#fff;font-size:13px;margin-top:8px;cursor:pointer;font-weight:600}
+.btn{padding:8px 12px;border:none;border-radius:20px;color:#fff;font-size:12px;margin-top:8px;cursor:pointer}
 .cartBtn{background:#ff9800}
 .buyBtn{background:#25D366}
 
-/* STICKY BUY BAR */
-.stickyBuy{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:#fff;
-box-shadow:0 -3px 12px rgba(0,0,0,.2);
-padding:10px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:9999;
-}
-.stickyBuy button{
-background:#25D366;
-color:#fff;
-border:none;
-padding:12px 18px;
-border-radius:30px;
-font-weight:700;
-cursor:pointer;
-}
+.stickyBuy{position:fixed;bottom:0;left:0;width:100%;background:#fff;box-shadow:0 -3px 12px rgba(0,0,0,.2);padding:10px;display:flex;justify-content:space-between;align-items:center;z-index:9999;}
+.stickyBuy button{background:#25D366;color:#fff;border:none;padding:12px 18px;border-radius:30px;font-weight:700;cursor:pointer;}
 
 footer{background:#0a5c36;color:#fff;padding:20px;text-align:center;margin-top:60px}
-
 @media(max-width:768px){.container{grid-template-columns:1fr}}
 </style>
 
@@ -104,7 +73,7 @@ document.getElementById("stickyName").innerText=name+" ₹"+price;
 
 function stickyBuy(){
 let q=document.getElementById(selectedProduct.qtyId).innerText;
-let msg="🛒 Barakah eMart Order%0A%0A"+"Product : "+selectedProduct.name+"%0A"+"Price : ₹"+selectedProduct.price+"%0A"+"Qty : "+q;
+let msg="🛒 Barakah eMart Order%0A%0AProduct : "+selectedProduct.name+"%0APrice : ₹"+selectedProduct.price+"%0AQty : "+q;
 window.open("https://wa.me/919124646598?text="+msg,"_blank");
 }
 </script>
@@ -120,9 +89,7 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <div class="headerIcons"><img src="cart.png"></div>
 </header>
 
-<div class="hero">
-Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF
-</div>
+<div class="hero">Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF</div>
 
 <div class="container">
 
@@ -130,6 +97,12 @@ Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF
 <div class="product" onclick="setProduct('Mini Bag Sealer',179,'q1')">
 <div class="offerBadge">50% OFF</div>
 <div class="imgBox"><img id="img1" src="sealer1.jpeg" class="main-img"></div>
+<div class="thumbs">
+<img src="sealer1.jpeg" onclick="changeImage('img1','sealer1.jpeg')">
+<img src="sealer2.jpeg" onclick="changeImage('img1','sealer2.jpeg')">
+<img src="sealer3.jpeg" onclick="changeImage('img1','sealer3.jpeg')">
+<img src="sealer4.jpeg" onclick="changeImage('img1','sealer4.jpeg')">
+</div>
 <h4>Mini Bag Sealer</h4>
 <span class="price">₹179</span><span class="mrp">₹399</span>
 <div class="qty"><button onclick="qty('q1',-1)">-</button><span id="q1">1</span><button onclick="qty('q1',1)">+</button></div>
@@ -140,6 +113,12 @@ Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF
 <div class="product" onclick="setProduct('Camera Lunch Box',349,'q2')">
 <div class="offerBadge">50% OFF</div>
 <div class="imgBox"><img id="img2" src="lunchcamera1.jpg" class="main-img"></div>
+<div class="thumbs">
+<img src="lunchcamera1.jpg" onclick="changeImage('img2','lunchcamera1.jpg')">
+<img src="lunchcamera2.jpeg" onclick="changeImage('img2','lunchcamera2.jpeg')">
+<img src="lunchcamera3.jpeg" onclick="changeImage('img2','lunchcamera3.jpeg')">
+<img src="lunchcamera4.jpeg" onclick="changeImage('img2','lunchcamera4.jpeg')">
+</div>
 <h4>Camera Lunch Box</h4>
 <span class="price">₹349</span><span class="mrp">₹699</span>
 <div class="qty"><button onclick="qty('q2',-1)">-</button><span id="q2">1</span><button onclick="qty('q2',1)">+</button></div>
@@ -150,15 +129,52 @@ Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF
 <div class="product" onclick="setProduct('Premium Lunch Box',389,'q3')">
 <div class="offerBadge">45% OFF</div>
 <div class="imgBox"><img id="img3" src="LUNCH1.jpeg" class="main-img"></div>
+<div class="thumbs">
+<img src="LUNCH1.jpeg" onclick="changeImage('img3','LUNCH1.jpeg')">
+<img src="LUNCH2.jpeg" onclick="changeImage('img3','LUNCH2.jpeg')">
+<img src="LUNCH3.jpeg" onclick="changeImage('img3','LUNCH3.jpeg')">
+<img src="LUNCH4.jpeg" onclick="changeImage('img3','LUNCH4.jpeg')">
+</div>
 <h4>Premium Lunch Box</h4>
 <span class="price">₹389</span><span class="mrp">₹699</span>
 <div class="qty"><button onclick="qty('q3',-1)">-</button><span id="q3">1</span><button onclick="qty('q3',1)">+</button></div>
 <button class="btn buyBtn" onclick="stickyBuy()">Order on WhatsApp</button>
 </div>
 
+<!-- PRODUCT 4 -->
+<div class="product" onclick="setProduct('Ice Cube Tray Silicone',199,'q4')">
+<div class="offerBadge">50% OFF</div>
+<div class="imgBox"><img id="img4" src="ICE1.jpeg" class="main-img"></div>
+<div class="thumbs">
+<img src="ICE1.jpeg" onclick="changeImage('img4','ICE1.jpeg')">
+<img src="ICE2.jpeg" onclick="changeImage('img4','ICE2.jpeg')">
+<img src="ICE3.jpeg" onclick="changeImage('img4','ICE3.jpeg')">
+<img src="ICE4.jpeg" onclick="changeImage('img4','ICE4.jpeg')">
+</div>
+<h4>Ice Cube Tray Silicone</h4>
+<span class="price">₹199</span><span class="mrp">₹399</span>
+<div class="qty"><button onclick="qty('q4',-1)">-</button><span id="q4">1</span><button onclick="qty('q4',1)">+</button></div>
+<button class="btn buyBtn" onclick="stickyBuy()">Order on WhatsApp</button>
 </div>
 
-<!-- STICKY BUY BAR -->
+<!-- PRODUCT 5 -->
+<div class="product" onclick="setProduct('Kids Musical Learning Book',249,'q5')">
+<div class="offerBadge">50% OFF</div>
+<div class="imgBox"><video id="img5" src="EBOOK.mp4" class="main-video" controls></video></div>
+<div class="thumbs">
+<img src="EBOOK1.jpg" onclick="changeImage('img5','EBOOK1.jpg')">
+<img src="EBOOK2.jpg" onclick="changeImage('img5','EBOOK2.jpg')">
+<img src="EBOOK3.jpg" onclick="changeImage('img5','EBOOK3.jpg')">
+<img src="EBOOK4.jpg" onclick="changeImage('img5','EBOOK4.jpg')">
+</div>
+<h4>Kids Musical Learning Book</h4>
+<span class="price">₹249</span><span class="mrp">₹499</span>
+<div class="qty"><button onclick="qty('q5',-1)">-</button><span id="q5">1</span><button onclick="qty('q5',1)">+</button></div>
+<button class="btn buyBtn" onclick="stickyBuy()">Order on WhatsApp</button>
+</div>
+
+</div>
+
 <div class="stickyBuy">
 <div id="stickyName">Mini Bag Sealer ₹179</div>
 <button onclick="stickyBuy()">Order Now</button>
