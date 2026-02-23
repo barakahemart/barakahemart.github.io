@@ -10,159 +10,97 @@
 <style>
 body{margin:0;font-family:'Poppins',sans-serif;background:#f3f5f7}
 
-/* TOPBAR */
-.topbar{background:#ff9800;color:#fff;text-align:center;font-size:13px;padding:6px;font-weight:600}
-
 /* HEADER */
-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#0a5c36;padding:10px;color:#fff}
-.logoBox{display:flex;align-items:center;gap:8px}
-.logoBox img{height:36px}
-.searchBox{flex:1;margin:5px}
-.searchBox input{width:100%;padding:9px;border-radius:20px;border:none}
-.headerIcons img{height:32px;cursor:pointer}
+header{
+position:sticky;top:0;z-index:999;
+display:flex;align-items:center;justify-content:space-between;
+flex-wrap:wrap;background:#0a5c36;padding:12px 16px;color:#fff;
+box-shadow:0 2px 12px rgba(0,0,0,.25)
+}
+.logoBox{display:flex;align-items:center;gap:8px;font-weight:700}
+.logoBox img{height:38px}
+.navLinks{display:flex;gap:18px;font-size:14px}
+.navLinks a{color:#fff;text-decoration:none}
+.searchBox{flex:1;max-width:420px;margin:6px 15px}
+.searchBox input{width:100%;padding:10px;border-radius:30px;border:none}
+.headerIcons img{height:30px;cursor:pointer}
 
 /* HERO */
 .hero{
-background:#fff;
-padding:16px;
-text-align:center;
-font-weight:700;
-color:#0a5c36;
-font-size:18px;
-box-shadow:0 2px 10px rgba(0,0,0,.05)
+background:#fff;padding:16px;text-align:center;font-weight:700;
+color:#0a5c36;font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.05)
 }
 
-/* TRUST BADGES */
+/* TRUST */
 .trust{
-display:flex;
-justify-content:center;
-gap:20px;
-font-size:12px;
-background:#ffffff;
-padding:8px;
-margin-top:5px;
-flex-wrap:wrap;
+display:flex;justify-content:center;gap:20px;font-size:12px;
+background:#ffffff;padding:8px;margin-top:5px;flex-wrap:wrap;
 }
 
-/* PRODUCT GRID */
+/* PRODUCTS */
 .container{
-max-width:1200px;
-margin:auto;
-padding:12px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+max-width:1200px;margin:auto;padding:12px;
+display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:15px
 }
-
-/* PRODUCT CARD */
 .product{
-background:#fff;
-border-radius:14px;
-padding:12px;
+background:#fff;border-radius:14px;padding:12px;
 box-shadow:0 4px 14px rgba(0,0,0,.08);
-position:relative;
-transition:.25s;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
+position:relative;transition:.25s;
+display:flex;flex-direction:column;justify-content:space-between;
 height:520px;
 }
 .product:hover{transform:translateY(-4px)}
 
 .offerBadge{
-position:absolute;
-top:8px;
-left:8px;
-background:#ff0055;
-color:#fff;
-font-size:11px;
-padding:3px 8px;
-border-radius:6px
+position:absolute;top:8px;left:8px;background:#ff0055;color:#fff;
+font-size:11px;padding:3px 8px;border-radius:6px
 }
 
 .imgBox{width:100%;height:220px;overflow:hidden;border-radius:10px}
 .main-img,.main-video{
-width:100%;
-height:220px;
-object-fit:contain;
-border-radius:10px;
-transition:.4s
+width:100%;height:220px;object-fit:contain;border-radius:10px;transition:.4s
 }
 .imgBox:hover .main-img{transform:scale(1.18)}
 
 .thumbs{display:flex;gap:6px;margin-top:8px;overflow-x:auto}
 .thumbs img,.thumbs video{
-width:55px;
-height:55px;
-border-radius:6px;
-border:2px solid #eee;
-cursor:pointer;
-object-fit:cover
+width:55px;height:55px;border-radius:6px;border:2px solid #eee;
+cursor:pointer;object-fit:cover
 }
 
 .price{color:#d32f2f;font-weight:700}
 .mrp{text-decoration:line-through;color:#888;margin-left:6px}
 
-.qty{
-margin-top:6px;
-display:flex;
-align-items:center;
-gap:6px
-}
-.qty button{
-width:28px;
-height:28px;
-border:none;
-background:#eee;
-border-radius:6px;
-cursor:pointer
-}
+.qty{margin-top:6px;display:flex;align-items:center;gap:6px}
+.qty button{width:28px;height:28px;border:none;background:#eee;border-radius:6px;cursor:pointer}
 
-/* BUTTON */
 .btn{
-padding:11px;
-border:none;
-border-radius:25px;
-color:#fff;
-font-size:13px;
-margin-top:10px;
-cursor:pointer;
-width:100%;
-font-weight:600
+padding:11px;border:none;border-radius:25px;color:#fff;
+font-size:13px;margin-top:10px;cursor:pointer;width:100%;font-weight:600
 }
 .buyBtn{background:#25D366}
 
 /* FOOTER */
 footer{
-background:#0a5c36;
-color:#fff;
-padding:25px;
-text-align:center;
-margin-top:50px;
-font-size:14px;
-line-height:1.6
+background:#0a5c36;color:#fff;padding:25px;text-align:center;margin-top:50px;
+font-size:14px;line-height:1.6
 }
 
-/* STICKY WHATSAPP */
+/* WHATSAPP */
 .whatsappFloat{
-position:fixed;
-right:15px;
-bottom:15px;
-background:#25D366;
-padding:12px 14px;
-border-radius:50%;
-box-shadow:0 4px 12px rgba(0,0,0,.3);
-z-index:999
+position:fixed;right:15px;bottom:15px;background:#25D366;
+padding:12px 14px;border-radius:50%;
+box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:999
 }
 .whatsappFloat img{height:28px}
 
-/* MOBILE FIX */
+/* MOBILE */
 @media(max-width:768px){
-
+.navLinks{display:none}
 .imgBox{height:auto}
 .main-img,.main-video{height:auto;width:100%;object-fit:cover}
 .product{height:auto}
-
 }
 </style>
 
@@ -195,8 +133,16 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <body>
 
 <header>
-<div class="logoBox"><img src="logos.jpeg"><h3>Barakah eMart</h3></div>
+<div class="logoBox"><img src="logos.jpeg"><span>Barakah eMart</span></div>
+
+<div class="navLinks">
+<a href="#">Home</a>
+<a href="#">Shop</a>
+<a href="#">Contact</a>
+</div>
+
 <div class="searchBox"><input placeholder="Search kitchen gadgets..."></div>
+
 <div class="headerIcons"><img src="cart.png"></div>
 </header>
 
@@ -297,7 +243,6 @@ Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF
 
 <footer>
 <b>Barakah eMart</b><br>
-Affordable Kitchen Gadgets & Smart Home Products<br><br>
 📞 Call / WhatsApp : 9638426185<br>
 📍 Ahmad Nagar, Jajpur Road, Odisha 755019<br>
 📧 Email: barakahemart786@gmail.com<br><br>
