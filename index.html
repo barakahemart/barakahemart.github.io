@@ -5,58 +5,163 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Barakah eMart - Affordable Kitchen Gadgets</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
 body{margin:0;font-family:'Poppins',sans-serif;background:#f3f5f7}
+
+/* TOPBAR */
 .topbar{background:#ff9800;color:#fff;text-align:center;font-size:13px;padding:6px;font-weight:600}
+
+/* HEADER */
 header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#0a5c36;padding:10px;color:#fff}
 .logoBox{display:flex;align-items:center;gap:8px}
 .logoBox img{height:36px}
 .searchBox{flex:1;margin:5px}
-.searchBox input{width:100%;padding:8px;border-radius:20px;border:none}
-.headerIcons img{height:36px;cursor:pointer}
-.hero{background:#fff;padding:14px;text-align:center;font-weight:700;color:#0a5c36}
+.searchBox input{width:100%;padding:9px;border-radius:20px;border:none}
+.headerIcons img{height:32px;cursor:pointer}
 
-.container{max-width:1200px;margin:auto;padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px}
-.product{background:#fff;border-radius:14px;padding:12px;box-shadow:0 4px 14px rgba(0,0,0,.12);position:relative;transition:.25s;display:flex;flex-direction:column;justify-content:space-between;height:500px;}
+/* HERO */
+.hero{
+background:#fff;
+padding:16px;
+text-align:center;
+font-weight:700;
+color:#0a5c36;
+font-size:18px;
+box-shadow:0 2px 10px rgba(0,0,0,.05)
+}
+
+/* TRUST BADGES */
+.trust{
+display:flex;
+justify-content:center;
+gap:20px;
+font-size:12px;
+background:#ffffff;
+padding:8px;
+margin-top:5px;
+flex-wrap:wrap;
+}
+
+/* PRODUCT GRID */
+.container{
+max-width:1200px;
+margin:auto;
+padding:12px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:15px
+}
+
+/* PRODUCT CARD */
+.product{
+background:#fff;
+border-radius:14px;
+padding:12px;
+box-shadow:0 4px 14px rgba(0,0,0,.08);
+position:relative;
+transition:.25s;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+height:520px;
+}
 .product:hover{transform:translateY(-4px)}
-.offerBadge{position:absolute;top:8px;left:8px;background:#ff0055;color:#fff;font-size:11px;padding:3px 8px;border-radius:6px}
+
+.offerBadge{
+position:absolute;
+top:8px;
+left:8px;
+background:#ff0055;
+color:#fff;
+font-size:11px;
+padding:3px 8px;
+border-radius:6px
+}
 
 .imgBox{width:100%;height:220px;overflow:hidden;border-radius:10px}
-.main-img,.main-video{width:100%;height:220px;object-fit:contain;border-radius:10px;transition:.4s}
-.imgBox:hover .main-img{transform:scale(1.25)}
+.main-img,.main-video{
+width:100%;
+height:220px;
+object-fit:contain;
+border-radius:10px;
+transition:.4s
+}
+.imgBox:hover .main-img{transform:scale(1.18)}
 
 .thumbs{display:flex;gap:6px;margin-top:8px;overflow-x:auto}
-.thumbs img,.thumbs video{width:55px;height:55px;border-radius:6px;border:2px solid #eee;cursor:pointer;object-fit:cover}
+.thumbs img,.thumbs video{
+width:55px;
+height:55px;
+border-radius:6px;
+border:2px solid #eee;
+cursor:pointer;
+object-fit:cover
+}
 
 .price{color:#d32f2f;font-weight:700}
 .mrp{text-decoration:line-through;color:#888;margin-left:6px}
 
-.qty button{width:28px;height:28px;border:none;background:#eee;border-radius:6px;cursor:pointer}
+.qty{
+margin-top:6px;
+display:flex;
+align-items:center;
+gap:6px
+}
+.qty button{
+width:28px;
+height:28px;
+border:none;
+background:#eee;
+border-radius:6px;
+cursor:pointer
+}
 
-.btn{padding:8px 12px;border:none;border-radius:20px;color:#fff;font-size:12px;margin-top:8px;cursor:pointer}
+/* BUTTON */
+.btn{
+padding:11px;
+border:none;
+border-radius:25px;
+color:#fff;
+font-size:13px;
+margin-top:10px;
+cursor:pointer;
+width:100%;
+font-weight:600
+}
 .buyBtn{background:#25D366}
 
-footer{background:#0a5c36;color:#fff;padding:20px;text-align:center;margin-top:60px}
-@media(max-width:768px){.container{grid-template-columns:1fr}}
-  /* ===== MOBILE IMAGE FIX ===== */
+/* FOOTER */
+footer{
+background:#0a5c36;
+color:#fff;
+padding:25px;
+text-align:center;
+margin-top:50px;
+font-size:14px;
+line-height:1.6
+}
+
+/* STICKY WHATSAPP */
+.whatsappFloat{
+position:fixed;
+right:15px;
+bottom:15px;
+background:#25D366;
+padding:12px 14px;
+border-radius:50%;
+box-shadow:0 4px 12px rgba(0,0,0,.3);
+z-index:999
+}
+.whatsappFloat img{height:28px}
+
+/* MOBILE FIX */
 @media(max-width:768px){
 
-.imgBox{
-height:auto;
-}
-
-.main-img,
-.main-video{
-height:auto;
-width:100%;
-object-fit:cover;
-}
-
-.product{
-height:auto;
-}
+.imgBox{height:auto}
+.main-img,.main-video{height:auto;width:100%;object-fit:cover}
+.product{height:auto}
 
 }
 </style>
@@ -97,7 +202,16 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <div class="headerIcons"><img src="cart.png"></div>
 </header>
 
-<div class="hero">Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF</div>
+<div class="hero">
+Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF
+</div>
+
+<div class="trust">
+<span>✅ Secure Ordering</span>
+<span>🚚 Fast Delivery</span>
+<span>💰 Cash on Delivery</span>
+<span>🔄 Easy Replacement</span>
+</div>
 
 <div class="container">
 
@@ -111,7 +225,7 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <img src="sealer3.jpeg" onclick="changeImage('img1','sealer3.jpeg')">
 <img src="sealer4.jpeg" onclick="changeImage('img1','sealer4.jpeg')">
 </div>
-<h4>Mini Bag Sealer</h4>
+<h4>Mini Bag Sealer ⭐⭐⭐⭐☆</h4>
 <span class="price">₹179</span><span class="mrp">₹399</span>
 <div class="qty"><button onclick="qty('q1',-1)">-</button><span id="q1">1</span><button onclick="qty('q1',1)">+</button></div>
 <button class="btn buyBtn" onclick="buyNow('Mini Bag Sealer',179,'q1')">Order on WhatsApp</button>
@@ -127,7 +241,7 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <img src="lunchcamera3.jpeg" onclick="changeImage('img2','lunchcamera3.jpeg')">
 <img src="lunchcamera4.jpeg" onclick="changeImage('img2','lunchcamera4.jpeg')">
 </div>
-<h4>Camera Lunch Box</h4>
+<h4>Camera Lunch Box ⭐⭐⭐⭐☆</h4>
 <span class="price">₹349</span><span class="mrp">₹699</span>
 <div class="qty"><button onclick="qty('q2',-1)">-</button><span id="q2">1</span><button onclick="qty('q2',1)">+</button></div>
 <button class="btn buyBtn" onclick="buyNow('Camera Lunch Box',349,'q2')">Order on WhatsApp</button>
@@ -143,7 +257,7 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <img src="LUNCH3.jpeg" onclick="changeImage('img3','LUNCH3.jpeg')">
 <img src="LUNCH4.jpeg" onclick="changeImage('img3','LUNCH4.jpeg')">
 </div>
-<h4>Premium Lunch Box</h4>
+<h4>Premium Lunch Box ⭐⭐⭐⭐☆</h4>
 <span class="price">₹389</span><span class="mrp">₹699</span>
 <div class="qty"><button onclick="qty('q3',-1)">-</button><span id="q3">1</span><button onclick="qty('q3',1)">+</button></div>
 <button class="btn buyBtn" onclick="buyNow('Premium Lunch Box',389,'q3')">Order on WhatsApp</button>
@@ -159,7 +273,7 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <img src="ICE3.jpeg" onclick="changeImage('img4','ICE3.jpeg')">
 <img src="ICE4.jpeg" onclick="changeImage('img4','ICE4.jpeg')">
 </div>
-<h4>Ice Cube Tray Silicone</h4>
+<h4>Ice Cube Tray Silicone ⭐⭐⭐⭐☆</h4>
 <span class="price">₹199</span><span class="mrp">₹399</span>
 <div class="qty"><button onclick="qty('q4',-1)">-</button><span id="q4">1</span><button onclick="qty('q4',1)">+</button></div>
 <button class="btn buyBtn" onclick="buyNow('Ice Cube Tray Silicone',199,'q4')">Order on WhatsApp</button>
@@ -175,7 +289,7 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <img src="EBOOK3.jpg" onclick="changeImage('img5','EBOOK3.jpg')">
 <img src="EBOOK4.jpg" onclick="changeImage('img5','EBOOK4.jpg')">
 </div>
-<h4>Kids Musical Learning Book</h4>
+<h4>Kids Musical Learning Book ⭐⭐⭐⭐☆</h4>
 <span class="price">₹249</span><span class="mrp">₹499</span>
 <div class="qty"><button onclick="qty('q5',-1)">-</button><span id="q5">1</span><button onclick="qty('q5',1)">+</button></div>
 <button class="btn buyBtn" onclick="buyNow('Kids Musical Learning Book',249,'q5')">Order on WhatsApp</button>
@@ -185,10 +299,16 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 
 <footer>
 <b>Barakah eMart</b><br>
+Affordable Kitchen Gadgets & Smart Home Products<br><br>
 📞 Call / WhatsApp : 9638426185<br>
 📍 Ahmad Nagar, Jajpur Road, Odisha 755019<br>
-📧 Email: barakahemart786@gmail.com
+📧 Email: barakahemart786@gmail.com<br><br>
+© 2026 Barakah eMart | All Rights Reserved
 </footer>
+
+<a class="whatsappFloat" href="https://wa.me/919124646598" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+</a>
 
 </body>
 </html>
