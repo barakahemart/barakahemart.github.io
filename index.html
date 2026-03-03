@@ -10,45 +10,59 @@
 <style>
 body{margin:0;font-family:'Poppins',sans-serif;background:#f3f5f7}
 
-/* HEADER (UPGRADED) */
+/* ================= HEADER (MODERN PROFESSIONAL) ================= */
+
 header{
 position:sticky;
 top:0;
-z-index:999;
+z-index:1000;
 background:#0a5c36;
-padding:14px 20px;
+padding:12px 30px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-box-shadow:0 4px 18px rgba(0,0,0,.25);
-}
-
-.logoBox{
-display:flex;
-align-items:center;
+box-shadow:0 6px 20px rgba(0,0,0,.25);
 }
 
 .logoBox img{
-height:75px;
+height:78px;
 object-fit:contain;
+transition:0.3s ease;
 filter: drop-shadow(0 3px 6px rgba(0,0,0,0.4));
-transition:.3s;
 }
 
 .logoBox img:hover{
-transform:scale(1.05);
+transform:scale(1.06);
+}
+
+.navLinks{
+display:flex;
+gap:28px;
+margin-left:40px;
+}
+
+.navLinks a{
+color:#ffffff;
+text-decoration:none;
+font-weight:500;
+font-size:15px;
+transition:0.3s;
+}
+
+.navLinks a:hover{
+color:#ffd700;
 }
 
 .searchBox{
 flex:1;
-max-width:520px;
-margin:0 25px;
+max-width:480px;
+margin:0 40px;
 }
 
 .searchBox input{
 width:100%;
-padding:12px 18px;
-border-radius:40px;
+padding:12px 20px;
+border-radius:30px;
 border:none;
 outline:none;
 font-size:14px;
@@ -57,13 +71,13 @@ font-size:14px;
 .rightIcons{
 display:flex;
 align-items:center;
-gap:18px;
+gap:22px;
 }
 
 .rightIcons img{
-height:30px;
+height:28px;
 cursor:pointer;
-transition:.3s;
+transition:0.3s;
 }
 
 .rightIcons img:hover{
@@ -72,7 +86,7 @@ transform:scale(1.15);
 
 .menuToggle{
 display:none;
-font-size:24px;
+font-size:26px;
 color:#fff;
 cursor:pointer;
 }
@@ -81,13 +95,15 @@ cursor:pointer;
 display:none;
 flex-direction:column;
 background:#0a5c36;
-padding:10px 16px;
+padding:15px 25px;
 }
 
 .mobileMenu a{
 color:#fff;
 text-decoration:none;
-padding:8px 0;
+padding:10px 0;
+font-size:15px;
+border-bottom:1px solid rgba(255,255,255,0.2);
 }
 
 /* HERO */
@@ -238,15 +254,16 @@ height:28px;
 width:28px;
 }
 
-/* MOBILE */
-@media(max-width:768px){
-.searchBox{display:none}
-.menuToggle{display:block}
-.mobileMenu.show{display:flex}
+/* RESPONSIVE */
+@media(max-width:992px){
+.navLinks{display:none;}
+.searchBox{display:none;}
+.menuToggle{display:block;}
+.logoBox img{height:65px;}
+.mobileMenu.show{display:flex;}
 .product{height:auto}
 .imgBox{height:auto}
 .main-img,.main-video{height:auto}
-.logoBox img{height:60px;}
 }
 </style>
 
@@ -274,8 +291,18 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <body>
 
 <header>
+
+<div style="display:flex;align-items:center;">
 <div class="logoBox">
 <img src="new logo.png" alt="Barakah eMart Logo">
+</div>
+
+<div class="navLinks">
+<a href="#">Home</a>
+<a href="#">Shop</a>
+<a href="#">Offers</a>
+<a href="#">Contact</a>
+</div>
 </div>
 
 <div class="searchBox">
@@ -288,14 +315,15 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 </div>
 
 <div class="menuToggle" onclick="toggleMenu()">☰</div>
+
 </header>
 
 <div id="mobileMenu" class="mobileMenu">
 <a href="#">Home</a>
 <a href="#">Shop</a>
+<a href="#">Offers</a>
 <a href="#">Contact</a>
 </div>
-
 <div class="container">
 
 <!-- PRODUCT 1 -->
