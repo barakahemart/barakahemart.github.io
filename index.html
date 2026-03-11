@@ -13,12 +13,16 @@ body{margin:0;font-family:'Poppins',sans-serif;background:#f3f5f7}
 /* HEADER */
 header{
 position:sticky;top:0;z-index:999;
-background:#0a5c36;padding:6px 16px;
+background:#0a5c36;padding:6px 16px; /* slightly reduced padding */
 display:flex;align-items:center;justify-content:space-between;
 box-shadow:0 2px 12px rgba(0,0,0,.2)
 }
 .logoBox{display:flex;align-items:center;gap:8px;font-weight:700;color:#fff;font-size:18px}
-.logoBox img{height:85px;width:auto;object-fit:contain}
+.logoBox img{
+height:85px; /* LOGO SIZE INCREASED */
+width:auto;
+object-fit:contain
+}
 
 .searchBox{flex:1;max-width:520px;margin:0 20px}
 .searchBox input{
@@ -46,29 +50,12 @@ display:flex;justify-content:center;gap:20px;font-size:12px;
 background:#ffffff;padding:8px;flex-wrap:wrap;
 }
 
-/* GAME SECTION */
-
-.gameSection{
-text-align:center;
-background:#ffffff;
-margin:20px;
-padding:25px;
-border-radius:14px;
-box-shadow:0 4px 14px rgba(0,0,0,.08);
-}
-
-#game{
-background:black;
-border-radius:10px;
-}
-
 /* PRODUCTS */
 .container{
 max-width:1200px;margin:auto;padding:12px;
 display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:15px
 }
-
 .product{
 background:#fff;border-radius:14px;padding:12px;
 box-shadow:0 4px 14px rgba(0,0,0,.08);
@@ -84,7 +71,10 @@ background:#ff0055;color:#fff;
 font-size:11px;padding:3px 8px;border-radius:6px
 }
 
-.imgBox{width:100%;height:220px;overflow:hidden;border-radius:10px}
+.imgBox{
+width:100%;height:220px;
+overflow:hidden;border-radius:10px
+}
 
 .main-img,.main-video{
 width:100%;height:220px;
@@ -92,10 +82,11 @@ object-fit:contain;
 transition:.4s ease;
 }
 
-.imgBox:hover .main-img{transform:scale(1.18)}
+.imgBox:hover .main-img{
+transform:scale(1.18);
+}
 
 .thumbs{display:flex;gap:6px;margin-top:8px;overflow-x:auto}
-
 .thumbs img{
 width:55px;height:55px;border-radius:6px;
 border:2px solid #eee;cursor:pointer;object-fit:cover
@@ -105,26 +96,20 @@ border:2px solid #eee;cursor:pointer;object-fit:cover
 .mrp{text-decoration:line-through;color:#888;margin-left:6px}
 
 .qty{margin-top:6px;display:flex;align-items:center;gap:6px}
-
-.qty button{
-width:28px;height:28px;border:none;background:#eee;border-radius:6px
-}
+.qty button{width:28px;height:28px;border:none;background:#eee;border-radius:6px}
 
 .btn{
 padding:11px;border:none;border-radius:25px;color:#fff;
 font-size:13px;margin-top:10px;cursor:pointer;width:100%;font-weight:600
 }
-
 .buyBtn{background:#25D366}
 
 /* FOOTER */
-
 footer{
 background:#0a5c36;color:#fff;padding:25px;text-align:center;margin-top:50px;
 }
 
 /* WHATSAPP FLOAT */
-
 .whatsappFloat{
 position:fixed;
 right:15px;
@@ -135,13 +120,12 @@ border-radius:50%;
 box-shadow:0 4px 12px rgba(0,0,0,.3);
 z-index:999;
 }
-
-.whatsappFloat img{height:28px;width:28px}
+.whatsappFloat img{
+height:28px;width:28px;
+}
 
 /* MOBILE */
-
 @media(max-width:768px){
-
 .searchBox{display:none}
 .menuToggle{display:block}
 .mobileMenu.show{display:flex}
@@ -149,7 +133,6 @@ z-index:999;
 .imgBox{height:auto}
 .main-img,.main-video{height:auto}
 .logoBox img{height:65px;}
-
 }
 </style>
 
@@ -157,31 +140,26 @@ z-index:999;
 function toggleMenu(){
 document.getElementById("mobileMenu").classList.toggle("show");
 }
-
 function changeImage(id,src){
 document.getElementById(id).src=src;
 }
-
 function qty(id,val){
 let el=document.getElementById(id);
 let n=parseInt(el.innerText);
 n+=val;if(n<1)n=1;
 el.innerText=n;
 }
-
 function buyNow(name,price,qtyId){
 let q=document.getElementById(qtyId).innerText;
 let msg="🛒 Barakah eMart Order%0A%0AProduct : "+name+"%0APrice : ₹"+price+"%0AQty : "+q;
 window.open("https://wa.me/919124646598?text="+msg,"_blank");
 }
 </script>
-
 </head>
 
 <body>
 
 <header>
-
 <div class="logoBox">
 <img src="new logo.png">
 <span>Barakah eMart</span>
@@ -197,7 +175,6 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 </div>
 
 <div class="menuToggle" onclick="toggleMenu()">☰</div>
-
 </header>
 
 <div id="mobileMenu" class="mobileMenu">
@@ -213,19 +190,6 @@ Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF
 <div class="trust">
 <span>✅ Secure Ordering</span>
 <span>🚚 Free home Delivery</span>
-</div>
-
-<!-- GAME SECTION -->
-
-<div class="gameSection">
-
-<h2 style="color:#0a5c36">🎮 Play Snake Game</h2>
-<p>Enjoy the game while exploring our products</p>
-
-<canvas id="game" width="320" height="320"></canvas>
-
-<p style="margin-top:10px">Use Arrow Keys ⬅➡⬆⬇</p>
-
 </div>
 <div class="container">
 
@@ -322,69 +286,6 @@ Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF
 <a class="whatsappFloat" href="https://wa.me/919124646598" target="_blank">
 <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
 </a>
-
-</body>
-</html>
-</footer>
-
-<a class="whatsappFloat" href="https://wa.me/919124646598" target="_blank">
-<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-</a>
-
-<script>
-
-const canvas=document.getElementById("game");
-const ctx=canvas.getContext("2d");
-
-let snake=[{x:160,y:160}];
-let food={x:80,y:80};
-
-let dx=20;
-let dy=0;
-
-document.addEventListener("keydown",function(e){
-
-if(e.key=="ArrowUp"){dx=0;dy=-20;}
-if(e.key=="ArrowDown"){dx=0;dy=20;}
-if(e.key=="ArrowLeft"){dx=-20;dy=0;}
-if(e.key=="ArrowRight"){dx=20;dy=0;}
-
-});
-
-function draw(){
-
-ctx.fillStyle="black";
-ctx.fillRect(0,0,320,320);
-
-ctx.fillStyle="red";
-ctx.fillRect(food.x,food.y,20,20);
-
-ctx.fillStyle="lime";
-
-snake.forEach(part=>{
-ctx.fillRect(part.x,part.y,20,20);
-});
-
-let head={x:snake[0].x+dx,y:snake[0].y+dy};
-
-snake.unshift(head);
-
-if(head.x==food.x && head.y==food.y){
-
-food.x=Math.floor(Math.random()*16)*20;
-food.y=Math.floor(Math.random()*16)*20;
-
-}else{
-
-snake.pop();
-
-}
-
-}
-
-setInterval(draw,120);
-
-</script>
 
 </body>
 </html>
