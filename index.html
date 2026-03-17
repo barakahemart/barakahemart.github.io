@@ -5,153 +5,139 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Barakah eMart</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body{margin:0;font-family:'Poppins',sans-serif;background:#f3f5f7}
+body{margin:0;font-family:'Poppins',sans-serif;background:#f5f7fa}
 
 /* HEADER */
 header{
 position:sticky;top:0;z-index:999;
-background:#0a5c36;padding:6px 16px; /* slightly reduced padding */
+background:#111;padding:10px 18px;
 display:flex;align-items:center;justify-content:space-between;
 box-shadow:0 2px 12px rgba(0,0,0,.2)
 }
-.logoBox{display:flex;align-items:center;gap:8px;font-weight:700;color:#fff;font-size:18px}
-.logoBox img{
-height:85px; /* LOGO SIZE INCREASED */
-width:auto;
-object-fit:contain
-}
-
-.searchBox{flex:1;max-width:520px;margin:0 20px}
-.searchBox input{
-width:100%;padding:11px 16px;border-radius:40px;border:none;
-outline:none;font-size:14px;
-}
-
-.rightIcons{display:flex;align-items:center;gap:14px}
-.rightIcons img{height:28px;cursor:pointer}
-
-.menuToggle{display:none;font-size:22px;color:#fff;cursor:pointer}
-
-.mobileMenu{display:none;flex-direction:column;background:#0a5c36;padding:10px 16px}
-.mobileMenu a{color:#fff;text-decoration:none;padding:8px 0}
+.logoBox{display:flex;align-items:center;gap:8px;color:#fff;font-weight:700}
+.logoBox img{height:60px}
 
 /* HERO */
 .hero{
-background:#fff;padding:16px;text-align:center;font-weight:700;
-color:#0a5c36;box-shadow:0 2px 10px rgba(0,0,0,.05)
+background:linear-gradient(135deg,#00c853,#64dd17);
+color:#fff;padding:30px 20px;text-align:center;
+}
+.hero h2{margin:0;font-size:24px}
+.hero p{font-size:14px;margin-top:6px}
+.hero button{
+margin-top:12px;padding:10px 20px;
+border:none;border-radius:25px;
+background:#fff;color:#00c853;font-weight:600;cursor:pointer
 }
 
 /* TRUST */
 .trust{
-display:flex;justify-content:center;gap:20px;font-size:12px;
-background:#ffffff;padding:8px;flex-wrap:wrap;
+display:flex;justify-content:center;gap:20px;
+font-size:12px;padding:10px;background:#fff;flex-wrap:wrap
 }
 
-/* PRODUCTS */
+/* PRODUCTS GRID */
 .container{
-max-width:1200px;margin:auto;padding:12px;
+max-width:1200px;margin:auto;padding:15px;
 display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:15px
+gap:18px
 }
+
 .product{
 background:#fff;border-radius:14px;padding:12px;
-box-shadow:0 4px 14px rgba(0,0,0,.08);
-display:flex;flex-direction:column;
-height:520px;position:relative;
-transition:.3s;
+box-shadow:0 6px 18px rgba(0,0,0,.1);
+transition:.3s;position:relative;
 }
 .product:hover{transform:translateY(-6px)}
 
 .offerBadge{
-position:absolute;top:8px;left:8px;
+position:absolute;top:10px;left:10px;
 background:#ff0055;color:#fff;
-font-size:11px;padding:3px 8px;border-radius:6px
+font-size:11px;padding:4px 8px;border-radius:6px
 }
 
 .imgBox{
-width:100%;height:220px;
-overflow:hidden;border-radius:10px
+width:100%;height:220px;overflow:hidden;border-radius:10px
 }
-
 .main-img,.main-video{
-width:100%;height:220px;
-object-fit:contain;
-transition:.4s ease;
+width:100%;height:220px;object-fit:contain;
+transition:.4s;
 }
-
-.imgBox:hover .main-img{
-transform:scale(1.18);
-}
+.imgBox:hover .main-img{transform:scale(1.1)}
 
 .thumbs{display:flex;gap:6px;margin-top:8px;overflow-x:auto}
 .thumbs img{
 width:55px;height:55px;border-radius:6px;
-border:2px solid #eee;cursor:pointer;object-fit:cover
+border:2px solid #eee;cursor:pointer
 }
 
-.price{color:#d32f2f;font-weight:700}
-.mrp{text-decoration:line-through;color:#888;margin-left:6px}
+h4{font-size:15px;margin:10px 0}
 
+.price{color:#00c853;font-weight:700}
+.mrp{text-decoration:line-through;color:#999;margin-left:6px}
+
+/* TRUST LINE IN PRODUCT */
+.smallInfo{
+font-size:12px;color:#555;margin-top:5px
+}
+
+/* QTY */
 .qty{margin-top:6px;display:flex;align-items:center;gap:6px}
-.qty button{width:28px;height:28px;border:none;background:#eee;border-radius:6px}
-
-.btn{
-padding:11px;border:none;border-radius:25px;color:#fff;
-font-size:13px;margin-top:10px;cursor:pointer;width:100%;font-weight:600
+.qty button{
+width:28px;height:28px;border:none;background:#eee;border-radius:6px
 }
-.buyBtn{background:#25D366}
+
+/* BUTTON */
+.btn{
+padding:12px;border:none;border-radius:30px;
+color:#fff;font-size:13px;margin-top:10px;
+cursor:pointer;width:100%;font-weight:600;
+background:#25D366
+}
+.btn:hover{background:#1ebc59}
 
 /* FOOTER */
 footer{
-background:#0a5c36;color:#fff;padding:25px;text-align:center;margin-top:50px;
+background:#111;color:#fff;padding:25px;text-align:center;margin-top:40px;
 }
 
 /* WHATSAPP FLOAT */
 .whatsappFloat{
-position:fixed;
-right:15px;
-bottom:15px;
-background:#25D366;
-padding:12px;
-border-radius:50%;
-box-shadow:0 4px 12px rgba(0,0,0,.3);
-z-index:999;
+position:fixed;right:15px;bottom:15px;
+background:#25D366;padding:14px;border-radius:50%;
+box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:999;
 }
-.whatsappFloat img{
-height:28px;width:28px;
-}
+.whatsappFloat img{height:28px}
 
 /* MOBILE */
 @media(max-width:768px){
-.searchBox{display:none}
-.menuToggle{display:block}
-.mobileMenu.show{display:flex}
-.product{height:auto}
-.imgBox{height:auto}
-.main-img,.main-video{height:auto}
-.logoBox img{height:65px;}
+.logoBox img{height:50px}
 }
 </style>
 
 <script>
-function toggleMenu(){
-document.getElementById("mobileMenu").classList.toggle("show");
-}
 function changeImage(id,src){
-document.getElementById(id).src=src;
+let el=document.getElementById(id);
+if(el.tagName==="VIDEO"){
+el.outerHTML=`<img id="${id}" src="${src}" class="main-img">`;
+}else{
+el.src=src;
 }
+}
+
 function qty(id,val){
 let el=document.getElementById(id);
 let n=parseInt(el.innerText);
 n+=val;if(n<1)n=1;
 el.innerText=n;
 }
+
 function buyNow(name,price,qtyId){
 let q=document.getElementById(qtyId).innerText;
-let msg="🛒 Barakah eMart Order%0A%0AProduct : "+name+"%0APrice : ₹"+price+"%0AQty : "+q;
+let msg="🛒 Barakah eMart Order%0A%0AProduct : "+name+"%0APrice : ₹"+price+"%0AQty : "+q+"%0A%0AAddress:";
 window.open("https://wa.me/919124646598?text="+msg,"_blank");
 }
 </script>
@@ -164,33 +150,20 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <img src="new logo.png">
 <span>Barakah eMart</span>
 </div>
-
-<div class="searchBox">
-<input placeholder="Search kitchen gadgets...">
-</div>
-
-<div class="rightIcons">
-<img src="cart.png">
-<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-</div>
-
-<div class="menuToggle" onclick="toggleMenu()">☰</div>
 </header>
 
-<div id="mobileMenu" class="mobileMenu">
-<a href="#">Home</a>
-<a href="#">Shop</a>
-<a href="#">Contact</a>
-</div>
-
 <div class="hero">
-Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF
+<h2>Smart Deals, Smart Life</h2>
+<p>Premium Kitchen & Home Products at Lowest Price</p>
+<button onclick="window.scrollTo(0,500)">Shop Now</button>
 </div>
 
 <div class="trust">
-<span>✅ Secure Ordering</span>
-<span>🚚 Free home Delivery</span>
+<span>🚚 Free Delivery</span>
+<span>💰 Cash on Delivery</span>
+<span>🔒 Secure Order</span>
 </div>
+
 <div class="container">
 
 <!-- PRODUCT 1 -->
@@ -203,10 +176,11 @@ Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF
 <img src="sealer3.jpeg" onclick="changeImage('img1','sealer3.jpeg')">
 <img src="sealer4.jpeg" onclick="changeImage('img1','sealer4.jpeg')">
 </div>
-<h4>2 in 1 Mini Bag Sealer & cutter, Rechargeable ⭐⭐⭐⭐☆</h4>
+<h4>2 in 1 Mini Bag Sealer & Cutter ⭐⭐⭐⭐☆</h4>
 <span class="price">₹149</span><span class="mrp">₹299</span>
+<div class="smallInfo">✔ Rechargeable ✔ Easy Use</div>
 <div class="qty"><button onclick="qty('q1',-1)">-</button><span id="q1">1</span><button onclick="qty('q1',1)">+</button></div>
-<button class="btn buyBtn" onclick="buyNow('Mini Bag Sealer',149,'q1')">Order on WhatsApp</button>
+<button class="btn" onclick="buyNow('Mini Bag Sealer',149,'q1')">Order Now on WhatsApp</button>
 </div>
 
 <!-- PRODUCT 2 -->
@@ -219,10 +193,11 @@ Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF
 <img src="lunchcamera3.jpeg" onclick="changeImage('img2','lunchcamera3.jpeg')">
 <img src="lunchcamera4.jpeg" onclick="changeImage('img2','lunchcamera4.jpeg')">
 </div>
-<h4> Premium lunch box Insta Camera Design ⭐⭐⭐⭐☆</h4>
+<h4>Camera Design Lunch Box ⭐⭐⭐⭐☆</h4>
 <span class="price">₹249</span><span class="mrp">₹499</span>
+<div class="smallInfo">✔ Stylish ✔ Leak Proof</div>
 <div class="qty"><button onclick="qty('q2',-1)">-</button><span id="q2">1</span><button onclick="qty('q2',1)">+</button></div>
-<button class="btn buyBtn" onclick="buyNow('Camera Lunch Box',249,'q2')">Order on WhatsApp</button>
+<button class="btn" onclick="buyNow('Camera Lunch Box',249,'q2')">Order Now on WhatsApp</button>
 </div>
 
 <!-- PRODUCT 3 -->
@@ -235,15 +210,16 @@ Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF
 <img src="LUNCH3.jpeg" onclick="changeImage('img3','LUNCH3.jpeg')">
 <img src="LUNCH4.jpeg" onclick="changeImage('img3','LUNCH4.jpeg')">
 </div>
-<h4>Premium Lunch Box  for everyone ⭐⭐⭐⭐☆</h4>
+<h4>Premium Lunch Box ⭐⭐⭐⭐☆</h4>
 <span class="price">₹249</span><span class="mrp">₹499</span>
+<div class="smallInfo">✔ Durable ✔ Multi Compartments</div>
 <div class="qty"><button onclick="qty('q3',-1)">-</button><span id="q3">1</span><button onclick="qty('q3',1)">+</button></div>
-<button class="btn buyBtn" onclick="buyNow('Premium Lunch Box',249,'q3')">Order on WhatsApp</button>
+<button class="btn" onclick="buyNow('Premium Lunch Box',249,'q3')">Order Now on WhatsApp</button>
 </div>
 
 <!-- PRODUCT 4 -->
 <div class="product">
-<div class="offerBadge">PACK OF 2 at 50% off</div>
+<div class="offerBadge">Pack of 2</div>
 <div class="imgBox"><img id="img4" src="ICE1.jpeg" class="main-img"></div>
 <div class="thumbs">
 <img src="ICE1.jpeg" onclick="changeImage('img4','ICE1.jpeg')">
@@ -251,10 +227,11 @@ Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF
 <img src="ICE3.jpeg" onclick="changeImage('img4','ICE3.jpeg')">
 <img src="ICE4.jpeg" onclick="changeImage('img4','ICE4.jpeg')">
 </div>
-<h4>Ice Cube Tray Silicone (Pack of 2)⭐⭐⭐⭐☆</h4>
+<h4>Ice Cube Tray Silicone ⭐⭐⭐⭐☆</h4>
 <span class="price">₹149</span><span class="mrp">₹299</span>
+<div class="smallInfo">✔ Flexible ✔ Easy Release</div>
 <div class="qty"><button onclick="qty('q4',-1)">-</button><span id="q4">1</span><button onclick="qty('q4',1)">+</button></div>
-<button class="btn buyBtn" onclick="buyNow('Ice Cube Tray Silicone',149,'q4')">Order on WhatsApp</button>
+<button class="btn" onclick="buyNow('Ice Cube Tray',149,'q4')">Order Now on WhatsApp</button>
 </div>
 
 <!-- PRODUCT 5 -->
@@ -269,18 +246,19 @@ Affordable Kitchen Gadgets & Smart Home Products — Up to 50% OFF
 </div>
 <h4>Kids Musical Learning Book ⭐⭐⭐⭐☆</h4>
 <span class="price">₹249</span><span class="mrp">₹499</span>
+<div class="smallInfo">✔ Learning Toy ✔ Fun for Kids</div>
 <div class="qty"><button onclick="qty('q5',-1)">-</button><span id="q5">1</span><button onclick="qty('q5',1)">+</button></div>
-<button class="btn buyBtn" onclick="buyNow('Kids Musical Learning Book',249,'q5')">Order on WhatsApp</button>
+<button class="btn" onclick="buyNow('Kids Learning Book',249,'q5')">Order Now on WhatsApp</button>
 </div>
 
 </div>
 
 <footer>
 <b>Barakah eMart</b><br>
-📞 Call / WhatsApp : M.S Khan 9638426185<br>
-📍 Ahmad Nagar, Jajpur Road, Odisha 755019<br>
-📧 Email: barakahemart786@gmail.com<br><br>
-© 2026 Barakah eMart | All Rights Reserved
+📞 WhatsApp: 9124646598<br>
+📍 Jajpur Road, Odisha<br>
+📧 barakahemart786@gmail.com<br><br>
+© 2026 All Rights Reserved
 </footer>
 
 <a class="whatsappFloat" href="https://wa.me/919124646598" target="_blank">
