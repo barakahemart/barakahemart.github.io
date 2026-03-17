@@ -5,132 +5,77 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Barakah eMart</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-body{margin:0;font-family:'Poppins',sans-serif;background:#f3f5f7}
+body{margin:0;font-family:Poppins;background:#fff}
 
 /* HEADER */
 header{
-position:sticky;top:0;z-index:999;
-background:#0a5c36;
-padding:10px 16px;
 display:flex;align-items:center;justify-content:space-between;
-box-shadow:0 2px 12px rgba(0,0,0,.2)
+padding:12px 20px;border-bottom:1px solid #eee;
+position:sticky;top:0;background:#fff;z-index:999;
 }
-.logoBox{display:flex;align-items:center;gap:8px;color:#fff;font-weight:700}
-.logoBox img{height:55px}
-
-.searchBox{flex:1;max-width:450px;margin:0 15px}
-.searchBox input{
-width:100%;padding:10px;border-radius:30px;border:none;outline:none
+.logo{font-weight:700;font-size:20px}
+.search input{
+padding:10px;border-radius:30px;border:1px solid #ddd;width:200px;
 }
-
-.rightIcons img{height:26px;margin-left:10px}
 
 /* HERO */
 .hero{
-background:linear-gradient(135deg,#00c853,#64dd17);
-color:#fff;text-align:center;padding:25px
+background:url('banner.jpg') center/cover no-repeat;
+height:300px;display:flex;flex-direction:column;
+justify-content:center;align-items:center;
+color:#fff;text-align:center;
 }
-.hero h2{margin:0;font-size:22px}
-.hero p{font-size:13px;margin-top:6px}
+.hero h2{font-size:28px;margin:0}
+.hero p{font-size:14px}
 
 /* TRUST */
 .trust{
-display:flex;justify-content:center;gap:15px;
-font-size:12px;padding:10px;background:#fff;flex-wrap:wrap
+display:flex;justify-content:center;gap:30px;
+padding:10px;background:#fafafa;font-size:13px
 }
 
 /* PRODUCTS */
 .container{
-max-width:1200px;margin:auto;padding:15px;
-display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:18px
+max-width:1200px;margin:auto;padding:20px;
+display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
 .product{
-background:#fff;border-radius:14px;padding:12px;
-box-shadow:0 6px 18px rgba(0,0,0,.08);
-transition:.3s;position:relative;
+border:1px solid #eee;border-radius:10px;padding:12px;
+transition:.3s;background:#fff;
 }
-.product:hover{transform:translateY(-5px)}
+.product:hover{box-shadow:0 6px 20px rgba(0,0,0,.1)}
 
-.offerBadge{
-position:absolute;top:10px;left:10px;
-background:#ff0055;color:#fff;
-font-size:11px;padding:4px 8px;border-radius:6px
-}
-
-.imgBox{height:220px;overflow:hidden;border-radius:10px}
-.main-img,.main-video{
-width:100%;height:220px;object-fit:contain
-}
-
-.thumbs{display:flex;gap:6px;margin-top:8px}
-.thumbs img{
-width:55px;height:55px;border-radius:6px;
-border:2px solid #eee;cursor:pointer
+.product img{
+width:100%;height:220px;object-fit:contain;
 }
 
 h4{font-size:15px;margin:10px 0}
 
-.rating{font-size:12px;color:#ffa500}
+.price{font-weight:700}
+.mrp{text-decoration:line-through;color:#888;margin-left:5px}
 
-.price{color:#00c853;font-weight:700}
-.mrp{text-decoration:line-through;color:#999;margin-left:6px}
-
-.smallInfo{font-size:12px;color:#555;margin-top:5px}
-
-/* QTY */
-.qty{margin-top:6px;display:flex;gap:6px;align-items:center}
-.qty button{
-width:28px;height:28px;border:none;background:#eee;border-radius:6px
-}
-
-/* BUTTON */
 .btn{
-padding:12px;border:none;border-radius:25px;
-color:#fff;font-size:13px;margin-top:10px;
-cursor:pointer;width:100%;font-weight:600;
-background:#25D366
+background:#000;color:#fff;border:none;
+padding:12px;border-radius:25px;width:100%;
+margin-top:10px;cursor:pointer;
 }
 
 /* FOOTER */
 footer{
-background:#0a5c36;color:#fff;padding:20px;text-align:center;margin-top:40px;
-}
-
-/* WHATSAPP FLOAT */
-.whatsappFloat{
-position:fixed;right:15px;bottom:15px;
-background:#25D366;padding:14px;border-radius:50%;
-box-shadow:0 4px 12px rgba(0,0,0,.3);
-z-index:999;
-}
-.whatsappFloat img{height:28px}
-
-/* MOBILE */
-@media(max-width:768px){
-.searchBox{display:none}
-.logoBox img{height:45px}
+background:#111;color:#fff;text-align:center;
+padding:20px;margin-top:40px;
 }
 </style>
 
 <script>
-function changeImage(id,src){
-document.getElementById(id).src=src;
-}
-function qty(id,val){
-let el=document.getElementById(id);
-let n=parseInt(el.innerText);
-n+=val;if(n<1)n=1;
-el.innerText=n;
-}
-function buyNow(name,price,qtyId){
-let q=document.getElementById(qtyId).innerText;
-let msg="🛒 Barakah eMart Order%0AProduct: "+name+"%0APrice: ₹"+price+"%0AQty: "+q+"%0A%0AEnter Address:";
-window.open("https://wa.me/919124646598?text="+msg,"_blank");
+function buyNow(name,price){
+let msg="Hi, I want to buy "+name+" for ₹"+price;
+window.open("https://wa.me/919124646598?text="+msg);
 }
 </script>
 </head>
@@ -138,30 +83,19 @@ window.open("https://wa.me/919124646598?text="+msg,"_blank");
 <body>
 
 <header>
-<div class="logoBox">
-<img src="new logo.png">
-<span>Barakah eMart</span>
-</div>
-
-<div class="searchBox">
-<input placeholder="Search products...">
-</div>
-
-<div class="rightIcons">
-<img src="cart.png">
-<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-</div>
+<div class="logo">Barakah eMart</div>
+<div class="search"><input placeholder="Search products"></div>
 </header>
 
 <div class="hero">
-<h2>🔥 50% OFF – Limited Time Offer</h2>
-<p>Best Kitchen & Home Products | Free Delivery + COD</p>
+<h2>Premium Kitchen Products</h2>
+<p>Up to 50% OFF | Free Delivery</p>
 </div>
 
 <div class="trust">
 <span>🚚 Free Delivery</span>
 <span>💰 Cash on Delivery</span>
-<span>🔒 Secure Order</span>
+<span>🔄 Easy Return</span>
 </div>
 
 
