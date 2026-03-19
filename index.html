@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Barakah eMart">
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3724/3724788.png">
+<link rel="apple-touch-icon" href="logo.png">
 <title>Barakah eMart — Kitchen Gadgets & Smart Home</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -56,7 +56,7 @@ img{max-width:100%;display:block}
 header{position:sticky;top:0;z-index:900;background:var(--g);box-shadow:0 2px 16px rgba(10,92,54,.3)}
 .hdr{max-width:1280px;margin:auto;padding:8px 14px;display:flex;align-items:center;gap:10px;min-height:0}
 .logo{display:flex;align-items:center;gap:8px;text-decoration:none;flex-shrink:0}
-.logo-ico{width:36px;height:36px;background:var(--gold);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.logo-ico{width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--goldf)}
 .logo-txt .b{font-family:'Playfair Display',serif;font-size:15px;color:#fff;font-weight:800;line-height:1.15;white-space:nowrap}
 .logo-txt .s{font-size:8.5px;color:var(--goldf);letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
 
@@ -85,7 +85,7 @@ header{position:sticky;top:0;z-index:900;background:var(--g);box-shadow:0 2px 16
   .hbtn{padding:8px 10px}
   .logo-txt .s{display:none}
   .logo-txt .b{font-size:14px}
-  .logo-ico{width:32px;height:32px;font-size:16px}
+  .logo-ico{width:36px;height:36px}
 }
 
 /* ── MOBILE NAV ── */
@@ -294,20 +294,7 @@ footer{background:var(--gd);color:rgba(255,255,255,.65);padding:36px 16px 100px}
 
 <!-- APP INSTALL BANNER -->
 <div id="install-banner">
- <img src="logo.png" style="height:44px;width:44px;border-radius:50%;object-fit:cover;">
-```
-
----
-
-### 2️⃣ Mobile Nav mein kuch nahi badalna — automatically same header use hota hai ✅
-
----
-
-## 🔍 Jaldi Dhundhne Ka Tarika:
-
-GitHub pe `index.html` open karein → **Ctrl + F** dabayein → type karein:
-```
-logo-ico
+  <div class="ib-icon"><img src="logo.png" style="width:38px;height:38px;border-radius:50%;object-fit:cover;"></div>
   <div class="ib-text">
     <strong>Install Barakah eMart App</strong>
     <small>Free • Works Offline • Home Screen Icon</small>
@@ -340,7 +327,7 @@ logo-ico
 <header>
   <div class="hdr">
     <a class="logo" href="#">
-      <div class="logo-ico">🛒</div>
+      <img class="logo-ico" src="logo.png" alt="Barakah eMart Logo">
       <div class="logo-txt">
         <div class="b">Barakah eMart</div>
         <div class="s">Smart Home & Kitchen</div>
@@ -590,7 +577,7 @@ logo-ico
       <div class="ft-contact">
         <a href="tel:9638426185">📞 9638426185 (M.S. Khan)</a>
         <a href="https://wa.me/919124646598" target="_blank">💬 WhatsApp: 9124646598</a>
-        <a href="mailto:barakahemart786@gmail.com">📧 barakahemart786@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#90f2f1e2f1fbf1f8f5fdf1e2e4a7a8a6d0f7fdf1f9fcbef3fffd">📧 <span class="__cf_email__" data-cfemail="9ffdfeedfef4fef7faf2feedeba8a7a9dff8f2fef6f3b1fcf0f2">[email&#160;protected]</span></a>
         <a href="#">📍 Ahmad Nagar, Jajpur Road, Odisha 755019</a>
       </div>
     </div>
@@ -623,7 +610,7 @@ logo-ico
   <div class="lb-info"><div class="lbc" id="lb-cap"></div><div class="lbct" id="lb-cnt"></div></div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── PRODUCTS DATA ──
 const prods=[
   {name:'Mini Bag Sealer & Cutter',price:149,imgs:['sealer1.jpeg','sealer2.jpeg','sealer3.jpeg','sealer4.jpeg']},
@@ -738,10 +725,4 @@ function orderWA(name,price,qId){
 function toggleWish(btn){const on=btn.textContent==='❤️';btn.textContent=on?'🤍':'❤️';showToast(on?'Removed from wishlist':'❤️ Added to wishlist!')}
 
 // ── TOAST ──
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
-
-// ── NAV ──
-function toggleNav(){document.getElementById('mobNav').classList.toggle('open')}
-</script>
-</body>
-</html>
+function showToast(msg){const
