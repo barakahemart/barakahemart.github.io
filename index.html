@@ -2,747 +2,271 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#0a5c36">
 <title>Barakah eMart — Kitchen Gadgets & Smart Home</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --green: #0a5c36;
-    --green-light: #0e7a4a;
-    --green-dark: #073d24;
-    --gold: #c8962a;
-    --gold-light: #f0b429;
-    --cream: #faf8f3;
-    --white: #ffffff;
-    --gray-50: #f9fafb;
-    --gray-100: #f0f0ec;
-    --gray-300: #d1d1c7;
-    --gray-500: #8a8a80;
-    --gray-700: #4a4a42;
-    --red: #e63946;
-    --wa: #25D366;
-    --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-    --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
-    --shadow-lg: 0 20px 60px rgba(0,0,0,0.16);
-    --radius: 16px;
-    --radius-sm: 10px;
-  }
+:root{
+  --g:#0a5c36;--gl:#0e7a4a;--gd:#073d24;
+  --gold:#c8962a;--goldf:#f0b429;
+  --cream:#faf8f3;--white:#fff;
+  --g50:#f4f7f5;--g100:#e8ede9;--g300:#b0bdb2;--g500:#6b7a6d;--g700:#2e3b30;
+  --red:#e63946;--wa:#25D366;
+  --r:16px;--rs:10px;
+  --sh:0 2px 12px rgba(0,0,0,.09);
+  --shm:0 8px 32px rgba(0,0,0,.13);
+  --shl:0 20px 60px rgba(0,0,0,.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--g700);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+button,a{touch-action:manipulation}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ANNOUNCE */
+.ann{background:var(--gd);padding:7px 12px;overflow:hidden;position:relative}
+.ann-track{display:flex;gap:48px;animation:marquee 20s linear infinite;white-space:nowrap;width:max-content}
+.ann-track span{font-size:12px;font-weight:600;color:var(--goldf);letter-spacing:.4px}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-  html { scroll-behavior: smooth; }
+/* HEADER */
+header{position:sticky;top:0;z-index:900;background:var(--g);box-shadow:0 3px 20px rgba(10,92,54,.35)}
+.hdr{max-width:1280px;margin:auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
+.logo-ico{width:40px;height:40px;background:var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.logo-txt .b{font-family:'Playfair Display',serif;font-size:17px;color:#fff;font-weight:800;line-height:1.1}
+.logo-txt .s{font-size:9px;color:var(--goldf);letter-spacing:1.2px;text-transform:uppercase}
+.hdr-search{flex:1;position:relative;max-width:400px;margin:0 auto}
+.hdr-search input{width:100%;padding:9px 14px 9px 38px;border-radius:50px;border:none;background:rgba(255,255,255,.15);color:#fff;font-family:'Nunito',sans-serif;font-size:13px;outline:none;transition:background .3s}
+.hdr-search input::placeholder{color:rgba(255,255,255,.55)}
+.hdr-search input:focus{background:rgba(255,255,255,.25)}
+.hdr-search .si{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:15px;color:rgba(255,255,255,.65)}
+.hdr-wa{background:var(--wa);color:#fff;border:none;border-radius:10px;padding:9px 14px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.ham{display:none;background:none;border:none;color:#fff;font-size:26px;cursor:pointer;padding:2px;line-height:1;flex-shrink:0}
+@media(max-width:640px){
+  .hdr-search{display:none}
+  .ham{display:flex}
+  .hdr-wa span{display:none}
+  .hdr-wa{padding:9px 12px}
+  .logo-txt .b{font-size:15px}
+}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--gray-700);
-    overflow-x: hidden;
-  }
+/* MOBILE NAV */
+.mob-nav{display:none;flex-direction:column;background:var(--gd);padding:0 16px}
+.mob-nav.open{display:flex}
+.mob-nav a{color:rgba(255,255,255,.85);text-decoration:none;padding:13px 0;font-size:15px;font-weight:600;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:10px}
+.mob-nav a:last-child{border-bottom:none}
+.mob-search{padding:12px 0}
+.mob-search input{width:100%;padding:11px 16px;border-radius:50px;border:none;background:rgba(255,255,255,.12);color:#fff;font-family:'Nunito',sans-serif;font-size:14px;outline:none}
+.mob-search input::placeholder{color:rgba(255,255,255,.5)}
 
-  /* ─── ANNOUNCEMENT BAR ─── */
-  .announce {
-    background: var(--green-dark);
-    color: var(--gold-light);
-    text-align: center;
-    font-size: 13px;
-    font-weight: 500;
-    padding: 8px 16px;
-    letter-spacing: 0.5px;
-  }
-  .announce span { margin: 0 16px; }
+/* HERO */
+.hero{background:linear-gradient(145deg,var(--gd) 0%,var(--g) 55%,var(--gl) 100%);padding:36px 16px 40px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(200,150,42,.12) 0%,transparent 70%)}
+.hero-badge{display:inline-block;background:var(--gold);color:#fff;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(22px,6vw,44px);color:#fff;line-height:1.2;margin-bottom:12px}
+.hero h1 em{color:var(--goldf);font-style:normal}
+.hero p{color:rgba(255,255,255,.78);font-size:14px;max-width:440px;margin:0 auto 24px;line-height:1.7}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
+.pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;padding:7px 14px;border-radius:50px;font-size:12px;font-weight:600}
 
-  /* ─── HEADER ─── */
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: var(--green);
-    box-shadow: 0 4px 24px rgba(10,92,54,0.3);
-  }
-  .header-inner {
-    max-width: 1280px;
-    margin: auto;
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    flex-shrink: 0;
-  }
-  .logo-icon {
-    width: 44px;
-    height: 44px;
-    background: var(--gold);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-  }
-  .logo-text {
-    line-height: 1.1;
-  }
-  .logo-text .brand { font-family: 'Playfair Display', serif; font-size: 20px; color: #fff; font-weight: 800; }
-  .logo-text .tagline { font-size: 10px; color: var(--gold-light); letter-spacing: 1px; text-transform: uppercase; }
+/* TRUST */
+.trust{background:#fff;border-bottom:1px solid var(--g100);overflow-x:auto;scrollbar-width:none}
+.trust::-webkit-scrollbar{display:none}
+.trust-in{display:flex;min-width:max-content;max-width:1280px;margin:auto}
+.ti{display:flex;align-items:center;gap:8px;padding:12px 20px;border-right:1px solid var(--g100);flex-shrink:0}
+.ti:last-child{border-right:none}
+.ti-ico{width:32px;height:32px;background:var(--g50);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.ti-txt strong{font-size:12px;font-weight:700;color:var(--g700);display:block}
+.ti-txt small{font-size:10px;color:var(--g500)}
 
-  .search-wrap {
-    flex: 1;
-    max-width: 480px;
-    position: relative;
-  }
-  .search-wrap input {
-    width: 100%;
-    padding: 11px 20px 11px 44px;
-    border-radius: 50px;
-    border: none;
-    background: rgba(255,255,255,0.15);
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    outline: none;
-    transition: background 0.3s;
-  }
-  .search-wrap input::placeholder { color: rgba(255,255,255,0.6); }
-  .search-wrap input:focus { background: rgba(255,255,255,0.25); }
-  .search-wrap .s-icon {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: rgba(255,255,255,0.7);
-    font-size: 16px;
-  }
+/* SECTION HEAD */
+.sec-head{max-width:1280px;margin:36px auto 0;padding:0 16px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.sec-head h2{font-family:'Playfair Display',serif;font-size:clamp(20px,4vw,30px);color:var(--gd);line-height:1.2}
+.sec-head h2 span{color:var(--gold)}
+.sec-head p{color:var(--g500);font-size:13px;margin-top:2px}
+.view-all{color:var(--g);text-decoration:none;font-size:12px;font-weight:700;border:2px solid var(--g);padding:7px 16px;border-radius:50px;transition:all .2s;white-space:nowrap}
+.view-all:hover,.view-all:active{background:var(--g);color:#fff}
 
-  .header-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
-  .action-btn {
-    background: rgba(255,255,255,0.12);
-    border: none;
-    color: #fff;
-    border-radius: 10px;
-    padding: 9px 16px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: background 0.2s;
-    text-decoration: none;
-  }
-  .action-btn:hover { background: rgba(255,255,255,0.22); }
-  .action-btn.wa { background: var(--wa); }
-  .action-btn.wa:hover { background: #1ebe5d; }
+/* PRODUCT GRID */
+.pgrid{max-width:1280px;margin:16px auto 0;padding:0 12px 48px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:640px){.pgrid{gap:16px;padding:0 16px 48px}}
+@media(min-width:900px){.pgrid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1200px){.pgrid{grid-template-columns:repeat(4,1fr)}}
 
-  .hamburger {
-    display: none;
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 4px;
-  }
+/* PRODUCT CARD */
+.card{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);display:flex;flex-direction:column;position:relative;border:1px solid rgba(0,0,0,.04);transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+@media(min-width:768px){.card:hover{transform:translateY(-6px);box-shadow:var(--shl)}}
+.badge{position:absolute;top:10px;left:10px;background:var(--red);color:#fff;font-size:10px;font-weight:800;padding:3px 9px;border-radius:6px;z-index:2;letter-spacing:.3px}
+.badge.gld{background:var(--gold)}
+.wish{position:absolute;top:8px;right:8px;width:32px;height:32px;background:rgba(255,255,255,.92);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;font-size:15px;box-shadow:0 2px 8px rgba(0,0,0,.12);backdrop-filter:blur(4px);transition:transform .2s}
+.wish:active{transform:scale(.9)}
 
-  /* Mobile nav */
-  .mobile-nav {
-    display: none;
-    flex-direction: column;
-    background: var(--green-dark);
-    padding: 12px 24px 20px;
-  }
-  .mobile-nav.open { display: flex; }
-  .mobile-nav a {
-    color: rgba(255,255,255,0.85);
-    text-decoration: none;
-    padding: 10px 0;
-    font-size: 15px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    font-weight: 500;
-  }
+/* Image box */
+.img-box{position:relative;overflow:hidden;background:var(--g50);cursor:zoom-in;flex-shrink:0}
+.img-box img{width:100%;aspect-ratio:1/1;object-fit:contain;padding:10px;transition:transform .5s cubic-bezier(.25,.46,.45,.94)}
+@media(min-width:768px){.card:hover .img-box img{transform:scale(1.07)}}
+.zoom-hint{position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,.45);color:#fff;font-size:10px;padding:3px 7px;border-radius:20px;pointer-events:none;opacity:.85}
 
-  /* ─── HERO ─── */
-  .hero {
-    background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 50%, var(--green-light) 100%);
-    padding: 60px 24px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-  .hero-badge {
-    display: inline-block;
-    background: var(--gold);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 50px;
-    margin-bottom: 20px;
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 5vw, 52px);
-    color: #fff;
-    line-height: 1.2;
-    margin-bottom: 16px;
-    position: relative;
-  }
-  .hero h1 em { color: var(--gold-light); font-style: normal; }
-  .hero p {
-    color: rgba(255,255,255,0.8);
-    font-size: 16px;
-    max-width: 520px;
-    margin: 0 auto 32px;
-    line-height: 1.7;
-  }
-  .hero-pills {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    position: relative;
-  }
-  .pill {
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #fff;
-    padding: 8px 18px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 500;
-  }
-  .pill span { margin-right: 6px; }
+.thumbs-row{display:flex;gap:6px;padding:8px 10px;overflow-x:auto;scrollbar-width:none;background:var(--g50);border-bottom:1px solid var(--g100)}
+.thumbs-row::-webkit-scrollbar{display:none}
+.thumbs-row img{width:44px;height:44px;object-fit:cover;border-radius:7px;border:2px solid transparent;cursor:pointer;transition:border-color .2s,transform .15s;flex-shrink:0}
+.thumbs-row img.act{border-color:var(--g)}
+.thumbs-row img:active{transform:scale(.94)}
 
-  /* ─── TRUST STRIP ─── */
-  .trust-strip {
-    background: #fff;
-    border-bottom: 1px solid var(--gray-100);
-    padding: 0;
-  }
-  .trust-inner {
-    max-width: 1280px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .trust-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 16px 32px;
-    border-right: 1px solid var(--gray-100);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--gray-700);
-  }
-  .trust-item:last-child { border-right: none; }
-  .trust-item .t-icon {
-    width: 36px;
-    height: 36px;
-    background: var(--gray-50);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-  .trust-item small { display: block; color: var(--gray-500); font-size: 11px; font-weight: 400; }
+.cbody{padding:11px;flex:1;display:flex;flex-direction:column}
+.stars{color:var(--gold);font-size:11px;margin-bottom:5px}
+.stars span{color:var(--g500);font-size:10px;margin-left:3px}
+.ctitle{font-size:13px;font-weight:700;color:var(--g700);line-height:1.4;margin-bottom:9px;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media(min-width:640px){.ctitle{font-size:14px}}
+.price-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.pnow{font-size:19px;font-weight:800;color:var(--gd)}
+@media(min-width:640px){.pnow{font-size:21px}}
+.pwas{font-size:12px;color:var(--g500);text-decoration:line-through}
+.psave{font-size:10px;font-weight:800;color:var(--red);background:#fff0f2;padding:2px 7px;border-radius:50px}
+.qty-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+.qty-lbl{font-size:12px;color:var(--g500);font-weight:600}
+.qty-ctrl{display:flex;align-items:center;border:2px solid var(--g100);border-radius:10px;overflow:hidden}
+.qty-ctrl button{width:32px;height:32px;border:none;background:var(--g50);font-size:16px;font-weight:700;color:var(--gd);cursor:pointer;line-height:1;transition:background .15s}
+.qty-ctrl button:active{background:var(--g100)}
+.qty-n{width:34px;text-align:center;font-size:14px;font-weight:800;color:var(--g700);border-left:2px solid var(--g100);border-right:2px solid var(--g100);line-height:32px;height:32px}
+.obtn{width:100%;padding:12px;border:none;border-radius:11px;background:var(--wa);color:#fff;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:all .2s;letter-spacing:.2px}
+@media(min-width:640px){.obtn{font-size:14px;padding:13px}}
+.obtn:active{transform:scale(.97);background:#1db954}
+.obtn svg{flex-shrink:0}
 
-  /* ─── SECTION TITLE ─── */
-  .section-head {
-    max-width: 1280px;
-    margin: 48px auto 8px;
-    padding: 0 24px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  .section-head h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(22px, 3vw, 32px);
-    color: var(--green-dark);
-    line-height: 1.2;
-  }
-  .section-head h2 span { color: var(--gold); }
-  .section-head p { color: var(--gray-500); font-size: 14px; }
-  .view-all {
-    color: var(--green);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    border: 1.5px solid var(--green);
-    padding: 7px 18px;
-    border-radius: 50px;
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
-  .view-all:hover { background: var(--green); color: #fff; }
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.96);flex-direction:column;align-items:center;justify-content:center;padding:16px}
+.lb.open{display:flex;animation:lbIn .25s ease}
+@keyframes lbIn{from{opacity:0}to{opacity:1}}
+.lb-top{position:relative;width:100%;max-width:500px;display:flex;align-items:center;justify-content:center}
+.lb-img-wrap{width:100%;max-width:500px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:16px;background:#111}
+.lb-img-wrap img{max-width:100%;max-height:100%;object-fit:contain;border-radius:12px;user-select:none}
+.lb-close{position:fixed;top:14px;right:14px;width:42px;height:42px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:20px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;backdrop-filter:blur(8px)}
+.lb-close:active{background:rgba(255,255,255,.3)}
+.lb-arr-l,.lb-arr-r{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:5}
+.lb-arr-l{left:-6px}
+.lb-arr-r{right:-6px}
+.lb-arr-l:active,.lb-arr-r:active{background:rgba(255,255,255,.28)}
+.lb-thumbs{display:flex;gap:8px;margin-top:14px;overflow-x:auto;max-width:min(500px,95vw);scrollbar-width:none}
+.lb-thumbs::-webkit-scrollbar{display:none}
+.lb-thumbs img{width:54px;height:54px;object-fit:cover;border-radius:10px;border:2px solid rgba(255,255,255,.2);cursor:pointer;flex-shrink:0;transition:border-color .2s,transform .15s}
+.lb-thumbs img.act{border-color:var(--goldf);transform:scale(1.05)}
+.lb-info{margin-top:12px;text-align:center}
+.lb-info .lbc{color:rgba(255,255,255,.8);font-size:14px;font-weight:700}
+.lb-info .lbct{color:rgba(255,255,255,.45);font-size:12px;margin-top:3px}
 
-  /* ─── PRODUCT GRID ─── */
-  .products {
-    max-width: 1280px;
-    margin: 24px auto 0;
-    padding: 0 24px 60px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
-  }
+/* WHY */
+.why{background:linear-gradient(135deg,var(--gd),var(--g));padding:48px 16px}
+.why-in{max-width:1280px;margin:auto}
+.why h2{font-family:'Playfair Display',serif;font-size:clamp(20px,4vw,32px);color:#fff;text-align:center;margin-bottom:28px}
+.why h2 em{color:var(--goldf);font-style:normal}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:640px){.why-grid{grid-template-columns:repeat(4,1fr);gap:16px}}
+.wcard{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:20px 16px;text-align:center}
+.wcard .ic{font-size:30px;margin-bottom:10px}
+.wcard h4{color:#fff;font-size:14px;margin-bottom:6px;font-weight:700}
+.wcard p{color:rgba(255,255,255,.6);font-size:12px;line-height:1.6}
 
-  /* ─── PRODUCT CARD ─── */
-  .card {
-    background: #fff;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s;
-    border: 1px solid rgba(0,0,0,0.04);
-  }
-  .card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-  }
+/* REVIEWS */
+.reviews{padding:48px 16px;background:var(--cream)}
+.reviews-in{max-width:1280px;margin:auto}
+.reviews h2{font-family:'Playfair Display',serif;font-size:clamp(20px,4vw,30px);color:var(--gd);text-align:center;margin-bottom:24px}
+.rev-grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:540px){.rev-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.rev-grid{grid-template-columns:repeat(3,1fr)}}
+.rcard{background:#fff;border-radius:var(--r);padding:20px;box-shadow:var(--sh);border:1px solid var(--g100)}
+.rcard .rs{color:var(--gold);font-size:13px;margin-bottom:10px}
+.rcard .rt{font-size:13px;line-height:1.7;color:var(--g700);margin-bottom:14px;font-style:italic}
+.rcard .rv{display:flex;align-items:center;gap:10px}
+.rv-av{width:38px;height:38px;border-radius:50%;background:var(--g);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0}
+.rv-nm{font-weight:700;font-size:13px;color:var(--g700)}
+.rv-loc{font-size:11px;color:var(--g500)}
 
-  .badge {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    background: var(--red);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 6px;
-    z-index: 2;
-    letter-spacing: 0.3px;
-  }
-  .badge.gold { background: var(--gold); }
+/* CTA */
+.cta{background:var(--gold);padding:36px 16px;text-align:center}
+.cta h3{font-family:'Playfair Display',serif;font-size:clamp(20px,4vw,28px);color:#fff;margin-bottom:8px}
+.cta p{color:rgba(255,255,255,.85);font-size:14px;margin-bottom:22px;line-height:1.6}
+.cta a{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--gd);text-decoration:none;font-weight:800;font-size:14px;padding:14px 28px;border-radius:50px;box-shadow:0 6px 20px rgba(0,0,0,.15);transition:all .2s}
+.cta a:active{transform:scale(.97)}
 
-  .wishlist-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 34px;
-    height: 34px;
-    background: rgba(255,255,255,0.9);
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 2;
-    transition: all 0.2s;
-    font-size: 16px;
-    backdrop-filter: blur(4px);
-  }
-  .wishlist-btn:hover { background: #fff; transform: scale(1.1); }
+/* FOOTER */
+footer{background:var(--gd);color:rgba(255,255,255,.65);padding:40px 16px 24px}
+.ft-in{max-width:1280px;margin:auto}
+.ft-brand{margin-bottom:28px}
+.ft-brand .bn{font-family:'Playfair Display',serif;font-size:20px;color:#fff;margin-bottom:10px}
+.ft-brand p{font-size:13px;line-height:1.7;max-width:320px}
+.ft-contact{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.ft-contact a{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.75);text-decoration:none;font-size:13px;transition:color .2s}
+.ft-contact a:hover{color:var(--goldf)}
+.ft-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px}
+.fc h4{color:#fff;font-size:13px;font-weight:700;margin-bottom:12px;letter-spacing:.5px;text-transform:uppercase}
+.fc a{display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:13px;margin-bottom:8px;transition:color .2s}
+.fc a:hover{color:var(--goldf)}
+.ft-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:18px;display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
+.ft-bot span{font-size:11px;color:rgba(255,255,255,.35)}
 
-  .img-wrap {
-    position: relative;
-    overflow: hidden;
-    background: var(--gray-50);
-    height: 240px;
-    cursor: zoom-in;
-  }
-  .img-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 12px;
-    transition: transform 0.5s cubic-bezier(.25,.46,.45,.94);
-  }
-  .card:hover .img-wrap img { transform: scale(1.08); }
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:20px;right:16px;width:56px;height:56px;background:var(--wa);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 6px 20px rgba(37,211,102,.5);z-index:800;animation:waPulse 2.5s infinite;transition:transform .2s}
+.wa-float:active{transform:scale(.9)}
+@keyframes waPulse{0%,100%{box-shadow:0 6px 20px rgba(37,211,102,.5)}50%{box-shadow:0 6px 28px rgba(37,211,102,.8),0 0 0 8px rgba(37,211,102,.12)}}
 
-  .thumbs {
-    display: flex;
-    gap: 8px;
-    padding: 10px 14px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    background: var(--gray-50);
-    border-bottom: 1px solid var(--gray-100);
-  }
-  .thumbs::-webkit-scrollbar { display: none; }
-  .thumbs img {
-    width: 52px;
-    height: 52px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 2px solid transparent;
-    cursor: pointer;
-    transition: border-color 0.2s, transform 0.2s;
-    flex-shrink: 0;
-  }
-  .thumbs img:hover, .thumbs img.active { border-color: var(--green); transform: scale(1.05); }
+/* TOAST */
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--gd);color:#fff;padding:11px 22px;border-radius:50px;font-size:13px;font-weight:600;opacity:0;transition:all .3s;z-index:9998;pointer-events:none;white-space:nowrap;box-shadow:var(--shm)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-  .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
-
-  .stars { color: var(--gold); font-size: 13px; margin-bottom: 6px; }
-  .stars span { color: var(--gray-500); font-size: 12px; margin-left: 4px; }
-
-  .card-body h3 {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--gray-700);
-    line-height: 1.4;
-    margin-bottom: 10px;
-    flex: 1;
-  }
-
-  .price-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 14px;
-  }
-  .price-now { font-size: 22px; font-weight: 700; color: var(--green-dark); }
-  .price-was { font-size: 14px; color: var(--gray-500); text-decoration: line-through; }
-  .save-tag {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--red);
-    background: #fff0f2;
-    padding: 2px 8px;
-    border-radius: 50px;
-  }
-
-  .qty-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 14px;
-  }
-  .qty-label { font-size: 13px; color: var(--gray-500); font-weight: 500; }
-  .qty-ctrl {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    border: 1.5px solid var(--gray-300);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .qty-ctrl button {
-    width: 34px;
-    height: 34px;
-    border: none;
-    background: var(--gray-50);
-    font-size: 18px;
-    line-height: 1;
-    cursor: pointer;
-    font-weight: 600;
-    color: var(--green-dark);
-    transition: background 0.15s;
-  }
-  .qty-ctrl button:hover { background: var(--gray-100); }
-  .qty-ctrl .qty-num {
-    width: 40px;
-    text-align: center;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--gray-700);
-    border-left: 1.5px solid var(--gray-300);
-    border-right: 1.5px solid var(--gray-300);
-    height: 34px;
-    line-height: 34px;
-  }
-
-  .order-btn {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 12px;
-    background: var(--wa);
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.2s;
-    letter-spacing: 0.3px;
-  }
-  .order-btn:hover { background: #1db954; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,211,102,0.35); }
-  .order-btn:active { transform: translateY(0); }
-
-  /* ─── WHY US SECTION ─── */
-  .why-us {
-    background: linear-gradient(135deg, var(--green-dark), var(--green));
-    padding: 60px 24px;
-    margin-top: 20px;
-  }
-  .why-us-inner {
-    max-width: 1280px;
-    margin: auto;
-  }
-  .why-us h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(24px, 3vw, 36px);
-    color: #fff;
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  .why-us h2 em { color: var(--gold-light); font-style: normal; }
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 24px;
-  }
-  .why-card {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: var(--radius);
-    padding: 28px 20px;
-    text-align: center;
-    transition: background 0.2s;
-  }
-  .why-card:hover { background: rgba(255,255,255,0.14); }
-  .why-card .icon { font-size: 36px; margin-bottom: 14px; }
-  .why-card h4 { color: #fff; font-size: 16px; margin-bottom: 8px; font-weight: 600; }
-  .why-card p { color: rgba(255,255,255,0.65); font-size: 13px; line-height: 1.6; }
-
-  /* ─── TESTIMONIALS ─── */
-  .testimonials { padding: 60px 24px; background: var(--cream); }
-  .testimonials-inner { max-width: 1280px; margin: auto; }
-  .testimonials h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(22px, 3vw, 32px);
-    color: var(--green-dark);
-    text-align: center;
-    margin-bottom: 36px;
-  }
-  .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-  .review-card {
-    background: #fff;
-    border-radius: var(--radius);
-    padding: 24px;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--gray-100);
-  }
-  .review-stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; }
-  .review-text { font-size: 14px; line-height: 1.7; color: var(--gray-700); margin-bottom: 16px; font-style: italic; }
-  .reviewer { display: flex; align-items: center; gap: 10px; }
-  .reviewer-avatar {
-    width: 40px; height: 40px; border-radius: 50%;
-    background: var(--green); color: #fff;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 16px; flex-shrink: 0;
-  }
-  .reviewer-name { font-weight: 600; font-size: 14px; }
-  .reviewer-loc { font-size: 12px; color: var(--gray-500); }
-
-  /* ─── CTA STRIP ─── */
-  .cta-strip {
-    background: var(--gold);
-    padding: 40px 24px;
-    text-align: center;
-  }
-  .cta-strip h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: #fff; margin-bottom: 8px; }
-  .cta-strip p { color: rgba(255,255,255,0.85); font-size: 15px; margin-bottom: 24px; }
-  .cta-strip a {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #fff;
-    color: var(--green-dark);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 15px;
-    padding: 14px 32px;
-    border-radius: 50px;
-    transition: all 0.2s;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  }
-  .cta-strip a:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--green-dark);
-    color: rgba(255,255,255,0.7);
-    padding: 48px 24px 24px;
-  }
-  .footer-inner {
-    max-width: 1280px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 40px;
-  }
-  .footer-brand .brand-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    color: #fff;
-    margin-bottom: 12px;
-  }
-  .footer-brand p { font-size: 13px; line-height: 1.7; max-width: 280px; }
-  .footer-contact { margin-top: 20px; }
-  .footer-contact a {
-    display: flex; align-items: center; gap: 8px;
-    color: rgba(255,255,255,0.8); text-decoration: none;
-    font-size: 13px; margin-bottom: 10px; transition: color 0.2s;
-  }
-  .footer-contact a:hover { color: var(--gold-light); }
-
-  .footer-col h4 { color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 16px; letter-spacing: 0.5px; }
-  .footer-col a {
-    display: block; color: rgba(255,255,255,0.6); text-decoration: none;
-    font-size: 13px; margin-bottom: 10px; transition: color 0.2s;
-  }
-  .footer-col a:hover { color: var(--gold-light); }
-
-  .footer-bottom {
-    max-width: 1280px;
-    margin: 0 auto;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    font-size: 12px;
-  }
-  .footer-bottom span { color: rgba(255,255,255,0.4); }
-
-  /* ─── WA FLOAT ─── */
-  .wa-float {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 58px;
-    height: 58px;
-    background: var(--wa);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    text-decoration: none;
-    box-shadow: 0 6px 24px rgba(37,211,102,0.5);
-    z-index: 999;
-    transition: all 0.3s cubic-bezier(.34,1.56,.64,1);
-    animation: pulse 2.5s infinite;
-  }
-  .wa-float:hover { transform: scale(1.15); box-shadow: 0 10px 32px rgba(37,211,102,0.6); }
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
-    50% { box-shadow: 0 6px 32px rgba(37,211,102,0.8), 0 0 0 8px rgba(37,211,102,0.15); }
-  }
-
-  /* ─── TOAST ─── */
-  .toast {
-    position: fixed;
-    bottom: 100px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: var(--green-dark);
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 50px;
-    font-size: 14px;
-    font-weight: 500;
-    opacity: 0;
-    transition: all 0.3s;
-    z-index: 9999;
-    pointer-events: none;
-  }
-  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 768px) {
-    .search-wrap { display: none; }
-    .hamburger { display: block; }
-    .action-btn.wa span { display: none; }
-    .header-inner { padding: 10px 16px; }
-    .hero { padding: 40px 16px; }
-    .trust-item { padding: 12px 16px; border-right: none; border-bottom: 1px solid var(--gray-100); }
-    .footer-inner { grid-template-columns: 1fr; gap: 28px; }
-    .footer-bottom { flex-direction: column; text-align: center; }
-    .products { padding: 0 16px 40px; gap: 16px; }
-    .section-head { margin: 32px auto 8px; padding: 0 16px; }
-  }
-
-  @media (max-width: 480px) {
-    .products { grid-template-columns: 1fr 1fr; gap: 12px; }
-    .card-body { padding: 12px; }
-    .img-wrap { height: 170px; }
-    .thumbs img { width: 42px; height: 42px; }
-    .price-now { font-size: 18px; }
-    .order-btn { font-size: 13px; padding: 11px; }
-    .card-body h3 { font-size: 13px; }
-  }
-
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .card { animation: fadeUp 0.5s both; }
-  .card:nth-child(1) { animation-delay: 0.05s; }
-  .card:nth-child(2) { animation-delay: 0.10s; }
-  .card:nth-child(3) { animation-delay: 0.15s; }
-  .card:nth-child(4) { animation-delay: 0.20s; }
-  .card:nth-child(5) { animation-delay: 0.25s; }
+/* CARD ANIMS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.card{animation:fadeUp .45s both}
+.card:nth-child(1){animation-delay:.04s}
+.card:nth-child(2){animation-delay:.08s}
+.card:nth-child(3){animation-delay:.12s}
+.card:nth-child(4){animation-delay:.16s}
+.card:nth-child(5){animation-delay:.20s}
 </style>
 </head>
 <body>
 
-<!-- ANNOUNCEMENT BAR -->
-<div class="announce">
-  <span>🎉 Grand Sale — Up to 50% OFF on all products!</span>
-  <span>🚚 FREE Delivery across India</span>
-  <span>⚡ Order on WhatsApp — Instant Confirmation</span>
+<!-- ANNOUNCE -->
+<div class="ann">
+  <div class="ann-track">
+    <span>🎉 Grand Sale — Up to 50% OFF!</span>
+    <span>🚚 FREE Delivery across India</span>
+    <span>⚡ Instant WhatsApp Order</span>
+    <span>✅ 1000+ Happy Customers</span>
+    <span>↩️ Easy Return Policy</span>
+    <span>🎉 Grand Sale — Up to 50% OFF!</span>
+    <span>🚚 FREE Delivery across India</span>
+    <span>⚡ Instant WhatsApp Order</span>
+    <span>✅ 1000+ Happy Customers</span>
+    <span>↩️ Easy Return Policy</span>
+  </div>
 </div>
 
 <!-- HEADER -->
 <header>
-  <div class="header-inner">
+  <div class="hdr">
     <a class="logo" href="#">
-      <div class="logo-icon">🛒</div>
-      <div class="logo-text">
-        <div class="brand">Barakah eMart</div>
-        <div class="tagline">Smart Home & Kitchen</div>
+      <div class="logo-ico">🛒</div>
+      <div class="logo-txt">
+        <div class="b">Barakah eMart</div>
+        <div class="s">Smart Home & Kitchen</div>
       </div>
     </a>
-    <div class="search-wrap">
-      <span class="s-icon">🔍</span>
-      <input type="text" placeholder="Search kitchen gadgets, lunch boxes...">
+    <div class="hdr-search">
+      <span class="si">🔍</span>
+      <input type="text" placeholder="Search products...">
     </div>
-    <div class="header-actions">
-      <a class="action-btn wa" href="https://wa.me/919124646598" target="_blank">
-        💬 <span>WhatsApp</span>
-      </a>
-    </div>
-    <button class="hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
+    <a class="hdr-wa" href="https://wa.me/919124646598" target="_blank">💬 <span>WhatsApp</span></a>
+    <button class="ham" onclick="toggleNav()">☰</button>
   </div>
-  <nav class="mobile-nav" id="mobileNav">
+  <nav class="mob-nav" id="mobNav">
+    <div class="mob-search"><input type="text" placeholder="🔍  Search products..."></div>
     <a href="#">🏠 Home</a>
-    <a href="#">🛍️ Shop All</a>
-    <a href="https://wa.me/919124646598" target="_blank">💬 Contact on WhatsApp</a>
-    <a href="tel:9638426185">📞 Call Us: 9638426185</a>
+    <a href="#">🛍️ All Products</a>
+    <a href="https://wa.me/919124646598" target="_blank">💬 WhatsApp Order</a>
+    <a href="tel:9638426185">📞 Call: 9638426185</a>
   </nav>
 </header>
 
@@ -750,381 +274,284 @@
 <section class="hero">
   <div class="hero-badge">✨ Limited Time Offer</div>
   <h1>Kitchen Gadgets that<br><em>Simplify Your Life</em></h1>
-  <p>Premium quality products at unbeatable prices. Fast delivery across India. Order directly on WhatsApp — no waiting, no hassle!</p>
+  <p>Premium products at unbeatable prices. Order on WhatsApp — fast delivery across India!</p>
   <div class="hero-pills">
-    <div class="pill"><span>🚚</span>Free Delivery</div>
-    <div class="pill"><span>✅</span>Trusted Quality</div>
-    <div class="pill"><span>💬</span>WhatsApp Order</div>
-    <div class="pill"><span>↩️</span>Easy Returns</div>
+    <div class="pill">🚚 Free Delivery</div>
+    <div class="pill">✅ Trusted Quality</div>
+    <div class="pill">💬 WhatsApp Order</div>
+    <div class="pill">↩️ Easy Returns</div>
   </div>
 </section>
 
-<!-- TRUST STRIP -->
-<div class="trust-strip">
-  <div class="trust-inner">
-    <div class="trust-item">
-      <div class="t-icon">🚚</div>
-      <div><strong>Free Delivery</strong><small>Pan India shipping</small></div>
-    </div>
-    <div class="trust-item">
-      <div class="t-icon">💬</div>
-      <div><strong>WhatsApp Order</strong><small>Instant confirmation</small></div>
-    </div>
-    <div class="trust-item">
-      <div class="t-icon">🔒</div>
-      <div><strong>Secure & Trusted</strong><small>1000+ happy customers</small></div>
-    </div>
-    <div class="trust-item">
-      <div class="t-icon">↩️</div>
-      <div><strong>Easy Returns</strong><small>Hassle-free policy</small></div>
-    </div>
-    <div class="trust-item">
-      <div class="t-icon">💰</div>
-      <div><strong>Best Price</strong><small>Upto 50% discount</small></div>
-    </div>
+<!-- TRUST -->
+<div class="trust">
+  <div class="trust-in">
+    <div class="ti"><div class="ti-ico">🚚</div><div class="ti-txt"><strong>Free Delivery</strong><small>Pan India</small></div></div>
+    <div class="ti"><div class="ti-ico">💬</div><div class="ti-txt"><strong>WhatsApp Order</strong><small>Instant confirm</small></div></div>
+    <div class="ti"><div class="ti-ico">🔒</div><div class="ti-txt"><strong>Secure & Trusted</strong><small>1000+ customers</small></div></div>
+    <div class="ti"><div class="ti-ico">↩️</div><div class="ti-txt"><strong>Easy Returns</strong><small>Hassle-free</small></div></div>
+    <div class="ti"><div class="ti-ico">💰</div><div class="ti-txt"><strong>Best Price</strong><small>Upto 50% off</small></div></div>
   </div>
 </div>
 
-<!-- SECTION HEADING -->
-<div class="section-head">
+<!-- SECTION HEAD -->
+<div class="sec-head">
   <div>
     <h2>Our <span>Best Sellers</span></h2>
-    <p>Hand-picked products loved by thousands of customers</p>
+    <p>Hand-picked products loved by thousands</p>
   </div>
-  <a class="view-all" href="https://wa.me/919124646598?text=Hi!%20I%20want%20to%20see%20all%20products" target="_blank">View All →</a>
+  <a class="view-all" href="https://wa.me/919124646598?text=Hi!%20Show%20me%20all%20products" target="_blank">View All →</a>
 </div>
 
 <!-- PRODUCTS -->
-<div class="products">
+<div class="pgrid">
 
-  <!-- PRODUCT 1 -->
+  <!-- CARD 1 -->
   <div class="card">
     <div class="badge">50% OFF</div>
-    <button class="wishlist-btn" onclick="toggleWish(this)">🤍</button>
-    <div class="img-wrap">
-      <img id="img1" src="sealer1.jpeg" alt="Mini Bag Sealer">
+    <button class="wish" onclick="toggleWish(this)">🤍</button>
+    <div class="img-box" onclick="openLB(0)">
+      <img id="mi1" src="sealer1.jpeg" alt="Mini Bag Sealer" loading="lazy">
+      <div class="zoom-hint">🔍 Tap to zoom</div>
     </div>
-    <div class="thumbs">
-      <img src="sealer1.jpeg" class="active" onclick="setImg('img1',this,'sealer1.jpeg')">
-      <img src="sealer2.jpeg" onclick="setImg('img1',this,'sealer2.jpeg')">
-      <img src="sealer3.jpeg" onclick="setImg('img1',this,'sealer3.jpeg')">
-      <img src="sealer4.jpeg" onclick="setImg('img1',this,'sealer4.jpeg')">
+    <div class="thumbs-row">
+      <img src="sealer1.jpeg" class="act" onclick="swapImg(event,'mi1',this,'sealer1.jpeg',0,0)">
+      <img src="sealer2.jpeg" onclick="swapImg(event,'mi1',this,'sealer2.jpeg',0,1)">
+      <img src="sealer3.jpeg" onclick="swapImg(event,'mi1',this,'sealer3.jpeg',0,2)">
+      <img src="sealer4.jpeg" onclick="swapImg(event,'mi1',this,'sealer4.jpeg',0,3)">
     </div>
-    <div class="card-body">
-      <div class="stars">⭐⭐⭐⭐☆ <span>(128 reviews)</span></div>
-      <h3>2-in-1 Mini Bag Sealer & Cutter — Rechargeable</h3>
-      <div class="price-row">
-        <span class="price-now">₹149</span>
-        <span class="price-was">₹299</span>
-        <span class="save-tag">Save ₹150</span>
-      </div>
-      <div class="qty-row">
-        <span class="qty-label">Quantity</span>
-        <div class="qty-ctrl">
-          <button onclick="changeQty('q1',-1)">−</button>
-          <div class="qty-num" id="q1">1</div>
-          <button onclick="changeQty('q1',1)">+</button>
-        </div>
-      </div>
-      <button class="order-btn" onclick="orderWA('Mini Bag Sealer & Cutter',149,'q1')">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Order on WhatsApp
-      </button>
+    <div class="cbody">
+      <div class="stars">⭐⭐⭐⭐☆ <span>(128)</span></div>
+      <h3 class="ctitle">2-in-1 Mini Bag Sealer & Cutter — Rechargeable</h3>
+      <div class="price-row"><span class="pnow">₹149</span><span class="pwas">₹299</span><span class="psave">Save ₹150</span></div>
+      <div class="qty-row"><span class="qty-lbl">Qty</span><div class="qty-ctrl"><button onclick="chQty('q1',-1)">−</button><div class="qty-n" id="q1">1</div><button onclick="chQty('q1',1)">+</button></div></div>
+      <button class="obtn" onclick="orderWA('Mini Bag Sealer & Cutter',149,'q1')"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Order on WhatsApp</button>
     </div>
   </div>
 
-  <!-- PRODUCT 2 -->
+  <!-- CARD 2 -->
   <div class="card">
     <div class="badge">50% OFF</div>
-    <button class="wishlist-btn" onclick="toggleWish(this)">🤍</button>
-    <div class="img-wrap">
-      <img id="img2" src="lunchcamera1.jpg" alt="Insta Camera Lunch Box">
+    <button class="wish" onclick="toggleWish(this)">🤍</button>
+    <div class="img-box" onclick="openLB(1)">
+      <img id="mi2" src="lunchcamera1.jpg" alt="Camera Lunch Box" loading="lazy">
+      <div class="zoom-hint">🔍 Tap to zoom</div>
     </div>
-    <div class="thumbs">
-      <img src="lunchcamera1.jpg" class="active" onclick="setImg('img2',this,'lunchcamera1.jpg')">
-      <img src="lunchcamera2.jpeg" onclick="setImg('img2',this,'lunchcamera2.jpeg')">
-      <img src="lunchcamera3.jpeg" onclick="setImg('img2',this,'lunchcamera3.jpeg')">
-      <img src="lunchcamera4.jpeg" onclick="setImg('img2',this,'lunchcamera4.jpeg')">
+    <div class="thumbs-row">
+      <img src="lunchcamera1.jpg" class="act" onclick="swapImg(event,'mi2',this,'lunchcamera1.jpg',1,0)">
+      <img src="lunchcamera2.jpeg" onclick="swapImg(event,'mi2',this,'lunchcamera2.jpeg',1,1)">
+      <img src="lunchcamera3.jpeg" onclick="swapImg(event,'mi2',this,'lunchcamera3.jpeg',1,2)">
+      <img src="lunchcamera4.jpeg" onclick="swapImg(event,'mi2',this,'lunchcamera4.jpeg',1,3)">
     </div>
-    <div class="card-body">
-      <div class="stars">⭐⭐⭐⭐☆ <span>(96 reviews)</span></div>
-      <h3>Premium Lunch Box — Insta Camera Design</h3>
-      <div class="price-row">
-        <span class="price-now">₹249</span>
-        <span class="price-was">₹499</span>
-        <span class="save-tag">Save ₹250</span>
-      </div>
-      <div class="qty-row">
-        <span class="qty-label">Quantity</span>
-        <div class="qty-ctrl">
-          <button onclick="changeQty('q2',-1)">−</button>
-          <div class="qty-num" id="q2">1</div>
-          <button onclick="changeQty('q2',1)">+</button>
-        </div>
-      </div>
-      <button class="order-btn" onclick="orderWA('Insta Camera Lunch Box',249,'q2')">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Order on WhatsApp
-      </button>
+    <div class="cbody">
+      <div class="stars">⭐⭐⭐⭐☆ <span>(96)</span></div>
+      <h3 class="ctitle">Premium Lunch Box — Insta Camera Design</h3>
+      <div class="price-row"><span class="pnow">₹249</span><span class="pwas">₹499</span><span class="psave">Save ₹250</span></div>
+      <div class="qty-row"><span class="qty-lbl">Qty</span><div class="qty-ctrl"><button onclick="chQty('q2',-1)">−</button><div class="qty-n" id="q2">1</div><button onclick="chQty('q2',1)">+</button></div></div>
+      <button class="obtn" onclick="orderWA('Insta Camera Lunch Box',249,'q2')"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Order on WhatsApp</button>
     </div>
   </div>
 
-  <!-- PRODUCT 3 -->
+  <!-- CARD 3 -->
   <div class="card">
-    <div class="badge gold">BEST VALUE</div>
-    <button class="wishlist-btn" onclick="toggleWish(this)">🤍</button>
-    <div class="img-wrap">
-      <img id="img3" src="LUNCH1.jpeg" alt="Premium Lunch Box">
+    <div class="badge gld">BEST VALUE</div>
+    <button class="wish" onclick="toggleWish(this)">🤍</button>
+    <div class="img-box" onclick="openLB(2)">
+      <img id="mi3" src="LUNCH1.jpeg" alt="Premium Lunch Box" loading="lazy">
+      <div class="zoom-hint">🔍 Tap to zoom</div>
     </div>
-    <div class="thumbs">
-      <img src="LUNCH1.jpeg" class="active" onclick="setImg('img3',this,'LUNCH1.jpeg')">
-      <img src="LUNCH2.jpeg" onclick="setImg('img3',this,'LUNCH2.jpeg')">
-      <img src="LUNCH3.jpeg" onclick="setImg('img3',this,'LUNCH3.jpeg')">
-      <img src="LUNCH4.jpeg" onclick="setImg('img3',this,'LUNCH4.jpeg')">
+    <div class="thumbs-row">
+      <img src="LUNCH1.jpeg" class="act" onclick="swapImg(event,'mi3',this,'LUNCH1.jpeg',2,0)">
+      <img src="LUNCH2.jpeg" onclick="swapImg(event,'mi3',this,'LUNCH2.jpeg',2,1)">
+      <img src="LUNCH3.jpeg" onclick="swapImg(event,'mi3',this,'LUNCH3.jpeg',2,2)">
+      <img src="LUNCH4.jpeg" onclick="swapImg(event,'mi3',this,'LUNCH4.jpeg',2,3)">
     </div>
-    <div class="card-body">
-      <div class="stars">⭐⭐⭐⭐☆ <span>(214 reviews)</span></div>
-      <h3>Premium Lunch Box — For Everyone, Every Day</h3>
-      <div class="price-row">
-        <span class="price-now">₹249</span>
-        <span class="price-was">₹499</span>
-        <span class="save-tag">Save ₹250</span>
-      </div>
-      <div class="qty-row">
-        <span class="qty-label">Quantity</span>
-        <div class="qty-ctrl">
-          <button onclick="changeQty('q3',-1)">−</button>
-          <div class="qty-num" id="q3">1</div>
-          <button onclick="changeQty('q3',1)">+</button>
-        </div>
-      </div>
-      <button class="order-btn" onclick="orderWA('Premium Lunch Box',249,'q3')">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Order on WhatsApp
-      </button>
+    <div class="cbody">
+      <div class="stars">⭐⭐⭐⭐☆ <span>(214)</span></div>
+      <h3 class="ctitle">Premium Lunch Box — For Everyone, Every Day</h3>
+      <div class="price-row"><span class="pnow">₹249</span><span class="pwas">₹499</span><span class="psave">Save ₹250</span></div>
+      <div class="qty-row"><span class="qty-lbl">Qty</span><div class="qty-ctrl"><button onclick="chQty('q3',-1)">−</button><div class="qty-n" id="q3">1</div><button onclick="chQty('q3',1)">+</button></div></div>
+      <button class="obtn" onclick="orderWA('Premium Lunch Box',249,'q3')"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Order on WhatsApp</button>
     </div>
   </div>
 
-  <!-- PRODUCT 4 -->
+  <!-- CARD 4 -->
   <div class="card">
     <div class="badge">PACK OF 2</div>
-    <button class="wishlist-btn" onclick="toggleWish(this)">🤍</button>
-    <div class="img-wrap">
-      <img id="img4" src="ICE1.jpeg" alt="Ice Cube Tray">
+    <button class="wish" onclick="toggleWish(this)">🤍</button>
+    <div class="img-box" onclick="openLB(3)">
+      <img id="mi4" src="ICE1.jpeg" alt="Ice Cube Tray" loading="lazy">
+      <div class="zoom-hint">🔍 Tap to zoom</div>
     </div>
-    <div class="thumbs">
-      <img src="ICE1.jpeg" class="active" onclick="setImg('img4',this,'ICE1.jpeg')">
-      <img src="ICE2.jpeg" onclick="setImg('img4',this,'ICE2.jpeg')">
-      <img src="ICE3.jpeg" onclick="setImg('img4',this,'ICE3.jpeg')">
-      <img src="ICE4.jpeg" onclick="setImg('img4',this,'ICE4.jpeg')">
+    <div class="thumbs-row">
+      <img src="ICE1.jpeg" class="act" onclick="swapImg(event,'mi4',this,'ICE1.jpeg',3,0)">
+      <img src="ICE2.jpeg" onclick="swapImg(event,'mi4',this,'ICE2.jpeg',3,1)">
+      <img src="ICE3.jpeg" onclick="swapImg(event,'mi4',this,'ICE3.jpeg',3,2)">
+      <img src="ICE4.jpeg" onclick="swapImg(event,'mi4',this,'ICE4.jpeg',3,3)">
     </div>
-    <div class="card-body">
-      <div class="stars">⭐⭐⭐⭐☆ <span>(89 reviews)</span></div>
-      <h3>Silicone Ice Cube Tray — Pack of 2 (Summer Must-Have!)</h3>
-      <div class="price-row">
-        <span class="price-now">₹149</span>
-        <span class="price-was">₹299</span>
-        <span class="save-tag">Save ₹150</span>
-      </div>
-      <div class="qty-row">
-        <span class="qty-label">Quantity</span>
-        <div class="qty-ctrl">
-          <button onclick="changeQty('q4',-1)">−</button>
-          <div class="qty-num" id="q4">1</div>
-          <button onclick="changeQty('q4',1)">+</button>
-        </div>
-      </div>
-      <button class="order-btn" onclick="orderWA('Silicone Ice Cube Tray Pack of 2',149,'q4')">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Order on WhatsApp
-      </button>
+    <div class="cbody">
+      <div class="stars">⭐⭐⭐⭐☆ <span>(89)</span></div>
+      <h3 class="ctitle">Silicone Ice Cube Tray — Pack of 2 (Summer Must-Have!)</h3>
+      <div class="price-row"><span class="pnow">₹149</span><span class="pwas">₹299</span><span class="psave">Save ₹150</span></div>
+      <div class="qty-row"><span class="qty-lbl">Qty</span><div class="qty-ctrl"><button onclick="chQty('q4',-1)">−</button><div class="qty-n" id="q4">1</div><button onclick="chQty('q4',1)">+</button></div></div>
+      <button class="obtn" onclick="orderWA('Silicone Ice Cube Tray Pack of 2',149,'q4')"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Order on WhatsApp</button>
     </div>
   </div>
 
-  <!-- PRODUCT 5 -->
+  <!-- CARD 5 -->
   <div class="card">
-    <div class="badge gold">KIDS' PICK</div>
-    <button class="wishlist-btn" onclick="toggleWish(this)">🤍</button>
-    <div class="img-wrap">
-      <img id="img5" src="EBOOK1.jpg" alt="Kids Musical Learning Book">
+    <div class="badge gld">KIDS' PICK</div>
+    <button class="wish" onclick="toggleWish(this)">🤍</button>
+    <div class="img-box" onclick="openLB(4)">
+      <img id="mi5" src="EBOOK1.jpg" alt="Kids Musical Book" loading="lazy">
+      <div class="zoom-hint">🔍 Tap to zoom</div>
     </div>
-    <div class="thumbs">
-      <img src="EBOOK1.jpg" class="active" onclick="setImg('img5',this,'EBOOK1.jpg')">
-      <img src="EBOOK2.jpg" onclick="setImg('img5',this,'EBOOK2.jpg')">
-      <img src="EBOOK3.jpg" onclick="setImg('img5',this,'EBOOK3.jpg')">
-      <img src="EBOOK4.jpg" onclick="setImg('img5',this,'EBOOK4.jpg')">
+    <div class="thumbs-row">
+      <img src="EBOOK1.jpg" class="act" onclick="swapImg(event,'mi5',this,'EBOOK1.jpg',4,0)">
+      <img src="EBOOK2.jpg" onclick="swapImg(event,'mi5',this,'EBOOK2.jpg',4,1)">
+      <img src="EBOOK3.jpg" onclick="swapImg(event,'mi5',this,'EBOOK3.jpg',4,2)">
+      <img src="EBOOK4.jpg" onclick="swapImg(event,'mi5',this,'EBOOK4.jpg',4,3)">
     </div>
-    <div class="card-body">
-      <div class="stars">⭐⭐⭐⭐☆ <span>(173 reviews)</span></div>
-      <h3>Kids Musical Learning Book — Fun & Educational</h3>
-      <div class="price-row">
-        <span class="price-now">₹249</span>
-        <span class="price-was">₹499</span>
-        <span class="save-tag">Save ₹250</span>
-      </div>
-      <div class="qty-row">
-        <span class="qty-label">Quantity</span>
-        <div class="qty-ctrl">
-          <button onclick="changeQty('q5',-1)">−</button>
-          <div class="qty-num" id="q5">1</div>
-          <button onclick="changeQty('q5',1)">+</button>
-        </div>
-      </div>
-      <button class="order-btn" onclick="orderWA('Kids Musical Learning Book',249,'q5')">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Order on WhatsApp
-      </button>
+    <div class="cbody">
+      <div class="stars">⭐⭐⭐⭐☆ <span>(173)</span></div>
+      <h3 class="ctitle">Kids Musical Learning Book — Fun & Educational</h3>
+      <div class="price-row"><span class="pnow">₹249</span><span class="pwas">₹499</span><span class="psave">Save ₹250</span></div>
+      <div class="qty-row"><span class="qty-lbl">Qty</span><div class="qty-ctrl"><button onclick="chQty('q5',-1)">−</button><div class="qty-n" id="q5">1</div><button onclick="chQty('q5',1)">+</button></div></div>
+      <button class="obtn" onclick="orderWA('Kids Musical Learning Book',249,'q5')"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Order on WhatsApp</button>
     </div>
   </div>
 
 </div>
 
-<!-- WHY CHOOSE US -->
-<section class="why-us">
-  <div class="why-us-inner">
-    <h2>Why Customers <em>Love</em> Barakah eMart</h2>
+<!-- WHY -->
+<section class="why">
+  <div class="why-in">
+    <h2>Why Customers <em>Love</em> Us</h2>
     <div class="why-grid">
-      <div class="why-card">
-        <div class="icon">🚀</div>
-        <h4>Fast Delivery</h4>
-        <p>We ship quickly across all of India. Get your order at your doorstep within days.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon">💎</div>
-        <h4>Premium Quality</h4>
-        <p>Every product is carefully selected and quality-checked before reaching you.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon">💬</div>
-        <h4>WhatsApp Support</h4>
-        <p>Order, track, and get support instantly on WhatsApp — no complicated forms.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon">💰</div>
-        <h4>Best Prices</h4>
-        <p>Up to 50% off on all products. We beat any competitor on price — guaranteed.</p>
-      </div>
+      <div class="wcard"><div class="ic">🚀</div><h4>Fast Delivery</h4><p>Ships quickly across all of India. Get your order in days.</p></div>
+      <div class="wcard"><div class="ic">💎</div><h4>Premium Quality</h4><p>Every product quality-checked before reaching you.</p></div>
+      <div class="wcard"><div class="ic">💬</div><h4>WhatsApp Support</h4><p>Order & track instantly on WhatsApp. No complicated forms.</p></div>
+      <div class="wcard"><div class="ic">💰</div><h4>Best Prices</h4><p>Up to 50% off on all products — always.</p></div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="testimonials-inner">
-    <h2>What Our Customers Say 💬</h2>
-    <div class="review-grid">
-      <div class="review-card">
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <p class="review-text">"Ordered the lunch box for my son's school. Amazing quality! Delivered in just 3 days. Will definitely order again from Barakah eMart."</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">P</div>
-          <div><div class="reviewer-name">Priya Sharma</div><div class="reviewer-loc">📍 Bhubaneswar, Odisha</div></div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <p class="review-text">"The bag sealer is working perfectly. Very good product at this price. WhatsApp ordering was so easy and fast. Highly recommended!"</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">R</div>
-          <div><div class="reviewer-name">Rahul Verma</div><div class="reviewer-loc">📍 Cuttack, Odisha</div></div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <p class="review-text">"Kids musical book is fantastic! My 4-year-old daughter loves it. Great gift idea. Packaging was very neat and delivery was on time."</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">S</div>
-          <div><div class="reviewer-name">Sunita Das</div><div class="reviewer-loc">📍 Jajpur, Odisha</div></div>
-        </div>
-      </div>
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="reviews-in">
+    <h2>💬 What Customers Say</h2>
+    <div class="rev-grid">
+      <div class="rcard"><div class="rs">⭐⭐⭐⭐⭐</div><p class="rt">"Ordered the lunch box for my son's school. Amazing quality! Delivered in just 3 days. Will order again!"</p><div class="rv"><div class="rv-av">P</div><div><div class="rv-nm">Priya Sharma</div><div class="rv-loc">📍 Bhubaneswar, Odisha</div></div></div></div>
+      <div class="rcard"><div class="rs">⭐⭐⭐⭐⭐</div><p class="rt">"The bag sealer works perfectly. Very good product at this price. WhatsApp ordering was so easy and fast!"</p><div class="rv"><div class="rv-av">R</div><div><div class="rv-nm">Rahul Verma</div><div class="rv-loc">📍 Cuttack, Odisha</div></div></div></div>
+      <div class="rcard"><div class="rs">⭐⭐⭐⭐⭐</div><p class="rt">"Kids musical book is fantastic! My daughter loves it. Packaging was neat and delivery was on time."</p><div class="rv"><div class="rv-av">S</div><div><div class="rv-nm">Sunita Das</div><div class="rv-loc">📍 Jajpur, Odisha</div></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- CTA STRIP -->
-<div class="cta-strip">
-  <h3>🎁 Special Offer — Order Now!</h3>
-  <p>Limited stock available. Free delivery on all orders across India. Don't miss out!</p>
-  <a href="https://wa.me/919124646598?text=Hi%20Barakah%20eMart!%20I%20want%20to%20place%20an%20order%20%F0%9F%9B%92" target="_blank">
-    💬 Order on WhatsApp Now
-  </a>
+<!-- CTA -->
+<div class="cta">
+  <h3>🎁 Order Now & Save Big!</h3>
+  <p>Limited stock. Free delivery across India. Direct WhatsApp ordering — fast & easy!</p>
+  <a href="https://wa.me/919124646598?text=Hi%20Barakah%20eMart!%20I%20want%20to%20place%20an%20order%20%F0%9F%9B%92" target="_blank">💬 Order on WhatsApp Now</a>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="brand-name">🛒 Barakah eMart</div>
-      <p>Your trusted online destination for quality kitchen gadgets and smart home products — delivered across India at the best prices.</p>
-      <div class="footer-contact">
+  <div class="ft-in">
+    <div class="ft-brand">
+      <div class="bn">🛒 Barakah eMart</div>
+      <p>Your trusted destination for quality kitchen gadgets and smart home products — delivered across India at the best prices.</p>
+      <div class="ft-contact">
         <a href="tel:9638426185">📞 9638426185 (M.S. Khan)</a>
         <a href="https://wa.me/919124646598" target="_blank">💬 WhatsApp: 9124646598</a>
         <a href="mailto:barakahemart786@gmail.com">📧 barakahemart786@gmail.com</a>
         <a href="#">📍 Ahmad Nagar, Jajpur Road, Odisha 755019</a>
       </div>
     </div>
-    <div class="footer-col">
-      <h4>Quick Links</h4>
-      <a href="#">Home</a>
-      <a href="#">All Products</a>
-      <a href="#">Best Sellers</a>
-      <a href="#">New Arrivals</a>
+    <div class="ft-cols">
+      <div class="fc"><h4>Quick Links</h4><a href="#">Home</a><a href="#">All Products</a><a href="#">Best Sellers</a><a href="#">New Arrivals</a></div>
+      <div class="fc"><h4>Support</h4><a href="https://wa.me/919124646598" target="_blank">WhatsApp Us</a><a href="tel:9638426185">Call Us</a><a href="#">Return Policy</a><a href="#">Track Order</a></div>
     </div>
-    <div class="footer-col">
-      <h4>Customer Care</h4>
-      <a href="https://wa.me/919124646598" target="_blank">WhatsApp Us</a>
-      <a href="tel:9638426185">Call Us</a>
-      <a href="#">Return Policy</a>
-      <a href="#">Track Order</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Barakah eMart — All Rights Reserved</span>
-    <span>Made with ❤️ in India 🇮🇳</span>
+    <div class="ft-bot"><span>© 2026 Barakah eMart — All Rights Reserved</span><span>Made with ❤️ in India 🇮🇳</span></div>
   </div>
 </footer>
 
-<!-- WHATSAPP FLOAT -->
-<a class="wa-float" href="https://wa.me/919124646598?text=Hi!%20I%20want%20to%20order%20from%20Barakah%20eMart%20%F0%9F%9B%92" target="_blank" title="Chat on WhatsApp">💬</a>
+<!-- WA FLOAT -->
+<a class="wa-float" href="https://wa.me/919124646598?text=Hi!%20I%20want%20to%20order%20%F0%9F%9B%92" target="_blank">💬</a>
 
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="closeLBOutside(event)">
+  <button class="lb-close" onclick="closeLB()">✕</button>
+  <div class="lb-top">
+    <button class="lb-arr-l" onclick="lbNav(-1)">‹</button>
+    <div class="lb-img-wrap">
+      <img id="lb-img" src="" alt="Product zoom">
+    </div>
+    <button class="lb-arr-r" onclick="lbNav(1)">›</button>
+  </div>
+  <div class="lb-thumbs" id="lb-thumbs"></div>
+  <div class="lb-info">
+    <div class="lbc" id="lb-cap"></div>
+    <div class="lbct" id="lb-cnt"></div>
+  </div>
+</div>
+
 <script>
-  function setImg(imgId, thumb, src) {
-    document.getElementById(imgId).src = src;
-    thumb.closest('.thumbs').querySelectorAll('img').forEach(t => t.classList.remove('active'));
-    thumb.classList.add('active');
-  }
+const prods=[
+  {name:'Mini Bag Sealer & Cutter',imgs:['sealer1.jpeg','sealer2.jpeg','sealer3.jpeg','sealer4.jpeg']},
+  {name:'Insta Camera Lunch Box',imgs:['lunchcamera1.jpg','lunchcamera2.jpeg','lunchcamera3.jpeg','lunchcamera4.jpeg']},
+  {name:'Premium Lunch Box',imgs:['LUNCH1.jpeg','LUNCH2.jpeg','LUNCH3.jpeg','LUNCH4.jpeg']},
+  {name:'Silicone Ice Cube Tray (Pack of 2)',imgs:['ICE1.jpeg','ICE2.jpeg','ICE3.jpeg','ICE4.jpeg']},
+  {name:'Kids Musical Learning Book',imgs:['EBOOK1.jpg','EBOOK2.jpg','EBOOK3.jpg','EBOOK4.jpg']}
+];
+let curP=0,curI=0;
+const cidx=[0,0,0,0,0];
 
-  function changeQty(id, delta) {
-    const el = document.getElementById(id);
-    let n = parseInt(el.innerText) + delta;
-    if (n < 1) n = 1;
-    if (n > 99) n = 99;
-    el.innerText = n;
-  }
+function openLB(pi){curP=pi;curI=cidx[pi];renderLB();document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden'}
+function closeLB(){document.getElementById('lb').classList.remove('open');document.body.style.overflow=''}
+function closeLBOutside(e){if(e.target===document.getElementById('lb'))closeLB()}
+function renderLB(){
+  const p=prods[curP];
+  document.getElementById('lb-img').src=p.imgs[curI];
+  document.getElementById('lb-cap').textContent=p.name;
+  document.getElementById('lb-cnt').textContent=(curI+1)+' / '+p.imgs.length;
+  const tc=document.getElementById('lb-thumbs');tc.innerHTML='';
+  p.imgs.forEach((s,i)=>{const img=document.createElement('img');img.src=s;if(i===curI)img.className='act';img.onclick=()=>{curI=i;renderLB()};tc.appendChild(img)});
+}
+function lbNav(d){curI=(curI+d+prods[curP].imgs.length)%prods[curP].imgs.length;renderLB()}
 
-  function orderWA(name, price, qtyId) {
-    const qty = document.getElementById(qtyId).innerText;
-    const total = price * parseInt(qty);
-    const msg = `🛒 *Barakah eMart Order*\n\n📦 Product: ${name}\n💰 Price: ₹${price}\n🔢 Quantity: ${qty}\n💵 Total: ₹${total}\n\nPlease confirm my order. Thank you!`;
-    window.open(`https://wa.me/919124646598?text=${encodeURIComponent(msg)}`, '_blank');
-    showToast(`✅ Redirecting to WhatsApp...`);
-  }
+// Swipe for lightbox
+let sx=0;
+document.getElementById('lb').addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+document.getElementById('lb').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)lbNav(dx<0?1:-1)});
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('lb').classList.contains('open'))return;
+  if(e.key==='ArrowRight')lbNav(1);
+  if(e.key==='ArrowLeft')lbNav(-1);
+  if(e.key==='Escape')closeLB();
+});
 
-  function toggleWish(btn) {
-    const isWished = btn.textContent === '❤️';
-    btn.textContent = isWished ? '🤍' : '❤️';
-    showToast(isWished ? 'Removed from wishlist' : '❤️ Added to wishlist!');
-  }
-
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2500);
-  }
+function swapImg(e,imgId,thumb,src,pi,ii){
+  e.stopPropagation();
+  document.getElementById(imgId).src=src;
+  thumb.closest('.thumbs-row').querySelectorAll('img').forEach(t=>t.classList.remove('act'));
+  thumb.classList.add('act');
+  cidx[pi]=ii;
+}
+function chQty(id,d){const el=document.getElementById(id);let n=parseInt(el.innerText)+d;if(n<1)n=1;if(n>99)n=99;el.innerText=n}
+function orderWA(name,price,qId){
+  const qty=document.getElementById(qId).innerText;
+  const total=price*parseInt(qty);
+  const msg=`🛒 *Barakah eMart Order*\n\n📦 Product: ${name}\n💰 Price: ₹${price} each\n🔢 Quantity: ${qty}\n💵 Total: ₹${total}\n\nPlease confirm my order. Thank you!`;
+  window.open(`https://wa.me/919124646598?text=${encodeURIComponent(msg)}`,'_blank');
+  showToast('✅ Opening WhatsApp...');
+}
+function toggleWish(btn){const on=btn.textContent==='❤️';btn.textContent=on?'🤍':'❤️';showToast(on?'Removed from wishlist':'❤️ Added to wishlist!')}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+function toggleNav(){document.getElementById('mobNav').classList.toggle('open')}
 </script>
 </body>
 </html>
