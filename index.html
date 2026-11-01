@@ -29,28 +29,16 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--g700);o
 img{max-width:100%;display:block}
 a{text-decoration:none}
 button{cursor:pointer;font-family:'Nunito',sans-serif}
-
-/* ════════════════════════════
-   ANNOUNCE BAR
-════════════════════════════ */
 .ann{background:var(--gd);padding:5px 0;overflow:hidden;height:28px}
 .ann-track{display:flex;gap:40px;animation:marquee 20s linear infinite;white-space:nowrap;width:max-content;align-items:center;height:100%}
 .ann-track span{font-size:11px;font-weight:700;color:var(--goldf);letter-spacing:.3px}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-/* ════════════════════════════
-   HEADER — MOBILE FIRST
-════════════════════════════ */
 header{position:sticky;top:0;z-index:900;background:var(--g);box-shadow:0 2px 8px rgba(0,0,0,.2)}
-
-/* Top row: logo + search + icons */
 .hdr-top{display:flex;align-items:center;gap:8px;padding:8px 12px;height:54px}
 .logo{display:flex;align-items:center;gap:8px;flex-shrink:0;text-decoration:none}
 .logo img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--goldf);flex-shrink:0}
 .logo-name{font-size:15px;font-weight:900;color:#fff;line-height:1;white-space:nowrap}
 .logo-sub{font-size:8px;color:var(--goldf);letter-spacing:1px;text-transform:uppercase;display:block}
-
-/* Search bar - always visible on mobile */
 .hdr-search{flex:1;position:relative;min-width:0}
 .hdr-search input{width:100%;padding:8px 12px 8px 34px;border-radius:8px;border:none;background:rgba(255,255,255,.18);color:#fff;font-family:'Nunito',sans-serif;font-size:13px;outline:none;height:36px}
 .hdr-search input::placeholder{color:rgba(255,255,255,.55)}
@@ -65,21 +53,14 @@ header{position:sticky;top:0;z-index:900;background:var(--g);box-shadow:0 2px 8p
 .sr-name{font-size:13px;font-weight:700;color:var(--g700)}
 .sr-price{font-size:12px;color:var(--g);font-weight:800}
 .sr-none{padding:14px;text-align:center;color:var(--g500);font-size:13px}
-
 .hdr-icons{display:flex;align-items:center;gap:6px;flex-shrink:0}
 .hdr-icon-btn{background:rgba(255,255,255,.12);border:none;color:#fff;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;transition:background .2s;text-decoration:none}
 .hdr-icon-btn:active{background:rgba(255,255,255,.25)}
 .hdr-wa-btn{background:var(--wa);border:none;color:#fff;border-radius:8px;padding:0 12px;height:36px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;display:flex;align-items:center;gap:5px;text-decoration:none;white-space:nowrap}
-
-/* Bottom nav row — mobile category tabs */
 .hdr-nav{display:flex;background:var(--gd);overflow-x:auto;scrollbar-width:none;gap:0}
 .hdr-nav::-webkit-scrollbar{display:none}
 .hdr-nav a{color:rgba(255,255,255,.75);font-size:12px;font-weight:700;padding:8px 14px;white-space:nowrap;border-bottom:2px solid transparent;flex-shrink:0;text-decoration:none;transition:all .2s}
 .hdr-nav a.active,.hdr-nav a:active{color:#fff;border-bottom-color:var(--goldf)}
-
-/* ════════════════════════════
-   MOBILE NAV DRAWER
-════════════════════════════ */
 .nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000}
 .nav-overlay.open{display:block}
 .nav-drawer{position:fixed;top:0;left:-280px;width:280px;height:100%;background:#fff;z-index:1001;transition:left .3s ease;overflow-y:auto;display:flex;flex-direction:column}
@@ -94,16 +75,7 @@ header{position:sticky;top:0;z-index:900;background:var(--g);box-shadow:0 2px 8p
 .nav-drawer a .ni{width:36px;height:36px;border-radius:10px;background:var(--g50);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
 .nav-drawer a.wa-link{color:var(--wa);font-weight:800}
 .nav-drawer a.wa-link .ni{background:#e8faf0}
-
-/* ════════════════════════════
-   APP INSTALL BANNER (bottom)
-════════════════════════════ */
-#app-banner{
-  display:none;position:fixed;bottom:0;left:0;right:0;z-index:950;
-  background:#fff;padding:12px 14px;
-  box-shadow:0 -2px 16px rgba(0,0,0,.15);
-  border-top:3px solid var(--g);
-}
+#app-banner{display:none;position:fixed;bottom:0;left:0;right:0;z-index:950;background:#fff;padding:12px 14px;box-shadow:0 -2px 16px rgba(0,0,0,.15);border-top:3px solid var(--g)}
 #app-banner.show{display:flex;align-items:center;gap:10px}
 .ab-logo{width:44px;height:44px;border-radius:10px;object-fit:cover;flex-shrink:0}
 .ab-txt{flex:1;min-width:0}
@@ -111,10 +83,6 @@ header{position:sticky;top:0;z-index:900;background:var(--g);box-shadow:0 2px 8p
 .ab-txt small{font-size:11px;color:var(--g500)}
 .ab-install{background:var(--g);color:#fff;border:none;border-radius:8px;padding:10px 16px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;white-space:nowrap;flex-shrink:0}
 .ab-close{background:none;border:none;color:var(--g500);font-size:22px;line-height:1;padding:4px;flex-shrink:0}
-
-/* ════════════════════════════
-   HERO BANNER
-════════════════════════════ */
 .hero{background:linear-gradient(135deg,var(--gd) 0%,var(--g) 60%,var(--gl) 100%);padding:20px 14px 24px;position:relative;overflow:hidden}
 .hero::after{content:'';position:absolute;right:-30px;top:-30px;width:160px;height:160px;background:rgba(255,255,255,.04);border-radius:50%}
 .hero-badge{display:inline-block;background:var(--goldf);color:#073d24;font-size:10px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:50px;margin-bottom:10px}
@@ -126,10 +94,6 @@ header{position:sticky;top:0;z-index:900;background:var(--g);box-shadow:0 2px 8p
 .hbtn-app{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.3);border-radius:8px;padding:11px 18px;font-size:13px;font-weight:700;text-decoration:none}
 .hero-pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
 .hpill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9);padding:5px 11px;border-radius:50px;font-size:11px;font-weight:700}
-
-/* ════════════════════════════
-   TRUST STRIP
-════════════════════════════ */
 .trust{background:#fff;border-bottom:1px solid var(--g100);overflow-x:auto;scrollbar-width:none}
 .trust::-webkit-scrollbar{display:none}
 .trust-in{display:flex;min-width:max-content}
@@ -138,26 +102,15 @@ header{position:sticky;top:0;z-index:900;background:var(--g);box-shadow:0 2px 8p
 .ti-ico{width:28px;height:28px;background:var(--g50);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
 .ti strong{font-size:11px;font-weight:800;color:var(--g700);display:block;white-space:nowrap}
 .ti small{font-size:10px;color:var(--g500);white-space:nowrap}
-
-/* ════════════════════════════
-   SECTION HEADER
-════════════════════════════ */
 .sec-head{display:flex;align-items:center;justify-content:space-between;padding:16px 12px 8px;gap:8px}
 .sec-head h2{font-size:16px;font-weight:900;color:var(--g700)}
 .sec-head h2 span{color:var(--g)}
 .see-all{font-size:12px;font-weight:800;color:var(--g);border:1.5px solid var(--g);padding:5px 12px;border-radius:50px;white-space:nowrap;text-decoration:none}
-
-/* ════════════════════════════
-   PRODUCT GRID — AMAZON STYLE
-════════════════════════════ */
 .pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:0 8px 16px}
 @media(min-width:540px){.pgrid{grid-template-columns:repeat(2,1fr);gap:10px;padding:0 10px 16px}}
 @media(min-width:768px){.pgrid{grid-template-columns:repeat(3,1fr)}}
 @media(min-width:1024px){.pgrid{grid-template-columns:repeat(4,1fr);padding:0 16px 24px}}
-
-/* ════════════════════════════
-   PRODUCT CARD
-════════════════════════════ */
+.pmsg{grid-column:1/-1;text-align:center;color:var(--g500);padding:30px 10px;font-weight:700}
 .card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:var(--sh);display:flex;flex-direction:column;position:relative;border:1px solid rgba(0,0,0,.06);transition:box-shadow .2s}
 @media(min-width:768px){.card:hover{box-shadow:var(--shm)}}
 .badge{position:absolute;top:8px;left:8px;background:var(--red);color:#fff;font-size:9px;font-weight:900;padding:3px 7px;border-radius:4px;z-index:2;letter-spacing:.3px}
@@ -165,21 +118,16 @@ header{position:sticky;top:0;z-index:900;background:var(--g);box-shadow:0 2px 8p
 .badge.new{background:#6c3fc4}
 .wish{position:absolute;top:6px;right:6px;width:28px;height:28px;background:rgba(255,255,255,.9);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,.12)}
 .wish:active{transform:scale(.88)}
-
-/* Product image */
 .img-box{position:relative;overflow:hidden;background:var(--g50);cursor:zoom-in;aspect-ratio:1/1}
 .img-box img{width:100%;height:100%;object-fit:contain;padding:8px;transition:transform .4s}
 @media(min-width:768px){.card:hover .img-box img{transform:scale(1.06)}}
 .zoom-hint{position:absolute;bottom:5px;right:5px;background:rgba(0,0,0,.4);color:#fff;font-size:9px;padding:2px 6px;border-radius:20px;pointer-events:none}
-
-/* Thumbnails */
+.oos-tag{position:absolute;inset:auto 0 0 0;background:rgba(0,0,0,.65);color:#fff;text-align:center;font-size:11px;font-weight:800;padding:5px}
 .thumbs-row{display:flex;gap:4px;padding:6px 8px;overflow-x:auto;scrollbar-width:none;background:var(--g50);border-bottom:1px solid var(--g100)}
 .thumbs-row::-webkit-scrollbar{display:none}
 .thumbs-row img{width:36px;height:36px;object-fit:cover;border-radius:5px;border:2px solid transparent;cursor:pointer;flex-shrink:0;transition:border-color .15s}
 .thumbs-row img.act{border-color:var(--g)}
 .thumbs-row img:active{opacity:.8}
-
-/* Card body */
 .cbody{padding:8px;flex:1;display:flex;flex-direction:column;gap:4px}
 .stars{display:flex;align-items:center;gap:3px}
 .stars .s{color:var(--goldf);font-size:11px}
@@ -199,11 +147,8 @@ header{position:sticky;top:0;z-index:900;background:var(--g);box-shadow:0 2px 8p
 .qty-n{width:30px;text-align:center;font-size:13px;font-weight:900;color:var(--g700);border-left:1.5px solid var(--g100);border-right:1.5px solid var(--g100);line-height:28px;height:28px}
 .obtn{width:100%;padding:10px 6px;border:none;border-radius:8px;background:var(--g);color:#fff;font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:5px;margin-top:2px}
 .obtn:active{background:var(--gl);transform:scale(.98)}
+.obtn:disabled{background:var(--g300);cursor:not-allowed}
 @media(min-width:400px){.obtn{font-size:13px;padding:11px}}
-
-/* ════════════════════════════
-   CATEGORIES ROW
-════════════════════════════ */
 .cats{padding:12px 8px;background:#fff;border-bottom:1px solid var(--g100)}
 .cats-title{font-size:13px;font-weight:800;color:var(--g700);padding:0 4px 10px}
 .cats-scroll{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
@@ -212,10 +157,6 @@ header{position:sticky;top:0;z-index:900;background:var(--g);box-shadow:0 2px 8p
 .cat-ico{width:54px;height:54px;border-radius:50%;background:var(--g50);display:flex;align-items:center;justify-content:center;font-size:24px;border:2px solid var(--g100);transition:border-color .2s}
 .cat-item:active .cat-ico{border-color:var(--g)}
 .cat-lbl{font-size:10px;font-weight:700;color:var(--g700);text-align:center;max-width:60px;line-height:1.2}
-
-/* ════════════════════════════
-   APP DOWNLOAD SECTION
-════════════════════════════ */
 .app-sec{background:linear-gradient(135deg,#0f2044,#1a3a6e);padding:24px 14px;margin:8px 0}
 .app-sec-in{max-width:500px;margin:auto;text-align:center}
 .app-sec h3{font-size:18px;font-weight:900;color:#fff;margin-bottom:6px}
@@ -224,17 +165,13 @@ header{position:sticky;top:0;z-index:900;background:var(--g);box-shadow:0 2px 8p
 .app-feats{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
 .app-feat{color:rgba(255,255,255,.85);font-size:11px;font-weight:700;display:flex;align-items:center;gap:4px}
 .app-btns-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-.app-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.25);color:#fff;padding:10px 16px;border-radius:10px;font-family:'Nunito',sans-serif;text-decoration:none;transition:background .2s;cursor:pointer;border-width:1.5px}
+.app-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.25);color:#fff;padding:10px 16px;border-radius:10px;font-family:'Nunito',sans-serif;text-decoration:none;transition:background .2s;cursor:pointer}
 .app-btn:active{background:rgba(255,255,255,.2)}
 .app-btn.primary{background:var(--g);border-color:var(--gl)}
 .app-btn .ab-ico{font-size:22px;line-height:1}
 .app-btn .ab-txt small{display:block;font-size:9px;color:rgba(255,255,255,.6);font-weight:600}
-.app-btn .ab-txt strong{display:block;font-size:13px;font-weight:800}
+.app-btn .ab-txt strong{display:block;font-size:13px;font-weight:800;color:#fff}
 .iphone-note{color:rgba(255,255,255,.35);font-size:10px;margin-top:12px}
-
-/* ════════════════════════════
-   WHY US
-════════════════════════════ */
 .why{background:var(--g);padding:24px 14px}
 .why h2{font-size:16px;font-weight:900;color:#fff;text-align:center;margin-bottom:16px}
 .why h2 em{color:var(--goldf);font-style:normal}
@@ -244,10 +181,6 @@ header{position:sticky;top:0;z-index:900;background:var(--g);box-shadow:0 2px 8p
 .wcard .wi{font-size:26px;margin-bottom:7px}
 .wcard h4{color:#fff;font-size:12px;margin-bottom:4px;font-weight:800}
 .wcard p{color:rgba(255,255,255,.55);font-size:11px;line-height:1.5}
-
-/* ════════════════════════════
-   REVIEWS
-════════════════════════════ */
 .revs{padding:20px 8px;background:var(--cream)}
 .revs h2{font-size:16px;font-weight:900;color:var(--g700);padding:0 4px;margin-bottom:12px}
 .rev-grid{display:grid;grid-template-columns:1fr;gap:10px}
@@ -260,19 +193,11 @@ header{position:sticky;top:0;z-index:900;background:var(--g);box-shadow:0 2px 8p
 .rv-av{width:34px;height:34px;border-radius:50%;background:var(--g);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
 .rv-nm{font-weight:800;font-size:12px;color:var(--g700)}
 .rv-loc{font-size:10px;color:var(--g500)}
-
-/* ════════════════════════════
-   CTA
-════════════════════════════ */
 .cta{background:var(--goldf);padding:24px 14px;text-align:center}
 .cta h3{font-size:18px;font-weight:900;color:var(--gd);margin-bottom:6px}
 .cta p{color:rgba(7,61,36,.75);font-size:12px;margin-bottom:16px;line-height:1.6}
 .cta-btn{display:inline-flex;align-items:center;gap:7px;background:var(--gd);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;padding:13px 24px;border-radius:50px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.2)}
 .cta-btn:active{transform:scale(.97)}
-
-/* ════════════════════════════
-   FOOTER
-════════════════════════════ */
 footer{background:var(--gd);color:rgba(255,255,255,.65);padding:28px 14px 80px}
 .ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .ft-logo img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--goldf)}
@@ -288,23 +213,11 @@ footer{background:var(--gd);color:rgba(255,255,255,.65);padding:28px 14px 80px}
 .fl a:hover{color:var(--goldf)}
 .ft-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:14px;text-align:center}
 .ft-bottom span{display:block;font-size:10px;color:rgba(255,255,255,.3);margin-bottom:4px}
-
-/* ════════════════════════════
-   WA FLOAT
-════════════════════════════ */
 .wa-float{position:fixed;bottom:76px;right:14px;width:50px;height:50px;background:var(--wa);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,.5);z-index:800;animation:waPulse 2.5s infinite}
 .wa-float:active{transform:scale(.9)}
 @keyframes waPulse{0%,100%{box-shadow:0 4px 16px rgba(37,211,102,.5)}50%{box-shadow:0 4px 24px rgba(37,211,102,.8),0 0 0 6px rgba(37,211,102,.1)}}
-
-/* ════════════════════════════
-   TOAST
-════════════════════════════ */
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--gd);color:#fff;padding:10px 18px;border-radius:50px;font-size:12px;font-weight:700;opacity:0;transition:all .3s;z-index:9998;pointer-events:none;white-space:nowrap;box-shadow:var(--shm)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* ════════════════════════════
-   LIGHTBOX
-════════════════════════════ */
 .lb{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.96);flex-direction:column;align-items:center;justify-content:center;padding:14px}
 .lb.open{display:flex;animation:lbIn .2s ease}
 @keyframes lbIn{from{opacity:0}to{opacity:1}}
@@ -322,19 +235,11 @@ footer{background:var(--gd);color:rgba(255,255,255,.65);padding:28px 14px 80px}
 .lb-info{margin-top:10px;text-align:center}
 .lb-cap{color:rgba(255,255,255,.8);font-size:13px;font-weight:700}
 .lb-cnt{color:rgba(255,255,255,.4);font-size:11px;margin-top:2px}
-
-/* ════════════════════════════
-   CARD ANIMATIONS
-════════════════════════════ */
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .card{animation:fadeUp .35s both}
 .card:nth-child(1){animation-delay:.03s}.card:nth-child(2){animation-delay:.06s}
 .card:nth-child(3){animation-delay:.09s}.card:nth-child(4){animation-delay:.12s}
 .card:nth-child(5){animation-delay:.15s}
-
-/* ════════════════════════════
-   DESKTOP OVERRIDES
-════════════════════════════ */
 @media(min-width:768px){
   .hdr-top{padding:10px 24px;height:60px}
   .logo img{width:42px;height:42px}
@@ -352,350 +257,134 @@ footer{background:var(--gd);color:rgba(255,255,255,.65);padding:28px 14px 80px}
 </head>
 <body>
 
-<!-- ══ APP BANNER ══ -->
 <div id="app-banner">
   <img class="ab-logo" src="logo.png" alt="Barakah eMart">
-  <div class="ab-txt">
-    <strong>Install Barakah eMart App</strong>
-    <small>Free · Works Offline · Fast Shopping</small>
-  </div>
+  <div class="ab-txt"><strong>Install Barakah eMart App</strong><small>Free · Works Offline · Fast Shopping</small></div>
   <button class="ab-install" id="ab-install-btn">Install</button>
   <button class="ab-close" onclick="hideBanner()">✕</button>
 </div>
 
-<!-- ══ ANNOUNCE ══ -->
 <div class="ann">
   <div class="ann-track">
-    <span>🎉 Up to 50% OFF!</span>
-    <span>🚚 FREE Delivery Pan India</span>
-    <span>⚡ WhatsApp Order</span>
-    <span>📱 Install Free App</span>
-    <span>✅ 1000+ Happy Customers</span>
-    <span>↩️ Easy Returns</span>
-    <span>🎉 Up to 50% OFF!</span>
-    <span>🚚 FREE Delivery Pan India</span>
-    <span>⚡ WhatsApp Order</span>
-    <span>📱 Install Free App</span>
-    <span>✅ 1000+ Happy Customers</span>
-    <span>↩️ Easy Returns</span>
+    <span>🎉 Special Offers!</span><span>🚚 FREE Delivery Pan India</span><span>⚡ WhatsApp Order</span><span>📱 Install Free App</span><span>↩️ Easy Returns</span>
+    <span>🎉 Special Offers!</span><span>🚚 FREE Delivery Pan India</span><span>⚡ WhatsApp Order</span><span>📱 Install Free App</span><span>↩️ Easy Returns</span>
   </div>
 </div>
 
-<!-- ══ HEADER ══ -->
 <header>
   <div class="hdr-top">
-    <!-- Logo -->
-    <a class="logo" href="#">
-      <img src="logo.png" alt="Barakah eMart">
-      <div>
-        <span class="logo-name">Barakah eMart</span>
-        <span class="logo-sub">Kitchen & Smart Home</span>
-      </div>
-    </a>
-    <!-- Search -->
+    <a class="logo" href="#"><img src="logo.png" alt="Barakah eMart"><div><span class="logo-name">Barakah eMart</span><span class="logo-sub">Kitchen & Smart Home</span></div></a>
     <div class="hdr-search" id="desktopSearch">
       <span class="si">🔍</span>
-      <input type="text" placeholder="Search products..." id="searchInput"
-        oninput="doSearch(this.value,'desktop-results')"
-        onblur="setTimeout(()=>hideResults('desktop-results'),200)">
+      <input type="text" placeholder="Search products..." id="searchInput" oninput="doSearch(this.value,'desktop-results')" onblur="setTimeout(()=>hideResults('desktop-results'),250)">
       <div class="search-results" id="desktop-results"></div>
     </div>
-    <!-- Icons -->
     <div class="hdr-icons">
-      <a class="hdr-wa-btn" href="https://wa.me/919124646598" target="_blank">💬 <span class="btn-lbl">Order</span></a>
+      <a class="hdr-wa-btn" href="https://wa.me/919124646598" target="_blank" rel="noopener">💬 <span class="btn-lbl">Order</span></a>
       <button class="hdr-icon-btn" onclick="openDrawer()" aria-label="Menu">☰</button>
     </div>
   </div>
-  <!-- Nav tabs -->
   <nav class="hdr-nav">
     <a href="#" class="active">🏠 Home</a>
     <a href="#products">🛍️ Products</a>
     <a href="#app-sec">📱 Get App</a>
-    <a href="https://wa.me/919124646598" target="_blank">💬 WhatsApp</a>
+    <a href="https://wa.me/919124646598" target="_blank" rel="noopener">💬 WhatsApp</a>
     <a href="tel:9638426185">📞 Call</a>
   </nav>
 </header>
 
-<!-- ══ DRAWER OVERLAY ══ -->
 <div class="nav-overlay" id="navOverlay" onclick="closeDrawer()"></div>
 <div class="nav-drawer" id="navDrawer">
-  <div class="nav-drawer-head">
-    <img src="logo.png" alt="Logo">
-    <div>
-      <div class="nd-name">Barakah eMart</div>
-      <div class="nd-sub">Kitchen & Smart Home</div>
-    </div>
-    <button class="nd-close" onclick="closeDrawer()">✕</button>
-  </div>
-  <!-- Mobile search inside drawer -->
+  <div class="nav-drawer-head"><img src="logo.png" alt="Logo"><div><div class="nd-name">Barakah eMart</div><div class="nd-sub">Kitchen & Smart Home</div></div><button class="nd-close" onclick="closeDrawer()">✕</button></div>
   <div style="padding:10px 14px;background:#f8f8f8;border-bottom:1px solid #ebebeb">
-    <input type="text" placeholder="🔍 Search products..."
-      style="width:100%;padding:10px 14px;border-radius:8px;border:1.5px solid #ebebeb;font-family:'Nunito',sans-serif;font-size:14px;outline:none;background:#fff"
-      oninput="doSearch(this.value,'mob-results')"
-      onblur="setTimeout(()=>hideResults('mob-results'),200)">
+    <input type="text" placeholder="🔍 Search products..." style="width:100%;padding:10px 14px;border-radius:8px;border:1.5px solid #ebebeb;font-family:'Nunito',sans-serif;font-size:14px;outline:none;background:#fff" oninput="doSearch(this.value,'mob-results')" onblur="setTimeout(()=>hideResults('mob-results'),250)">
     <div class="search-results" id="mob-results" style="position:relative;top:4px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.1)"></div>
   </div>
   <a href="#" onclick="closeDrawer()"><span class="ni">🏠</span> Home</a>
   <a href="#products" onclick="closeDrawer()"><span class="ni">🛍️</span> All Products</a>
   <a href="#app-sec" onclick="closeDrawer()"><span class="ni">📱</span> Install App</a>
-  <a href="https://wa.me/919124646598" target="_blank" class="wa-link"><span class="ni" style="background:#e8faf0">💬</span> WhatsApp Order</a>
+  <a href="https://wa.me/919124646598" target="_blank" rel="noopener" class="wa-link"><span class="ni" style="background:#e8faf0">💬</span> WhatsApp Order</a>
   <a href="tel:9638426185"><span class="ni">📞</span> Call: 9638426185</a>
   <a href="mailto:barakahemart786@gmail.com"><span class="ni">📧</span> Email Us</a>
 </div>
 
-<!-- ══ HERO ══ -->
 <section class="hero">
   <div class="hero-badge">✨ Limited Time Offer</div>
   <h1>Kitchen Gadgets that<br><em>Simplify Your Life</em></h1>
   <p>Premium products at unbeatable prices. Fast delivery across India!</p>
   <div class="hero-btns">
-    <a class="hbtn-wa" href="https://wa.me/919124646598?text=Hi!%20I%20want%20to%20order" target="_blank">💬 Order Now</a>
-    <a class="hbtn-app" href="#app-sec" onclick="document.getElementById('app-sec').scrollIntoView({behavior:'smooth'});return false">📱 Get App</a>
+    <a class="hbtn-wa" href="https://wa.me/919124646598?text=Hi!%20I%20want%20to%20order" target="_blank" rel="noopener">💬 Order Now</a>
+    <a class="hbtn-app" href="#app-sec">📱 Get App</a>
   </div>
-  <div class="hero-pills">
-    <div class="hpill">🚚 Free Delivery</div>
-    <div class="hpill">✅ Premium Quality</div>
-    <div class="hpill">📱 Free App</div>
-    <div class="hpill">↩️ Easy Returns</div>
-  </div>
+  <div class="hero-pills"><div class="hpill">🚚 Free Delivery</div><div class="hpill">✅ Premium Quality</div><div class="hpill">📱 Free App</div><div class="hpill">↩️ Easy Returns</div></div>
 </section>
 
-<!-- ══ TRUST ══ -->
-<div class="trust">
-  <div class="trust-in">
-    <div class="ti"><div class="ti-ico">🚚</div><div><strong>Free Delivery</strong><small>Pan India</small></div></div>
-    <div class="ti"><div class="ti-ico">💬</div><div><strong>WhatsApp Order</strong><small>Instant confirm</small></div></div>
-    <div class="ti"><div class="ti-ico">📱</div><div><strong>Free App</strong><small>Install now</small></div></div>
-    <div class="ti"><div class="ti-ico">🔒</div><div><strong>Secure</strong><small>1000+ customers</small></div></div>
-    <div class="ti"><div class="ti-ico">↩️</div><div><strong>Easy Returns</strong><small>Hassle-free</small></div></div>
-    <div class="ti"><div class="ti-ico">💰</div><div><strong>Best Price</strong><small>50% off</small></div></div>
-  </div>
-</div>
+<div class="trust"><div class="trust-in">
+  <div class="ti"><div class="ti-ico">🚚</div><div><strong>Free Delivery</strong><small>Pan India</small></div></div>
+  <div class="ti"><div class="ti-ico">💬</div><div><strong>WhatsApp Order</strong><small>Instant confirm</small></div></div>
+  <div class="ti"><div class="ti-ico">📱</div><div><strong>Free App</strong><small>Install now</small></div></div>
+  <div class="ti"><div class="ti-ico">🔒</div><div><strong>Secure</strong><small>Trusted store</small></div></div>
+  <div class="ti"><div class="ti-ico">↩️</div><div><strong>Easy Returns</strong><small>Hassle-free</small></div></div>
+  <div class="ti"><div class="ti-ico">💰</div><div><strong>Best Price</strong><small>Great deals</small></div></div>
+</div></div>
 
-<!-- ══ CATEGORIES ══ -->
-<div class="cats">
-  <div class="cats-title">Shop by Category</div>
-  <div class="cats-scroll">
-    <a class="cat-item" href="#products"><div class="cat-ico">🥡</div><span class="cat-lbl">Lunch Boxes</span></a>
-    <a class="cat-item" href="#products"><div class="cat-ico">🧊</div><span class="cat-lbl">Ice Trays</span></a>
-    <a class="cat-item" href="#products"><div class="cat-ico">🔧</div><span class="cat-lbl">Kitchen Tools</span></a>
-    <a class="cat-item" href="#products"><div class="cat-ico">📚</div><span class="cat-lbl">Kids Books</span></a>
-    <a class="cat-item" href="#products"><div class="cat-ico">🏠</div><span class="cat-lbl">Smart Home</span></a>
-    <a class="cat-item" href="https://wa.me/919124646598" target="_blank"><div class="cat-ico">🛍️</div><span class="cat-lbl">All Items</span></a>
-  </div>
-</div>
-
-<!-- ══ PRODUCTS ══ -->
 <div class="sec-head" id="products">
-  <div>
-    <h2>🔥 <span>Best Sellers</span></h2>
-    <div style="font-size:11px;color:var(--g500);margin-top:2px">Hand-picked by 1000+ customers</div>
-  </div>
-  <a class="see-all" href="https://wa.me/919124646598?text=Hi!%20Show%20me%20all%20products" target="_blank">See All →</a>
+  <div><h2>🔥 <span>Best Sellers</span></h2></div>
+  <a class="see-all" href="https://wa.me/919124646598?text=Hi!%20Show%20me%20all%20products" target="_blank" rel="noopener">See All →</a>
 </div>
 
-<div class="pgrid">
+<div class="pgrid" id="pgrid"><div class="pmsg">Loading products...</div></div>
 
-  <!-- CARD 1 -->
-  <div class="card">
-    <div class="badge">50% OFF</div>
-    <button class="wish" onclick="toggleWish(this)">🤍</button>
-    <div class="img-box" onclick="openLB(0)">
-      <img id="mi1" src="sealer1.jpeg" alt="Mini Bag Sealer" loading="lazy">
-      <div class="zoom-hint">🔍 Zoom</div>
-    </div>
-    <div class="thumbs-row">
-      <img src="sealer1.jpeg" class="act" onclick="swapImg(event,'mi1',this,'sealer1.jpeg',0,0)">
-      <img src="sealer2.jpeg" onclick="swapImg(event,'mi1',this,'sealer2.jpeg',0,1)">
-      <img src="sealer3.jpeg" onclick="swapImg(event,'mi1',this,'sealer3.jpeg',0,2)">
-      <img src="sealer4.jpeg" onclick="swapImg(event,'mi1',this,'sealer4.jpeg',0,3)">
-    </div>
-    <div class="cbody">
-      <div class="stars"><span class="s">⭐⭐⭐⭐☆</span><span class="rc">(128)</span></div>
-      <div class="ctitle">2-in-1 Mini Bag Sealer & Cutter — Rechargeable</div>
-      <div class="price-row"><span class="pnow">₹149</span><span class="pwas">₹299</span><span class="psave">50% OFF</span></div>
-      <div class="qty-row"><span class="qty-lbl">Qty</span><div class="qty-ctrl"><button onclick="chQty('q1',-1)">−</button><div class="qty-n" id="q1">1</div><button onclick="chQty('q1',1)">+</button></div></div>
-      <button class="obtn" onclick="orderWA('Mini Bag Sealer & Cutter',149,'q1')">🛒 Order on WhatsApp</button>
-    </div>
-  </div>
-
-  <!-- CARD 2 -->
-  <div class="card">
-    <div class="badge">50% OFF</div>
-    <button class="wish" onclick="toggleWish(this)">🤍</button>
-    <div class="img-box" onclick="openLB(1)">
-      <img id="mi2" src="lunchcamera1.jpg" alt="Camera Lunch Box" loading="lazy">
-      <div class="zoom-hint">🔍 Zoom</div>
-    </div>
-    <div class="thumbs-row">
-      <img src="lunchcamera1.jpg" class="act" onclick="swapImg(event,'mi2',this,'lunchcamera1.jpg',1,0)">
-      <img src="lunchcamera2.jpeg" onclick="swapImg(event,'mi2',this,'lunchcamera2.jpeg',1,1)">
-      <img src="lunchcamera3.jpeg" onclick="swapImg(event,'mi2',this,'lunchcamera3.jpeg',1,2)">
-      <img src="lunchcamera4.jpeg" onclick="swapImg(event,'mi2',this,'lunchcamera4.jpeg',1,3)">
-    </div>
-    <div class="cbody">
-      <div class="stars"><span class="s">⭐⭐⭐⭐☆</span><span class="rc">(96)</span></div>
-      <div class="ctitle">Premium Lunch Box — Insta Camera Design</div>
-      <div class="price-row"><span class="pnow">₹249</span><span class="pwas">₹499</span><span class="psave">50% OFF</span></div>
-      <div class="qty-row"><span class="qty-lbl">Qty</span><div class="qty-ctrl"><button onclick="chQty('q2',-1)">−</button><div class="qty-n" id="q2">1</div><button onclick="chQty('q2',1)">+</button></div></div>
-      <button class="obtn" onclick="orderWA('Insta Camera Lunch Box',249,'q2')">🛒 Order on WhatsApp</button>
-    </div>
-  </div>
-
-  <!-- CARD 3 -->
-  <div class="card">
-    <div class="badge gld">BEST VALUE</div>
-    <button class="wish" onclick="toggleWish(this)">🤍</button>
-    <div class="img-box" onclick="openLB(2)">
-      <img id="mi3" src="LUNCH1.jpeg" alt="Premium Lunch Box" loading="lazy">
-      <div class="zoom-hint">🔍 Zoom</div>
-    </div>
-    <div class="thumbs-row">
-      <img src="LUNCH1.jpeg" class="act" onclick="swapImg(event,'mi3',this,'LUNCH1.jpeg',2,0)">
-      <img src="LUNCH2.jpeg" onclick="swapImg(event,'mi3',this,'LUNCH2.jpeg',2,1)">
-      <img src="LUNCH3.jpeg" onclick="swapImg(event,'mi3',this,'LUNCH3.jpeg',2,2)">
-      <img src="LUNCH4.jpeg" onclick="swapImg(event,'mi3',this,'LUNCH4.jpeg',2,3)">
-    </div>
-    <div class="cbody">
-      <div class="stars"><span class="s">⭐⭐⭐⭐☆</span><span class="rc">(214)</span></div>
-      <div class="ctitle">Premium Lunch Box — For Everyone, Every Day</div>
-      <div class="price-row"><span class="pnow">₹249</span><span class="pwas">₹499</span><span class="psave">50% OFF</span></div>
-      <div class="qty-row"><span class="qty-lbl">Qty</span><div class="qty-ctrl"><button onclick="chQty('q3',-1)">−</button><div class="qty-n" id="q3">1</div><button onclick="chQty('q3',1)">+</button></div></div>
-      <button class="obtn" onclick="orderWA('Premium Lunch Box',249,'q3')">🛒 Order on WhatsApp</button>
-    </div>
-  </div>
-
-  <!-- CARD 4 -->
-  <div class="card">
-    <div class="badge">PACK OF 2</div>
-    <button class="wish" onclick="toggleWish(this)">🤍</button>
-    <div class="img-box" onclick="openLB(3)">
-      <img id="mi4" src="ICE1.jpeg" alt="Ice Cube Tray" loading="lazy">
-      <div class="zoom-hint">🔍 Zoom</div>
-    </div>
-    <div class="thumbs-row">
-      <img src="ICE1.jpeg" class="act" onclick="swapImg(event,'mi4',this,'ICE1.jpeg',3,0)">
-      <img src="ICE2.jpeg" onclick="swapImg(event,'mi4',this,'ICE2.jpeg',3,1)">
-      <img src="ICE3.jpeg" onclick="swapImg(event,'mi4',this,'ICE3.jpeg',3,2)">
-      <img src="ICE4.jpeg" onclick="swapImg(event,'mi4',this,'ICE4.jpeg',3,3)">
-    </div>
-    <div class="cbody">
-      <div class="stars"><span class="s">⭐⭐⭐⭐☆</span><span class="rc">(89)</span></div>
-      <div class="ctitle">Silicone Ice Cube Tray — Pack of 2 (Summer Must-Have!)</div>
-      <div class="price-row"><span class="pnow">₹149</span><span class="pwas">₹299</span><span class="psave">50% OFF</span></div>
-      <div class="qty-row"><span class="qty-lbl">Qty</span><div class="qty-ctrl"><button onclick="chQty('q4',-1)">−</button><div class="qty-n" id="q4">1</div><button onclick="chQty('q4',1)">+</button></div></div>
-      <button class="obtn" onclick="orderWA('Silicone Ice Cube Tray Pack of 2',149,'q4')">🛒 Order on WhatsApp</button>
-    </div>
-  </div>
-
-  <!-- CARD 5 -->
-  <div class="card">
-    <div class="badge gld">KIDS' PICK</div>
-    <button class="wish" onclick="toggleWish(this)">🤍</button>
-    <div class="img-box" onclick="openLB(4)">
-      <img id="mi5" src="EBOOK1.jpg" alt="Kids Musical Book" loading="lazy">
-      <div class="zoom-hint">🔍 Zoom</div>
-    </div>
-    <div class="thumbs-row">
-      <img src="EBOOK1.jpg" class="act" onclick="swapImg(event,'mi5',this,'EBOOK1.jpg',4,0)">
-      <img src="EBOOK2.jpg" onclick="swapImg(event,'mi5',this,'EBOOK2.jpg',4,1)">
-      <img src="EBOOK3.jpg" onclick="swapImg(event,'mi5',this,'EBOOK3.jpg',4,2)">
-      <img src="EBOOK4.jpg" onclick="swapImg(event,'mi5',this,'EBOOK4.jpg',4,3)">
-    </div>
-    <div class="cbody">
-      <div class="stars"><span class="s">⭐⭐⭐⭐☆</span><span class="rc">(173)</span></div>
-      <div class="ctitle">Kids Musical Learning Book — Fun & Educational</div>
-      <div class="price-row"><span class="pnow">₹249</span><span class="pwas">₹499</span><span class="psave">50% OFF</span></div>
-      <div class="qty-row"><span class="qty-lbl">Qty</span><div class="qty-ctrl"><button onclick="chQty('q5',-1)">−</button><div class="qty-n" id="q5">1</div><button onclick="chQty('q5',1)">+</button></div></div>
-      <button class="obtn" onclick="orderWA('Kids Musical Learning Book',249,'q5')">🛒 Order on WhatsApp</button>
-    </div>
-  </div>
-
-</div>
-
-<!-- ══ APP SECTION ══ -->
 <section class="app-sec" id="app-sec">
   <div class="app-sec-in">
     <h3>📱 Get the <em>Barakah eMart App</em></h3>
     <p>Install our free app on your phone! Shop faster, get exclusive offers & track orders easily.</p>
-    <div class="app-feats">
-      <div class="app-feat">⚡ Super Fast</div>
-      <div class="app-feat">📶 Works Offline</div>
-      <div class="app-feat">🔔 Notifications</div>
-      <div class="app-feat">🆓 100% Free</div>
-    </div>
+    <div class="app-feats"><div class="app-feat">⚡ Super Fast</div><div class="app-feat">📶 Works Offline</div><div class="app-feat">🔔 Notifications</div><div class="app-feat">🆓 100% Free</div></div>
     <div class="app-btns-row">
-      <button class="app-btn primary" id="main-install-btn" onclick="installApp()">
-        <div class="ab-ico">📲</div>
-        <div class="ab-txt"><small>Tap to Install</small><strong>Android App</strong></div>
-      </button>
-      <a class="app-btn" href="https://wa.me/919124646598?text=Hi!%20Please%20send%20app%20link" target="_blank">
-        <div class="ab-ico">💬</div>
-        <div class="ab-txt"><small>Get link on</small><strong>WhatsApp</strong></div>
-      </a>
+      <button class="app-btn primary" id="main-install-btn" onclick="installApp()"><div class="ab-ico">📲</div><div class="ab-txt"><small>Tap to Install</small><strong>Android App</strong></div></button>
+      <a class="app-btn" href="https://wa.me/919124646598?text=Hi!%20Please%20send%20app%20link" target="_blank" rel="noopener"><div class="ab-ico">💬</div><div class="ab-txt"><small>Get link on</small><strong>WhatsApp</strong></div></a>
     </div>
     <p class="iphone-note">iPhone: Open in Safari → Share → "Add to Home Screen"</p>
   </div>
 </section>
 
-<!-- ══ WHY US ══ -->
 <section class="why">
   <h2>Why Customers <em>Love</em> Us</h2>
   <div class="why-grid">
-    <div class="wcard"><div class="wi">🚀</div><h4>Fast Delivery</h4><p>Ships quickly across India in days.</p></div>
+    <div class="wcard"><div class="wi">🚀</div><h4>Fast Delivery</h4><p>Ships quickly across India.</p></div>
     <div class="wcard"><div class="wi">💎</div><h4>Premium Quality</h4><p>Every product quality-checked.</p></div>
     <div class="wcard"><div class="wi">💬</div><h4>WhatsApp Support</h4><p>Order & track on WhatsApp instantly.</p></div>
-    <div class="wcard"><div class="wi">💰</div><h4>Best Prices</h4><p>Up to 50% off — always.</p></div>
+    <div class="wcard"><div class="wi">💰</div><h4>Best Prices</h4><p>Great deals on every product.</p></div>
   </div>
 </section>
 
-<!-- ══ REVIEWS ══ -->
-<section class="revs">
-  <h2>💬 Customer Reviews</h2>
-  <div class="rev-grid">
-    <div class="rcard"><div class="rs">⭐⭐⭐⭐⭐</div><p class="rt">"Ordered the lunch box for my son's school. Amazing quality! Delivered in just 3 days."</p><div class="rv"><div class="rv-av">P</div><div><div class="rv-nm">Priya Sharma</div><div class="rv-loc">📍 Bhubaneswar</div></div></div></div>
-    <div class="rcard"><div class="rs">⭐⭐⭐⭐⭐</div><p class="rt">"Bag sealer works perfectly. WhatsApp ordering was so easy and fast. Highly recommended!"</p><div class="rv"><div class="rv-av">R</div><div><div class="rv-nm">Rahul Verma</div><div class="rv-loc">📍 Cuttack</div></div></div></div>
-    <div class="rcard"><div class="rs">⭐⭐⭐⭐⭐</div><p class="rt">"Kids musical book is fantastic! My daughter loves it. Neat packaging and on-time delivery."</p><div class="rv"><div class="rv-av">S</div><div><div class="rv-nm">Sunita Das</div><div class="rv-loc">📍 Jajpur</div></div></div></div>
-  </div>
-</section>
-
-<!-- ══ CTA ══ -->
 <div class="cta">
   <h3>🎁 Order Now & Save Big!</h3>
   <p>Limited stock available. Free delivery all over India!</p>
-  <a class="cta-btn" href="https://wa.me/919124646598?text=Hi%20Barakah%20eMart!%20I%20want%20to%20place%20an%20order%20%F0%9F%9B%92" target="_blank">💬 Order on WhatsApp</a>
+  <a class="cta-btn" href="https://wa.me/919124646598?text=Hi%20Barakah%20eMart!%20I%20want%20to%20place%20an%20order%20%F0%9F%9B%92" target="_blank" rel="noopener">💬 Order on WhatsApp</a>
 </div>
 
-<!-- ══ FOOTER ══ -->
 <footer>
   <div style="max-width:1280px;margin:auto">
-    <div class="ft-logo">
-      <img src="logo.png" alt="Barakah eMart">
-      <div class="ft-logo-txt"><div class="fn">Barakah eMart</div><div class="fs">Kitchen & Smart Home</div></div>
-    </div>
+    <div class="ft-logo"><img src="logo.png" alt="Barakah eMart"><div class="ft-logo-txt"><div class="fn">Barakah eMart</div><div class="fs">Kitchen & Smart Home</div></div></div>
     <p class="ft-desc">Your trusted destination for quality kitchen gadgets and smart home products — delivered across India at the best prices.</p>
     <div class="ft-contact">
       <a href="tel:9638426185">📞 9638426185 (M.S. Khan)</a>
-      <a href="https://wa.me/919124646598" target="_blank">💬 WhatsApp: 9124646598</a>
+      <a href="https://wa.me/919124646598" target="_blank" rel="noopener">💬 WhatsApp: 9124646598</a>
       <a href="mailto:barakahemart786@gmail.com">📧 barakahemart786@gmail.com</a>
       <a href="#">📍 Ahmad Nagar, Jajpur Road, Odisha 755019</a>
     </div>
     <div class="ft-links">
-      <div class="fl"><h4>Quick Links</h4><a href="#">Home</a><a href="#products">Products</a><a href="#app-sec">Install App</a><a href="https://wa.me/919124646598" target="_blank">WhatsApp Order</a></div>
-      <div class="fl"><h4>Support</h4><a href="https://wa.me/919124646598" target="_blank">WhatsApp Us</a><a href="tel:9638426185">Call Us</a><a href="#">Return Policy</a><a href="#">Track Order</a></div>
+      <div class="fl"><h4>Quick Links</h4><a href="#">Home</a><a href="#products">Products</a><a href="#app-sec">Install App</a><a href="https://wa.me/919124646598" target="_blank" rel="noopener">WhatsApp Order</a></div>
+      <div class="fl"><h4>Support</h4><a href="https://wa.me/919124646598" target="_blank" rel="noopener">WhatsApp Us</a><a href="tel:9638426185">Call Us</a><a href="#">Return Policy</a><a href="#">Track Order</a></div>
     </div>
-    <div class="ft-bottom">
-      <span>© 2026 Barakah eMart — All Rights Reserved</span>
-      <span>Made with ❤️ in India 🇮🇳</span>
-    </div>
+    <div class="ft-bottom"><span>© 2026 Barakah eMart — All Rights Reserved</span><span>Made with ❤️ in India 🇮🇳</span></div>
   </div>
 </footer>
 
-<!-- ══ WA FLOAT ══ -->
-<a class="wa-float" href="https://wa.me/919124646598?text=Hi!%20I%20want%20to%20order" target="_blank">💬</a>
+<a class="wa-float" href="https://wa.me/919124646598?text=Hi!%20I%20want%20to%20order" target="_blank" rel="noopener">💬</a>
 <div class="toast" id="toast"></div>
 
-<!-- ══ LIGHTBOX ══ -->
 <div class="lb" id="lb" onclick="closeLBOutside(event)">
   <button class="lb-close" onclick="closeLB()">✕</button>
   <div class="lb-top">
@@ -707,77 +396,93 @@ footer{background:var(--gd);color:rgba(255,255,255,.65);padding:28px 14px 80px}
   <div class="lb-info"><div class="lb-cap" id="lb-cap"></div><div class="lb-cnt" id="lb-cnt"></div></div>
 </div>
 
+<!-- ══ MAIN SCRIPT (products yahin render hote hain) ══ -->
 <script>
-/* ── PRODUCTS ── */
-const prods=[
-  {name:'Mini Bag Sealer & Cutter',price:149,imgs:['sealer1.jpeg','sealer2.jpeg','sealer3.jpeg','sealer4.jpeg']},
-  {name:'Insta Camera Lunch Box',price:249,imgs:['lunchcamera1.jpg','lunchcamera2.jpeg','lunchcamera3.jpeg','lunchcamera4.jpeg']},
-  {name:'Premium Lunch Box',price:249,imgs:['LUNCH1.jpeg','LUNCH2.jpeg','LUNCH3.jpeg','LUNCH4.jpeg']},
-  {name:'Silicone Ice Cube Tray (Pack of 2)',price:149,imgs:['ICE1.jpeg','ICE2.jpeg','ICE3.jpeg','ICE4.jpeg']},
-  {name:'Kids Musical Learning Book',price:249,imgs:['EBOOK1.jpg','EBOOK2.jpg','EBOOK3.jpg','EBOOK4.jpg']}
+const DEFAULTS=[
+  {name:'2-in-1 Mini Bag Sealer & Cutter — Rechargeable',price:149,mrp:299,badge:'',badgeType:'',images:['sealer1.jpeg','sealer2.jpeg','sealer3.jpeg','sealer4.jpeg']},
+  {name:'Premium Lunch Box — Insta Camera Design',price:249,mrp:499,badge:'',badgeType:'',images:['lunchcamera1.jpg','lunchcamera2.jpeg','lunchcamera3.jpeg','lunchcamera4.jpeg']},
+  {name:'Premium Lunch Box — For Everyone, Every Day',price:249,mrp:499,badge:'BEST VALUE',badgeType:'gld',images:['LUNCH1.jpeg','LUNCH2.jpeg','LUNCH3.jpeg','LUNCH4.jpeg']},
+  {name:'Silicone Ice Cube Tray — Pack of 2 (Summer Must-Have!)',price:149,mrp:299,badge:'PACK OF 2',badgeType:'',images:['ICE1.jpeg','ICE2.jpeg','ICE3.jpeg','ICE4.jpeg']},
+  {name:'Kids Musical Learning Book — Fun & Educational',price:249,mrp:499,badge:"KIDS' PICK",badgeType:'gld',images:['EBOOK1.jpg','EBOOK2.jpg','EBOOK3.jpg','EBOOK4.jpg']}
 ];
+let prods=[],cidx=[];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-/* ── PWA INSTALL ── */
+function cardHTML(p,i){
+  const pct=p.mrp>p.price?Math.round((1-p.price/p.mrp)*100):0;
+  const bt=p.badge||(pct?pct+'% OFF':'');
+  const imgs=p.images&&p.images.length?p.images:['logo.png'];
+  const out=p.inStock===false;
+  return `<div class="card">
+    ${bt?`<div class="badge ${esc(p.badgeType)}">${esc(bt)}</div>`:''}
+    <button class="wish" onclick="toggleWish(this)" aria-label="Wishlist">🤍</button>
+    <div class="img-box" onclick="openLB(${i})">
+      <img id="mi${i}" src="${esc(imgs[0])}" alt="${esc(p.name)}" loading="lazy">
+      ${out?'<div class="oos-tag">Out of Stock</div>':'<div class="zoom-hint">🔍 Zoom</div>'}
+    </div>
+    ${imgs.length>1?`<div class="thumbs-row">${imgs.map((s,k)=>`<img src="${esc(s)}" class="${k===0?'act':''}" alt="" onclick="swapImg(event,'mi${i}',this,${i},${k})">`).join('')}</div>`:''}
+    <div class="cbody">
+      ${p.reviews>0?`<div class="stars"><span class="s">⭐⭐⭐⭐☆</span><span class="rc">(${p.reviews})</span></div>`:''}
+      <div class="ctitle">${esc(p.name)}</div>
+      <div class="price-row"><span class="pnow">₹${p.price}</span>${p.mrp>p.price?`<span class="pwas">₹${p.mrp}</span>`:''}${pct?`<span class="psave">${pct}% OFF</span>`:''}</div>
+      <div class="qty-row"><span class="qty-lbl">Qty</span><div class="qty-ctrl"><button onclick="chQty('q${i}',-1)">−</button><div class="qty-n" id="q${i}">1</div><button onclick="chQty('q${i}',1)">+</button></div></div>
+      <button class="obtn" ${out?'disabled':''} onclick="orderWA(${i})">${out?'Out of Stock':'🛒 Order on WhatsApp'}</button>
+    </div>
+  </div>`;
+}
+function setProducts(list){
+  prods=list;cidx=list.map(()=>0);
+  document.getElementById('pgrid').innerHTML=list.length?list.map(cardHTML).join(''):'<div class="pmsg">Naye products jald aa rahe hain.</div>';
+}
+
+/* PWA */
 let deferredPrompt=null;
-window.addEventListener('beforeinstallprompt',e=>{
-  e.preventDefault();
-  deferredPrompt=e;
-  setTimeout(()=>document.getElementById('app-banner').classList.add('show'),2500);
-});
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;setTimeout(()=>document.getElementById('app-banner').classList.add('show'),2500)});
 window.addEventListener('appinstalled',()=>{showToast('🎉 App installed!');hideBanner()});
 document.getElementById('ab-install-btn').onclick=()=>installApp();
-
 function installApp(){
-  if(deferredPrompt){
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(r=>{
-      if(r.outcome==='accepted'){showToast('✅ App installed!');hideBanner();}
-      deferredPrompt=null;
-    });
-  } else {
-    showToast('📱 Open in Chrome → tap menu → "Add to Home Screen"');
-  }
+  if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(r=>{if(r.outcome==='accepted'){showToast('✅ App installed!');hideBanner()}deferredPrompt=null})}
+  else showToast('📱 Open in Chrome → menu → "Add to Home Screen"');
 }
 function hideBanner(){document.getElementById('app-banner').classList.remove('show')}
-
-/* Service Worker */
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}
 
-/* ── DRAWER ── */
+/* Drawer */
 function openDrawer(){document.getElementById('navDrawer').classList.add('open');document.getElementById('navOverlay').classList.add('open');document.body.style.overflow='hidden'}
 function closeDrawer(){document.getElementById('navDrawer').classList.remove('open');document.getElementById('navOverlay').classList.remove('open');document.body.style.overflow=''}
 
-/* ── SEARCH ── */
+/* Search */
 function doSearch(q,resId){
   const box=document.getElementById(resId);
   q=q.trim().toLowerCase();
   if(!q){box.classList.remove('show');box.innerHTML='';return}
-  const m=prods.filter(p=>p.name.toLowerCase().includes(q));
+  const m=prods.map((p,i)=>({p,i})).filter(x=>x.p.name.toLowerCase().includes(q));
   if(!m.length){box.innerHTML='<div class="sr-none">No products found</div>';box.classList.add('show');return}
-  box.innerHTML=m.map(p=>`<a class="sr-item" href="#" onclick="scrollToProd(${prods.indexOf(p)});hideResults('${resId}');return false"><img class="sr-img" src="${p.imgs[0]}"><div><div class="sr-name">${p.name}</div><div class="sr-price">₹${p.price}</div></div></a>`).join('');
+  box.innerHTML=m.map(({p,i})=>`<a class="sr-item" href="#" onclick="scrollToProd(${i});hideResults('${resId}');return false"><img class="sr-img" src="${esc((p.images||[])[0]||'logo.png')}" alt=""><div><div class="sr-name">${esc(p.name)}</div><div class="sr-price">₹${p.price}</div></div></a>`).join('');
   box.classList.add('show');
 }
 function hideResults(id){document.getElementById(id).classList.remove('show')}
 function scrollToProd(i){
   closeDrawer();
-  const c=document.querySelectorAll('.card');
+  const c=document.querySelectorAll('#pgrid .card');
   if(c[i]){c[i].scrollIntoView({behavior:'smooth',block:'center'});c[i].style.outline='3px solid var(--goldf)';setTimeout(()=>c[i].style.outline='',2000)}
 }
 
-/* ── LIGHTBOX ── */
-let curP=0,curI=0,cidx=[0,0,0,0,0];
-function openLB(pi){curP=pi;curI=cidx[pi];renderLB();document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden'}
+/* Lightbox */
+let curP=0,curI=0;
+function openLB(pi){curP=pi;curI=cidx[pi]||0;renderLB();document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden'}
 function closeLB(){document.getElementById('lb').classList.remove('open');document.body.style.overflow=''}
 function closeLBOutside(e){if(e.target===document.getElementById('lb'))closeLB()}
+function lbImgs(){const p=prods[curP];return p.images&&p.images.length?p.images:['logo.png']}
 function renderLB(){
-  const p=prods[curP];
-  document.getElementById('lb-img').src=p.imgs[curI];
+  const p=prods[curP],im=lbImgs();
+  document.getElementById('lb-img').src=im[curI];
   document.getElementById('lb-cap').textContent=p.name;
-  document.getElementById('lb-cnt').textContent=(curI+1)+' / '+p.imgs.length;
+  document.getElementById('lb-cnt').textContent=(curI+1)+' / '+im.length;
   const tc=document.getElementById('lb-thumbs');tc.innerHTML='';
-  p.imgs.forEach((s,i)=>{const img=document.createElement('img');img.src=s;if(i===curI)img.className='act';img.onclick=()=>{curI=i;renderLB()};tc.appendChild(img)});
+  im.forEach((s,i)=>{const img=document.createElement('img');img.src=s;if(i===curI)img.className='act';img.onclick=()=>{curI=i;renderLB()};tc.appendChild(img)});
 }
-function lbNav(d){curI=(curI+d+prods[curP].imgs.length)%prods[curP].imgs.length;renderLB()}
+function lbNav(d){const n=lbImgs().length;curI=(curI+d+n)%n;renderLB()}
 let sx=0;
 document.getElementById('lb').addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
 document.getElementById('lb').addEventListener('touchend',e=>{if(Math.abs(e.changedTouches[0].clientX-sx)>50)lbNav(e.changedTouches[0].clientX<sx?1:-1)});
@@ -786,31 +491,51 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight')lbNav(1);if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='Escape')closeLB();
 });
 
-/* ── SWAP IMG ── */
-function swapImg(e,imgId,thumb,src,pi,ii){
+/* Swap thumb */
+function swapImg(e,imgId,thumb,pi,ii){
   e.stopPropagation();
-  document.getElementById(imgId).src=src;
+  document.getElementById(imgId).src=thumb.src;
   thumb.closest('.thumbs-row').querySelectorAll('img').forEach(t=>t.classList.remove('act'));
   thumb.classList.add('act');cidx[pi]=ii;
 }
 
-/* ── QTY ── */
+/* Qty / Order / Wishlist / Toast */
 function chQty(id,d){const el=document.getElementById(id);let n=parseInt(el.innerText)+d;if(n<1)n=1;if(n>99)n=99;el.innerText=n}
-
-/* ── ORDER ── */
-function orderWA(name,price,qId){
-  const qty=document.getElementById(qId).innerText;
-  const total=price*parseInt(qty);
-  const msg=`🛒 *Barakah eMart Order*\n\n📦 Product: ${name}\n💰 Price: ₹${price} each\n🔢 Qty: ${qty}\n💵 Total: ₹${total}\n\nPlease confirm my order. Thank you!`;
-  window.open(`https://wa.me/919124646598?text=${encodeURIComponent(msg)}`,'_blank');
+function orderWA(i){
+  const p=prods[i],qty=parseInt(document.getElementById('q'+i).innerText),total=p.price*qty;
+  const msg=`🛒 *Barakah eMart Order*\n\n📦 Product: ${p.name}\n💰 Price: ₹${p.price} each\n🔢 Qty: ${qty}\n💵 Total: ₹${total}\n\nPlease confirm my order. Thank you!`;
+  window.open(`https://wa.me/919124646598?text=${encodeURIComponent(msg)}`,'_blank','noopener');
   showToast('✅ Opening WhatsApp...');
 }
-
-/* ── WISHLIST ── */
 function toggleWish(btn){const on=btn.textContent==='❤️';btn.textContent=on?'🤍':'❤️';showToast(on?'Removed from wishlist':'❤️ Added to wishlist!')}
-
-/* ── TOAST ── */
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+</script>
+
+<!-- ══ FIREBASE: admin panel ke products yahan se aate hain ══ -->
+<script type="module">
+import {firebaseConfig,isConfigured} from './firebase-config.js';
+const KEY='bk_products_v1';
+let cached=null;
+try{cached=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){}
+if(cached&&cached.length)setProducts(cached);
+
+async function fresh(){
+  if(!isConfigured){if(!cached)setProducts(DEFAULTS);return}
+  try{
+    const {initializeApp}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+    const {getFirestore,collection,getDocs,query,orderBy}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+    const db=getFirestore(initializeApp(firebaseConfig));
+    const snap=await getDocs(query(collection(db,'products'),orderBy('order')));
+    if(snap.empty){setProducts(DEFAULTS);return}
+    const list=snap.docs.map(d=>d.data()).filter(p=>p.active!==false);
+    localStorage.setItem(KEY,JSON.stringify(list));
+    setProducts(list);
+  }catch(e){
+    console.warn('Products load error',e);
+    if(!cached)setProducts(DEFAULTS);
+  }
+}
+fresh();
 </script>
 </body>
 </html>
