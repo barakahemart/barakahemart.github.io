@@ -113,11 +113,12 @@ document.querySelector('.tabs').addEventListener('click',e=>{const b=e.target.cl
 /* load */
 async function load(){
   try{
-    const [ps,cs,st]=await Promise.all([getDocs(query(PC,orderBy('order'))),getDocs(query(CC,orderBy('order'))),getDoc(doc(db,'settings','store'))]);
+    const [ps,cs,st]=await Promise.all([getDocs(query(PC,orderBy('order'))),getDocs(query(CC,orderBy('order'))).catch(()=>null),getDoc(doc(db,'settings','store')).catch(()=>null)]);
     const all=ps.docs.map(d=>({id:d.id,...d.data()}));
     prods=all.filter(p=>p.prices);legacy=all.length-prods.length;
-    cats=cs.docs.map(d=>({id:d.id,...d.data()}));
-    renderP();renderC();renderS(st.exists()?st.data():{});
+    cats=cs?cs.docs.map(d=>({id:d.id,...d.data()})):[];
+    renderP();renderC();renderS(st&&st.exists()?st.data():{});
+    if(!cs||!st){const w='<div class="empty" style="margin-bottom:10px;border-color:#c0392b;color:#c0392b">Categories/Settings load nahi hue. Firebase Rules update karo (products, categories, settings teeno ka read allow hona chahiye).</div>';$('tc').insertAdjacentHTML('afterbegin',w);$('ts').insertAdjacentHTML('afterbegin',w)}
   }catch(e){$('tp').innerHTML='<div class="empty">Load error: '+esc(e.message)+'<br>Firestore rules check karo.</div>'}
 }
 const stockN=p=>p.stock===undefined||p.stock===null?null:p.stock;
