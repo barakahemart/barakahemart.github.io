@@ -47,7 +47,7 @@ input,select,textarea{width:100%;padding:10px 11px;border:1.5px solid var(--ln);
 </head>
 <body>
 <div id="login"><div class="lbox">
-  <h1>Barakah eMart Admin</h1><p>Sirf owner ke liye.</p>
+  <h1>Barakah eMart Admin</h1><p>Sirf owner ke liye. Har baar login zaroori hai. <span style="opacity:.6">(secure v3)</span></p>
   <label>Email</label><input id="em" type="email" autocomplete="username">
   <label>Password</label><input id="pw" type="password" autocomplete="current-password">
   <button id="loginBtn">Login</button><div class="err" id="lerr"></div>
@@ -89,13 +89,13 @@ input,select,textarea{width:100%;padding:10px 11px;border:1.5px solid var(--ln);
 <script type="module">
 import {firebaseConfig,isConfigured} from './firebase-config.js';
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {initializeAuth,inMemoryPersistence,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {getFirestore,collection,getDocs,addDoc,setDoc,updateDoc,deleteDoc,doc,getDoc,query,orderBy,writeBatch} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2600)}
 if(!isConfigured){$('login').innerHTML='<div class="lbox"><h1>Setup baaki hai</h1><p>firebase-config.js me Firebase keys paste karo.</p></div>';throw new Error('not configured')}
-const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+const app=initializeApp(firebaseConfig),auth=initializeAuth(app,{persistence:inMemoryPersistence}) /* login kabhi save nahi hota: har baar page kholne par password maangega */,db=getFirestore(app);
 const PC=collection(db,'products'),CC=collection(db,'categories');
 const DEF_CATS=['AJWA DATES','KALMI DATES (SAFAWI)','MEDJOOL DATES'];
 let prods=[],legacy=0,cats=[],editId=null,fimgs=[];

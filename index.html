@@ -78,7 +78,9 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,250,241,.94);backdro
 .card:hover{transform:translateY(-4px);box-shadow:var(--shl)}
 .pimg{aspect-ratio:1/1;background:#fff;border-bottom:1px solid var(--ln);cursor:pointer;position:relative;overflow:hidden;display:block;width:100%;padding:0;border-left:0;border-right:0;border-top:0}
 .pimg img{width:100%;height:100%;object-fit:contain;padding:6px;transition:transform .5s}
-.pimg img.fb,.gal img.fb{object-fit:cover;padding:0}.card:hover .pimg img{transform:scale(1.06)}
+.pimg img.fb,.gal img.fb{object-fit:cover;padding:0}
+.cth{display:flex;gap:6px;padding:8px 10px;overflow-x:auto;scrollbar-width:none;background:#fff;border-bottom:1px solid var(--ln)}.cth::-webkit-scrollbar{display:none}
+.cth img{width:52px;height:52px;object-fit:contain;background:#fff;border:2px solid var(--ln);border-radius:9px;cursor:pointer;flex-shrink:0;transition:border-color .15s}.cth img.on{border-color:var(--gold)}.card:hover .pimg img{transform:scale(1.06)}
 .tag{position:absolute;top:10px;left:10px;background:var(--br);color:var(--gl);font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:4px 9px;border-radius:20px}
 .oos{position:absolute;inset:auto 0 0 0;background:rgba(36,21,11,.85);color:#fff;text-align:center;font-size:12px;font-weight:800;padding:6px}
 .cb{padding:11px;display:flex;flex-direction:column;gap:7px;flex:1}
@@ -266,6 +268,9 @@ const catImg=n=>{n=String(n||'').toLowerCase();return n.includes('ajwa')?'cat-aj
 const imgOf=p=>(p.images&&p.images[0])||catImg(p.category)||'';
 const PH='<svg viewBox="0 0 24 24" width="46" height="46" fill="none" stroke="#c8962a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:auto"><path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 16-9 0 12-4 16-9 16Z"/><path d="M4 20c3-6 6-9 10-11"/></svg>';
 const isFb=p=>!(p.images&&p.images[0]);
+const cardK={};let swipedAt=0;const swp=()=>Date.now()-swipedAt<450;
+function cimg(p,i){const k=cardK[p.id]||0,src=(p.images&&p.images[k])||imgOf(p);return src?`<img id="ci${i}" src="${esc(src)}" class="${isFb(p)?'fb':''}" alt="${esc(p.name)}" loading="lazy" decoding="async">`:`<div style="display:flex;height:100%">${PH}</div>`}
+function cardPick(i,k){const p=prods[i];if(!p||!p.images||!p.images[k])return;cardK[p.id]=k;const e=$('ci'+i);if(e)e.src=p.images[k];const c=e&&e.closest('.card');if(c)c.querySelectorAll('.cth img').forEach((x,j)=>x.classList.toggle('on',j===k))}
 const thumb=(p,lazy=true)=>imgOf(p)?`<img src="${esc(imgOf(p))}" class="${isFb(p)?'fb':''}" alt="${esc(p.name)}" ${lazy?'loading="lazy"':''} decoding="async">`:`<div style="display:flex;height:100%">${PH}</div>`;
 const catNames=()=>cats.length?cats:DEF_CATS;
 const cur=p=>{const ss=sizesOf(p);return sel[p.id]&&ss.includes(sel[p.id])?sel[p.id]:ss[0]};
@@ -286,7 +291,7 @@ function renderGrid(){
 }
 function card(p,i){
   const ss=sizesOf(p),out=!inStock(p)||!ss.length,s=cur(p);
-  return `<article class="card"><button class="pimg" onclick="openDetail(${i})" aria-label="View ${esc(p.name)}">${thumb(p)}<span class="tag">${esc(p.category||'')}</span>${out?'<div class="oos">Out of Stock</div>':''}</button>
+  return `<article class="card"><button class="pimg" data-i="${i}" onclick="if(!swp())openDetail(${i})" aria-label="View ${esc(p.name)}">${cimg(p,i)}<span class="tag">${esc(p.category||'')}</span>${out?'<div class="oos">Out of Stock</div>':''}</button>${p.images&&p.images.length>1?`<div class="cth" aria-label="More photos">${p.images.map((u,k)=>`<img src="${esc(u)}" alt="${esc(p.name)} photo ${k+1}" class="${k===(cardK[p.id]||0)?'on':''}" loading="lazy" onclick="cardPick(${i},${k})">`).join('')}</div>`:''}
   <div class="cb"><h3 class="cn" onclick="openDetail(${i})">${esc(p.name)}</h3>${p.desc?`<div class="cd">${esc(p.desc)}</div>`:''}
   ${ss.length?`<div class="sz" role="radiogroup" aria-label="Pack size">${ss.map(z=>`<label><input type="radio" name="s${i}" ${z===s?'checked':''} onchange="pick(${i},'${z}')"><span>${z}</span></label>`).join('')}</div><div class="pr"><span id="pr${i}">${inr(p.prices[s])}</span> <small id="ps${i}">/ ${s}</small></div>`:'<div class="pr"><small>Price coming soon</small></div>'}
   <div class="btns"><button class="b b1" ${out?'disabled':''} onclick="add(${i},false)">Add to Cart</button><button class="b b2" ${out?'disabled':''} onclick="add(${i},true)">Buy Now</button><button class="b b3" onclick="openDetail(${i})">View Details</button></div></div></article>`;
@@ -297,9 +302,9 @@ function pick(i,z){const p=prods[i];sel[p.id]=z;[['pr'+i,inr(p.prices[z])],['ps'
 function openDetail(i){
   const p=prods[i],ss=sizesOf(p),out=!inStock(p)||!ss.length,s=cur(p),im=p.images&&p.images.length?p.images:(catImg(p.category)?[catImg(p.category)]:[]);
   const rows=[['Country of Origin',p.origin],['Variety',p.variety],['Texture',p.texture],['Taste',p.taste],['Storage',p.storage]].filter(r=>r[1]);
-  detQty=1;detIm=im;detK=0;detFb=!(p.images&&p.images.length);$('md').dataset.i=i;
-  $('md').innerHTML=`<button class="x" onclick="closeAll()" aria-label="Close">✕</button><div class="dg"><div><div class="gal" id="gal" onclick="openLB(detIm,detK)" role="button" tabindex="0" aria-label="Zoom image">${im[0]?`<img src="${esc(im[0])}" class="${detFb?'fb':''}" alt="${esc(p.name)}">`:`<div style="display:flex;height:100%">${PH}</div>`}${im[0]?'<span class="zh">🔍 Tap to zoom</span>':''}</div>
-  ${im.length>1?`<div class="th">${im.map((u,k)=>`<img src="${esc(u)}" alt="${esc(p.name)} photo ${k+1}" class="${k?'':'on'}" onclick="gal(this)">`).join('')}</div>`:''}</div>
+  detQty=1;detIm=im;detK=Math.min(cardK[p.id]||0,Math.max(0,im.length-1));detFb=!(p.images&&p.images.length);$('md').dataset.i=i;
+  $('md').innerHTML=`<button class="x" onclick="closeAll()" aria-label="Close">✕</button><div class="dg"><div><div class="gal" id="gal" onclick="openLB(detIm,detK)" role="button" tabindex="0" aria-label="Zoom image">${im[0]?`<img src="${esc(im[detK])}" class="${detFb?'fb':''}" alt="${esc(p.name)}">`:`<div style="display:flex;height:100%">${PH}</div>`}${im[0]?'<span class="zh">🔍 Tap to zoom</span>':''}</div>
+  ${im.length>1?`<div class="th">${im.map((u,k)=>`<img src="${esc(u)}" alt="${esc(p.name)} photo ${k+1}" class="${k===detK?'on':''}" onclick="gal(this)">`).join('')}</div>`:''}</div>
   <div><span class="tag" style="position:static;display:inline-block">${esc(p.category||'')}</span><h3 style="font-size:24px;color:var(--br);margin:8px 0 4px;line-height:1.2">${esc(p.name)}</h3>
   <span class="stk ${out?'out':'in'}">${out?'Out of Stock':'In Stock'}</span>
   ${p.desc?`<p style="color:var(--mu);margin:10px 0">${esc(p.desc)}</p>`:''}
@@ -308,7 +313,7 @@ function openDetail(i){
   ${rows.length?`<table class="sp">${rows.map(r=>`<tr><td>${r[0]}</td><td>${esc(r[1])}</td></tr>`).join('')}</table>`:''}</div></div>`;
   $('md').classList.add('open');$('ov').classList.add('open');
 }
-function gal(el){detK=[...el.parentNode.children].indexOf(el);$('gal').innerHTML=`<img src="${el.src}" alt=""><span class="zh">🔍 Tap to zoom</span>`;el.parentNode.querySelectorAll('img').forEach(x=>x.classList.remove('on'));el.classList.add('on')}
+function gal(el){detK=[...el.parentNode.children].indexOf(el);cardPick(+$('md').dataset.i,detK);$('gal').innerHTML=`<img src="${el.src}" alt=""><span class="zh">🔍 Tap to zoom</span>`;el.parentNode.querySelectorAll('img').forEach(x=>x.classList.remove('on'));el.classList.add('on')}
 
 /* ── cart ── */
 function save(){try{localStorage.setItem('bk_cart',JSON.stringify(cart))}catch(e){}}
@@ -359,6 +364,12 @@ function placeOrder(){
   window.open('https://wa.me/'+cfg.wa+'?text='+encodeURIComponent(msg),'_blank','noopener');
   cart=[];save();updCount();closeAll();toast('✅ WhatsApp khul raha hai, order wahan send karein');
 }
+/* card photo swipe */
+(function(){let x0=0,t=null;const g=$('grid');
+  g.addEventListener('touchstart',e=>{t=e.target.closest('.pimg');x0=e.touches[0].clientX},{passive:true});
+  g.addEventListener('touchend',e=>{if(!t)return;const dx=e.changedTouches[0].clientX-x0,i=+t.dataset.i,p=prods[i];
+    if(p&&p.images&&p.images.length>1&&Math.abs(dx)>45){const n=p.images.length,k=((cardK[p.id]||0)+(dx<0?1:-1)+n)%n;cardPick(i,k);swipedAt=Date.now()}t=null},{passive:true});
+})();
 /* ── zoom lightbox ── */
 let lbL=[],lbI=0,Z={s:1,x:0,y:0};const P=new Map();let pd=0,ps=1,mv=0,sx=0,lastTap=0;
 function openLB(list,i){if(!list||!list.length)return;lbL=list;lbI=i||0;$('lb').classList.add('open');showLB()}
